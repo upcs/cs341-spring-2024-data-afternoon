@@ -2,13 +2,11 @@
  * Date: Feb. 10, 2024
  */
 
- /* Resetting default margin and padding */
  body, h1, nav, div {
     margin: 0;
     padding: 0;
   }
   
-  /* Basic styling */
   body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -16,6 +14,7 @@
     line-height: 2;;
   }
   
+/* Styling for the header */
   header {
     background-color: #3d5a80;
     color: #fff;
@@ -27,6 +26,7 @@
     margin: 0;
   }
   
+  /* Styling for the navigation tabs */
   nav {
     background-color: #98c1d9;
     padding: 10px;
@@ -39,13 +39,44 @@
     padding: 30px;
     font-size: 20px;
   }
-  
+
   nav a:hover {
     text-decoration: underline;
    
   }
-  
+
   div {
     padding: 20px;
   }
   
+  /* Styling for search bar */
+  .search-bar {
+    position: absolute;
+    top: 50px; 
+    right: 20px; 
+  }
+  
+  .search-bar form {
+    display: flex;
+  }
+  
+  .search-bar input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .search-bar button {
+    padding: 10px 20px;
+    background-color: #293241;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background-color: #98c1d9;
+  }
+  
+
