@@ -1,0 +1,51 @@
+/* Author: Malissa Chen
+ * Date: Feb. 10, 2024
+ */
+
+ /* Resetting default margin and padding */
+ body, h1, nav, div {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Basic styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #3d5a80;
+    line-height: 2;;
+  }
+  
+  header {
+    background-color: #3d5a80;
+    color: #fff;
+    padding: 20px;
+    font-size: 25px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  nav {
+    background-color: #98c1d9;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 30px;
+    font-size: 20px;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+   
+  }
+  
+  div {
+    padding: 20px;
+  }
+  
