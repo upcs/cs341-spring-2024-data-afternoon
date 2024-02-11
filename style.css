@@ -1,0 +1,111 @@
+/* Author: Malissa Chen
+ * Date: Feb. 10, 2024
+ */
+
+ body, h1, nav, div {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #3d5a80;
+    line-height: 2;;
+  }
+  
+/* Styling for the header */
+  header {
+    background-color: #3d5a80;
+    color: #fff;
+    padding: 20px;
+    font-size: 25px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  /* Styling for the navigation tabs */
+  nav {
+    background-color: #98c1d9;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 30px;
+    font-size: 20px;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+   
+  }
+
+  div {
+    padding: 20px;
+  }
+  
+  /* Styling for search bar */
+  .search-bar {
+    position: absolute;
+    top: 50px; 
+    right: 20px; 
+  }
+  
+  .search-bar form {
+    display: flex;
+  }
+  
+  .search-bar input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .search-bar button {
+    padding: 10px 20px;
+    background-color: #293241;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background-color: #98c1d9;
+  }
+  
+   /* about us styling */
+  .homepage-description,
+  .additional-info {
+  border: 2px solid #333;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.homepage-description h2,
+.additional-info h2 {
+  margin-top: 0;
+}
+
+.additional-info {
+  margin-left: 1000px;
+  height: 500px;
+}
+.square-box {
+    border: 2px solid #333;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .homepage-description h2,
+  .additional-info h2,
+  .square-box h2 {
+    margin-top: 0;
+  }
+  
