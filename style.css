@@ -94,8 +94,11 @@
 }
 
 .additional-info {
-  margin-left: 1000px;
+  width: 25%;
+  float:right;
   height: 500px;
+  padding-left: 5px;
+  margin-left: 5px;
 }
 .square-box {
     border: 2px solid #333;
@@ -109,3 +112,15 @@
     margin-top: 0;
   }
   
+#map-frame {
+  width:100%;
+  height:100%;
+}
+
+#map-aside{
+  float:left;
+  width:65%;
+  height:500px;
+  padding-left: 10px;
+  margin-left: 10px;
+}
