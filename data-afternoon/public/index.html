@@ -1,6 +1,3 @@
-<!-- Author: Malissa Chen -->
-<!-- Date: Feb. 6, 2024 -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +7,18 @@
 <body>
   <header>
     <h1>PDX Homeless Resources</h1>
+         <!-- user's current location -->
+         <div id="current-location">
+          <span id="location-icon">📍</span>
+          <span id="location-text">Loading...</span>
+        </div>
+        <!-- Search bar -->
+  <div class="search-bar">
+    <form>
+      <input type="text" placeholder="Search...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
   </header>
   
   <!-- Navigation -->
@@ -22,13 +31,7 @@
     <a href="guide.html" target="iframe">Guide</a>
   </nav>
 
-  <!-- Search bar -->
-  <div class="search-bar">
-    <form>
-      <input type="text" placeholder="Search...">
-      <button type="submit">Search</button>
-    </form>
-  </div>
+  
 
      <!-- Main content area -->
   <main class="content">
