@@ -127,7 +127,18 @@ body, h1, nav, div {
 }
 
 .additional-info {
-  margin-left: 500px;
-}
-
-
+    margin-left: 1000px;
+    height: 500px;
+  }
+  .square-box {
+      border: 2px solid #333;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    
+    .homepage-description h2,
+    .additional-info h2,
+    .square-box h2 {
+      margin-top: 0;
+    }
+    
