@@ -5,6 +5,9 @@
   <link rel="stylesheet" href="stylesheets\style.css">
 </head>
 <body>
+
+  <script src="javascripts/unhoused.js"></script>
+
   <header>
     <h1>PDX Homeless Resources</h1>
          <!-- user's current location -->
@@ -53,7 +56,19 @@
   <aside class="additional-info">
     <h2>Additional Information</h2>
     <p>work in progress.</p>
+    <div class="dropdown" id =DropDown>
+      <dataButton class="dropbtn">Safe Rest Villages</dataButton>
+      <div class="dropdown-content">
+          <!--drop down data -->
+        <a href="#" onclick="mydataFunction()" >Name: BIPOC Village, Total Sleep Units: 38, Location: 84 NE Weidler</a> 
+        <a href="#" onclick="mydataFunction()" >Name: Menlo Park Safe Rest Village, Total Sleep Units: 50, Location: 12305 SE Ash St</a> 
+        <a href="#" onclick="mydataFunction()" >Name: Multnomah Safe Rest Village, Total Sleep Units: 28, Location: 2731 SW Multnomah Blvd</a> 
+        <a href="#" onclick="mydataFunction()" >Name: Peninsula Crossing Safe Rest Village, Total Sleep Units: 60, Location: 6767 N Syracuse St</a> 
+        
+      </div>
+  </div>
   </aside>
+
 
   <aside id="frame-aside">
     <iframe src="home.html"
