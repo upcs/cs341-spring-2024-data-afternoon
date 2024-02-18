@@ -7,6 +7,8 @@
 <body>
 
   <script src="javascripts/unhoused.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script>
+  <script src="javascripts/currentLocation.js"></script>
 
   <header>
     <h1>PDX Homeless Resources</h1>
@@ -23,12 +25,13 @@
     </form>
   </div>
   </header>
-  
+
   <!-- Navigation -->
   <nav>
     <a href="home.html" target="iframe">Home</a>
     <a href="#services">Services</a>
-    <a href="#volunteer">Volunteer</a>
+    
+    <a href="volunteer.html" target="iframe">Volunteer</a>
     <a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F"
     target="iframe">Map</a>
     <a href="guide.html" target="iframe">Guide</a>
@@ -36,21 +39,7 @@
 
   
 
-     <!-- Main content area -->
-  <main class="content">
-    <!-- Description of the homepage -->
-    <section class="homepage-description">
-      <h2>About Us</h2>
-      <p>Welcome to the PDX Homeless Resources website. 
-        Here you can find information about services available for homeless individuals,
-         opportunities to volunteer, and a map of resources in the Portland area. 
-         We aim to provide support and assistance to those in need.
-         This website operates independently and is not affiliated with any of the organizations listed within. 
-         It serves as an open resource, providing aid to those in need and offering assistance to individuals or
-          groups seeking to support other organizations. 
-       </p>
-    </section>
-  </main>
+    
   
   <!-- Additional Information -->
   <aside class="additional-info">
