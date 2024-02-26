@@ -28,13 +28,12 @@
 
   <!-- Navigation -->
   <nav>
-    <a href="home.html" target="iframe">Home</a>
-    <a href="#services">Services</a>
-    
-    <a href="volunteer.html" target="iframe">Volunteer</a>
-    <a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F"
-    target="iframe">Map</a>
-    <a href="guide.html" target="iframe">Guide</a>
+    <a href="home.html" target="iframe" onclick=changeAddInfoBack()>Home</a>
+    <a href="#services" onclick=changeAddInfoBack()>Services</a>
+    <a href="volunteer.html" target="iframe" onclick=changeAddInfoBack()>Volunteer</a>
+    <a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1"
+    target="iframe" onclick=addInfoMap()>Map</a>
+    <a href="guide.html" target="iframe" onclick=changeAddInfoBack()>Guide</a>
   </nav>
 
   
@@ -45,6 +44,20 @@
   <aside class="additional-info">
     <h2>Additional Information</h2>
     <p>work in progress.</p>
+    <div id="key" hidden>
+      <table id="keyTable">
+        <tr>
+          <td><img id="keyImage" src="images/groceries.png" width="50px" height="50px"></td>
+          <td>Free Groceries</td>
+        </tr>
+          <td><img id="keyImage" src="images/food.png" width="50px" height="50px"></td>
+          <td>Free Meals</td>
+        <tr>
+          <td><img id="keyImage" src="images/shelter.png" width="50px" height="50px"></td>
+          <td>Rest Places</td>
+        </tr>
+      </table>
+    </div>
     <div class="dropdown" id =DropDown>
       <dataButton class="dropbtn">Safe Rest Villages</dataButton>
       <div class="dropdown-content">
