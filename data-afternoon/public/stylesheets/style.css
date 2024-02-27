@@ -15,7 +15,7 @@
 .content{
   max-width: 1250px;
   margin: auto;
-  padding: 0 30px;
+  padding: 0px;
 }
 
 /* Navbar Styling */
@@ -23,7 +23,7 @@
   position: fixed;
   width: 100%;
   z-index: 2;
-  padding: 25px 0;
+  padding: 35px 0;
   transition: all 0.3s ease;
 }
 /* Sticky Navbar Style */
@@ -40,7 +40,7 @@
 /* Logo Styling */
 .navbar .logo a{
   color: #fff;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -56,14 +56,13 @@
   color: #fff;
   font-size: 18px;
   font-weight: 500;
-  margin-left: 2px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 .menu-list li a {
   transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 20px;
   background-color: transparent; 
 }
@@ -159,34 +158,6 @@
     padding: 20px;
   }
   
-  /* Styling for search bar */
-  .search-bar {
-    padding: 20px;
-  }
-  
-  .search-bar form {
-    display: flex;
-  }
-  
-  .search-bar input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-  }
-  
-  .search-bar button {
-    padding: 10px 20px;
-    background-color: #293241;
-    color: #fff;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-  }
-  
-  .search-bar button:hover {
-    background-color: #98c1d9;
-  }
-  
    /* about us styling */
   .homepage-description,
   .additional-info {
@@ -280,22 +251,22 @@
 
 
 #searchInput {
-  padding: 8px;
+  padding: 10px;
   margin: 10px;
-  width: 200px;
+  width: 165px;
+  border-radius: 5px;
 }
 
 #searchButton {
-  padding: 5px 10px;
+  padding: 10px;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: -15px;
 }
 
 #searchButton:hover{
   background-color: #45a049;
 }
-
