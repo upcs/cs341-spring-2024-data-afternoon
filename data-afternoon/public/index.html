@@ -29,7 +29,7 @@
           target="iframe">Map</a></li>
         <li><a href="guide.html" target="iframe">Guide</a></li>
         <li>
-        <input type="test" id="searchInput" placeholder="Search (e.g., map, volunteer)">
+        <input type="test" id="searchInput" placeholder="Search">
         <button id="searchButton" onclick="handleSearch()">Search</button>
         </li>
 
@@ -41,12 +41,18 @@
   </nav>
  
   <div class="banner">
-        <div class="banner-search">
-          <input type="test" id="bannerSearch" placeholder="Search (e.g. map, volunteer)">
-            <button id="bannerButton" onclick="handleSearch()">Search</button>
-
-  </div>
-  
+    <div class="container">
+      <form>
+        <div class="wrapper">
+          <p2>Services Location</p2>
+          <div class="search-container">
+            <input type="text" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
+            <input type="text" class="location" placeholder="Location (e.g. City or Zip Code)">
+            <button type="submit" class="bannerButton">Search</button>
+          </div>
+        </div>
+      </form>
+      </div>
   </div>
 
   <script>
