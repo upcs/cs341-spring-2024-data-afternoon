@@ -14,7 +14,7 @@ function changeAddInfoBack() {
   //temporary since we do not have things to put 
   //in additional info for other tabs
   document.getElementById("DropDown").style.display = 'block';
-  document.getElementById("key").style.display = 'add';
+  document.getElementById("key").style.display = 'none';
 }
 
 module.exports = { mydataFunction };
