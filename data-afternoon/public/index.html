@@ -1,46 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>PDX Homeless Resources</title>
-  <link rel="stylesheet" href="stylesheets\style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unhoused Resources | PDX </title>
+    <link rel="stylesheet" href="stylesheets\style.css">
+    
+    <script src="javascripts/unhoused.js"></script>
+    <script src="javascripts/navigation.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script>
+    <script src="javascripts/currentLocation.js"></script>
+
 </head>
 <body>
-
-  <script src="javascripts/unhoused.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script>
-  <script src="javascripts/currentLocation.js"></script>
-
-  <header>
-    <h1>PDX Homeless Resources</h1>
-         <!-- user's current location -->
-         <div id="current-location">
-          <span id="location-icon">📍</span>
-          <span id="location-text">Loading...</span>
-        </div>
-        <!-- Search bar -->
-  <div class="search-bar">
-    <form>
-      <input type="text" placeholder="Search...">
-      <button type="submit">Search</button>
-    </form>
-  </div>
-  </header>
-
   <!-- Navigation -->
-  <nav>
-    <a href="home.html" target="iframe" onclick=changeAddInfoBack()>Home</a>
-    <a href="#services" onclick=changeAddInfoBack()>Services</a>
-    <a href="volunteer.html" target="iframe" onclick=changeAddInfoBack()>Volunteer</a>
-    <a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1"
-    target="iframe" onclick=addInfoMap()>Map</a>
-    <a href="guide.html" target="iframe" onclick=changeAddInfoBack()>Guide</a>
+  <nav class="navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="#">PDX Unhoused Resources</a>
+      </div>
+      <ul class="menu-list">
+        <div class="icon cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+        <li><a href="home.html" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
+        <li><a href="#services" onclick=changeAddInfoBack()>Services</a></li>
+        <li><a href="volunteer.html" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
+        <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1"
+          target="iframe" onclick=addInfoMap()>Map</a></li>
+        <li><a href="guide.html" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
+        <li>
+        <input type="test" id="searchInput" placeholder="Search (e.g., map, volunteer)">
+        <button id="searchButton" onclick="handleSearch()">Search</button>
+        </li>
+        
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
   </nav>
-
+ 
+  <div class="banner">
+        <div class="banner-search">
+  </div>
   
+  </div>
 
-    
-  
-  <!-- Additional Information -->
+  <script>
+    const body = document.querySelector("body");
+    const navbar = document.querySelector(".navbar");
+    const menuBtn = document.querySelector(".menu-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    menuBtn.onclick = ()=>{
+      navbar.classList.add("show");
+      menuBtn.classList.add("hide");
+      body.classList.add("disabled");
+    }
+    cancelBtn.onclick = ()=>{
+      body.classList.remove("disabled");
+      navbar.classList.remove("show");
+      menuBtn.classList.remove("hide");
+    }
+    window.onscroll = ()=>{
+      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+    }
+  </script>
+
+    <!-- Additional Information -->
   <aside class="additional-info">
     <h2>Additional Information</h2>
     <div id="key" hidden>
@@ -67,16 +94,15 @@
         <a href="#" onclick="mydataFunction()" >Name: Peninsula Crossing Safe Rest Village, Total Sleep Units: 60, Location: 6767 N Syracuse St</a> 
         
       </div>
-  </div>
-  </aside>
-
-
-  <aside id="frame-aside">
-    <iframe src="home.html"
-    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-    name="iframe" id="iframe"></iframe>
-  </aside>
+    </div>
+    </aside>
   
-
+  
+    <aside id="frame-aside">
+      <iframe src="home.html"
+      style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+      name="iframe" id="iframe"></iframe>
+    </aside>
+    
 </body>
 </html>
