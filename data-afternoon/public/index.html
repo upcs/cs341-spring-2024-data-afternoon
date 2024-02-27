@@ -13,6 +13,7 @@
 
 </head>
 <body>
+  <!-- Navigation -->
   <nav class="navbar">
     <div class="content">
       <div class="logo">
@@ -22,17 +23,17 @@
         <div class="icon cancel-btn">
           <i class="fas fa-times"></i>
         </div>
-        <li><a href="home.html" target="iframe">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="volunteer.html" target="iframe">Volunteer</a></li>
-        <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F"
-          target="iframe">Map</a></li>
-        <li><a href="guide.html" target="iframe">Guide</a></li>
+        <li><a href="home.html" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
+        <li><a href="#services" onclick=changeAddInfoBack()>Services</a></li>
+        <li><a href="volunteer.html" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
+        <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1"
+          target="iframe" onclick=addInfoMap()>Map</a></li>
+        <li><a href="guide.html" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
         <li>
         <input type="test" id="searchInput" placeholder="Search (e.g., map, volunteer)">
         <button id="searchButton" onclick="handleSearch()">Search</button>
         </li>
-
+        
       </ul>
       <div class="icon menu-btn">
         <i class="fas fa-bars"></i>
@@ -67,19 +68,32 @@
   </script>
 
     <!-- Additional Information -->
-    <aside class="additional-info">
-      <h2>Additional Information</h2>
-      <p>work in progress.</p>
-      <div class="dropdown" id =DropDown>
-        <dataButton class="dropbtn">Safe Rest Villages</dataButton>
-        <div class="dropdown-content">
-            <!--drop down data -->
-          <a href="#" onclick="mydataFunction()" >Name: BIPOC Village, Total Sleep Units: 38, Location: 84 NE Weidler</a> 
-          <a href="#" onclick="mydataFunction()" >Name: Menlo Park Safe Rest Village, Total Sleep Units: 50, Location: 12305 SE Ash St</a> 
-          <a href="#" onclick="mydataFunction()" >Name: Multnomah Safe Rest Village, Total Sleep Units: 28, Location: 2731 SW Multnomah Blvd</a> 
-          <a href="#" onclick="mydataFunction()" >Name: Peninsula Crossing Safe Rest Village, Total Sleep Units: 60, Location: 6767 N Syracuse St</a> 
-          
-        </div>
+  <aside class="additional-info">
+    <h2>Additional Information</h2>
+    <div id="key" hidden>
+      <table id="keyTable">
+        <tr>
+          <td><img id="keyImage" src="images/groceries.png" width="50px" height="50px"></td>
+          <td>Free Groceries</td>
+        </tr>
+          <td><img id="keyImage" src="images/food.png" width="50px" height="50px"></td>
+          <td>Free Meals</td>
+        <tr>
+          <td><img id="keyImage" src="images/shelter.png" width="50px" height="50px"></td>
+          <td>Rest Places</td>
+        </tr>
+      </table>
+    </div>
+    <div class="dropdown" id =DropDown>
+      <dataButton class="dropbtn">Safe Rest Villages</dataButton>
+      <div class="dropdown-content">
+          <!--drop down data -->
+        <a href="#" onclick="mydataFunction()" >Name: BIPOC Village, Total Sleep Units: 38, Location: 84 NE Weidler</a> 
+        <a href="#" onclick="mydataFunction()" >Name: Menlo Park Safe Rest Village, Total Sleep Units: 50, Location: 12305 SE Ash St</a> 
+        <a href="#" onclick="mydataFunction()" >Name: Multnomah Safe Rest Village, Total Sleep Units: 28, Location: 2731 SW Multnomah Blvd</a> 
+        <a href="#" onclick="mydataFunction()" >Name: Peninsula Crossing Safe Rest Village, Total Sleep Units: 60, Location: 6767 N Syracuse St</a> 
+        
+      </div>
     </div>
     </aside>
   
