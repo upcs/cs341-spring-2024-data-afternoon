@@ -37,3 +37,5 @@ function handleSearch() {
   }
 }
 
+module.exports = { mydataFunction };
+
