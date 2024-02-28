@@ -24,8 +24,9 @@
   width: 100%;
   z-index: 2;
   padding: 35px 0;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease;  
 }
+
 /* Sticky Navbar Style */
 .navbar.sticky{
   background: #1b1b1b;
@@ -37,6 +38,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 /* Logo Styling */
 .navbar .logo a{
   color: #fff;
@@ -282,7 +284,7 @@
 /* banner search bar */
 .container {
   width: 850px;
-  background: #2e4075;
+  background: #05091788;
   padding: 0%;
   margin: 0 auto;
   margin-top: 250px;
