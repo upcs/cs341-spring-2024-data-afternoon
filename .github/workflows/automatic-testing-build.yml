@@ -1,0 +1,17 @@
+name: Automatic Testing
+run-name: ${{ github.actor }} is testing 
+on: [push]
+jobs:
+  run-defined-unit-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-afternoon
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm i jest-environment-jsdom
+      - run: npm run test
