@@ -37,5 +37,5 @@ function handleSearch() {
   }
 }
 
-module.exports = { mydataFunction };
+module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch };
 
