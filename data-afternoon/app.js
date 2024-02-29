@@ -156,10 +156,29 @@ app.post('/', (req, res) => {
           [JSON.stringify(result5[16].NAME), JSON.stringify(result5[16].LOCATION), JSON.stringify(result5[16].HOURS_OPEN)]
           ]
 
-      
-  res.send("<p>" + "FREEMEALS: <p> " + FREEMEALS + "<p>"  + "FREEGROCERIES: <p> " 
-  + FREEGROCERIES + "<p>" +  "SAFERESTVILLAGES: <p>" + SAFERESTVILLAGES + "<p>" + "FREE PRODUCE: <p>" + 
-  FREE_PRODUCE + "<p>" + "SAFE YEAR ROUND SHELTERS: <p>" + SAFE_YEAR_ROUND_SHELTERS + "<p>");
+          res.send(`
+          <h1>Community Services Information</h1>
+          <h2>Free Meals</h2>
+          <ul>
+            ${FREEMEALS.map(meal => `<li>Location: ${meal[0]}, Name: ${meal[1]}</li>`).join('')}
+          </ul>
+          <h2>Free Groceries</h2>
+          <ul>
+            ${FREEGROCERIES.map(grocery => `<li>Location: ${grocery[0]}, Name: ${grocery[1]}</li>`).join('')}
+          </ul>
+          <h2>Safe Rest Villages</h2>
+          <ul>
+            ${SAFERESTVILLAGES.map(village => `<li>Site Name: ${village[0]}, Total Sleeping Units: ${village[1]}, Location: ${village[2]}</li>`).join('')}
+          </ul>
+          <h2>Free Produce</h2>
+          <ul>
+            ${FREE_PRODUCE.map(produce => `<li>Name: ${produce[0]}, Location: ${produce[1]}, Hours Open: ${produce[2]}</li>`).join('')}
+          </ul>
+          <h2>Safe Year Round Shelters</h2>
+          <ul>
+            ${SAFE_YEAR_ROUND_SHELTERS.map(shelter => `<li>Name: ${shelter[0]}, Location: ${shelter[1]}, Hours Open: ${shelter[2]}</li>`).join('')}
+          </ul>
+        `);
 
         });
       });
