@@ -279,6 +279,11 @@
   background-color: #45a049;
 }
 
+#map {
+  height: 500px; /* Example height */
+  width: 100%; /* Example width */
+}
+
 /* banner search bar */
 .container {
   width: 850px;
