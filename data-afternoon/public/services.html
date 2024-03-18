@@ -1,17 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="stylesheets/style.css">
+   <!-- <link rel="stylesheet" href="stylesheets/style.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" />
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script>
+    <!--
+    <style>
+        #map {
+            height: 400px; /* Set map height */
+            width: 100%; /* Set map width to full container width */
+        }
+        #legend {
+            text-align: center; /* Center legend content */
+            padding: 10px; /* Add some padding */
+            border: 1px solid #000; /* Add a border */
+            background-color: #fff; /* Set background to white */
+        }
+        .legend-icon {
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            margin: 0 5px; /* Spacing between icon and text */
+        }
+    </style>
+    -->
+
+    <style>
+
+        #map {
+            height: 500px; /* Set map height */
+            width: 100%; /* Set map width to full container width */
+            margin-top: 25px;
+        }
+
+        #legend div {
+            display: inline-block; /* Display legend items side by side */
+            margin-right: 100px; /* Space between items */
+          /*  border: 1px solid #000; /* Add a border */
+          /*  background-color: #fff; /* Set background to white */
+        }
+
+        .legend-icon {
+            vertical-align: middle; /* Align icon with text vertically */
+            height: 40px; /* Icon height */
+            width: 40px; /* Icon width */
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+
+    </style>
+
 </head>
 <body>
 
         <p id ="getDataBase"></p>
 
 
+        <div id="legend"></div> <!-- Legend container, placed below the map -->
+       
         <div id="map"></div>
+
+        
+      
 
         <script src="javascripts/dataBase.js"></script>
 
