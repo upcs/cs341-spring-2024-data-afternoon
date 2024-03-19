@@ -48,6 +48,17 @@ function toggleLanguage(lang) {
     enTabs.forEach(tab => tab.style.display = 'block');
     esTabs.forEach(tab => tab.style.display = 'none');
   }
+<<<<<<< Updated upstream
+=======
+
+  localStorage.setItem('selectedLanguage', lang);
+
+  var ifram = document.getElementById('iframe');
+  if (ifram && ifram.src.includes('guide.html')) {
+    ifram.src = ifram.src;
+  }
+
+>>>>>>> Stashed changes
 }
 module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch };
 
