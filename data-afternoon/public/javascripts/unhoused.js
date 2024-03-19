@@ -37,5 +37,17 @@ function handleSearch() {
   }
 }
 
+function toggleLanguage(lang) {
+  const enTabs = document.querySelectorAll('.en-tab');
+  const esTabs = document.querySelectorAll('.es-tab');
+
+  if (lang === 'es') {
+    enTabs.forEach(tab => tab.style.display = 'none');
+    esTabs.forEach(tab => tab.style.display = 'block');
+  } else {
+    enTabs.forEach(tab => tab.style.display = 'block');
+    esTabs.forEach(tab => tab.style.display = 'none');
+  }
+}
 module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch };
 
