@@ -48,8 +48,6 @@ function toggleLanguage(lang) {
     enTabs.forEach(tab => tab.style.display = 'block');
     esTabs.forEach(tab => tab.style.display = 'none');
   }
-<<<<<<< Updated upstream
-=======
 
   localStorage.setItem('selectedLanguage', lang);
 
@@ -58,7 +56,48 @@ function toggleLanguage(lang) {
     ifram.src = ifram.src;
   }
 
->>>>>>> Stashed changes
 }
+
+if ("geolocation" in navigator) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    
+    // Now latitude and longitude are available to use
+    updateUserInterface(latitude, longitude);
+  });
+} else {
+  console.log("Geolocation is not available");
+}
+
+function updateUserInterface(lat, long) {
+  getZipCode(lat, long, function(zipCode) {
+    document.getElementById('user-location').textContent = `Zip Code: ${zipCode}`;
+  });
+}
+
+function getZipCode(lat, long, callback) {
+  const geocoder = new google.maps.Geocoder();
+  const latlng = { lat: parseFloat(lat), lng: parseFloat(long) };
+  geocoder.geocode({ location: latlng }, function(results, status) {
+    if (status === 'OK') {
+      if (results[0]) {
+        const addressComponents = results[0].address_components;
+        const zipCodeComponent = addressComponents.find(component => component.types[0] === 'postal_code');
+        if (zipCodeComponent) {
+          callback(zipCodeComponent.long_name);
+        } else {
+          console.log('No zip code found');
+        }
+      } else {
+        console.log('No results found');
+      }
+    } else {
+      console.log('Geocoder failed due to: ' + status);
+    }
+  });
+}
+
+
 module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch };
 
