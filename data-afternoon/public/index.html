@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="stylesheets\style.css">
     
     <script src="javascripts/unhoused.js"></script>
-    <script src="javascripts/navigation.js"></script>
+    <script src="javascripts/dataBase.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script> 
-    <script src="javascripts/currentLocation.js"></script>
+    
 
 </head>
 <body>
@@ -57,9 +57,9 @@
         <div class="wrapper">
           <p2>Services Location</p2>
           <div class="search-container">
-            <input type="text" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
-            <input type="text" class="location" placeholder="Location (e.g. City or Zip Code)">
-            <button type="submit" class="bannerButton">Search</button>
+            <input type="text" id="serviceSearch" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
+            <input type="text" id = "locationSearch" class="location" placeholder="Location (e.g. City or Zip Code)">
+            <button type="button" onclick=findAddress() class="bannerButton">Search</button>
           </div>
         </div>
       </form>
