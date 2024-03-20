@@ -30,6 +30,7 @@ function geocodeAddress(geocoder, resultsMap, addressIn, nameIn)
 /* send the client the map with pins that provide resources */
 $.post("http://localhost:3000/", function(data, status) {
 
+
         var center = { lat: 45.5727, lng: 122.7215 }; //center the map around UP area
       
         // Create a new map object
@@ -59,6 +60,9 @@ $.post("http://localhost:3000/", function(data, status) {
 
 
 })
+
+
+
 
 
     
