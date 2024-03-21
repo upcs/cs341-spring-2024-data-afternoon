@@ -4,140 +4,307 @@
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-    <h1>Choose a Service</h1>
+    <h1 class="en-tab">Choose a Service</h1>
+    <h3 class="en-tab">Each of these services will give you information and details of their resources.</h3>
 
-    <h3>Each of these services will give you information and details of their resources.</h3>
+    <h1 class="es-tab" style="display: none;">Elija un Servicio</h1>
+    <h3 class="es-tab" style="display: none;">Cada uno de estos servicios le proporcionará información y detalles de sus recursos.</h3>
     
     <table>
         <tr>
-            <td>
-                <p data-type="service-description">
+            <td class="en-tab">
+                <p>
                     These shelters are designed to offer refuge and temporary housing for individuals in need throughout the entire year, 
-                    including during extreme weather conditions such as heatwaves, cold snaps, or storms. </p>
-                <p data-type="service-description"> 
+                    including during extreme weather conditions such as heatwaves, cold snaps, or storms. 
+                </p>
+                <p>
                     Year-round shelters often offer beds or sleeping accommodations, 
-                    basic amenities such as showers and restroom facilities, as well as meals and sometimes additional support services.</p>
+                    basic amenities such as showers and restroom facilities, as well as meals and sometimes additional support services.
+                </p>
             </td>
-            <td>
+            <td class="en-tab">
                 <a href="service1.html"><button>Year Round Shelters</button></a>
             </td>
-        </tr>
 
-        <tr>
-            <td>
-                <p data-type="service-description">
-                    Health care services for individuals facing housing instability encompass a range of 
-                    medical, mental health, and substance abuse treatment options.</p>
-                <p data-type="service-description">
-                    These services may include mobile clinics, community health centers, or partnerships with 
-                    local hospitals and healthcare providers to offer specialized care tailored to individuals in need.</p>
+            <td class="es-tab" style="display: none;">
+                <p>
+                    Estos refugios están diseñados para ofrecer refugio y alojamiento temporal para personas necesitadas durante todo el año,
+                    incluyendo durante condiciones climáticas extremas como olas de calor, frío intenso o tormentas. 
+                </p>
+                <p>
+                    Los refugios durante todo el año suelen ofrecer camas o alojamientos para dormir, 
+                    servicios básicos como duchas y baños, así como comidas y a veces servicios de apoyo adicionales.
+                </p>
             </td>
-            <td>
-                <a href="service2.html"><button>Healthcare Resources</button></a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p data-type="service-description">
-                    Rest villages are community-based initiatives that provide temporary housing solutions for 
-                    individuals facing housing instability, often in the form of small, self-contained living units or tiny homes.</p>
-                <p data-type="service-description">
-                    These villages typically offer a safe and stable environment where individuals can access shelter, basic amenities, 
-                    and supportive services while working towards more permanent housing solutions.</p>
-            </td>
-            <td>
-                <a href="service3.html"><button>Rest Villages</button></a>
+            <td class="es-tab" style="display: none;">
+                <a href="service1.html"><button>Refugios Todo el Año</button></a>
             </td>
         </tr>
+<!----------------------------------------->
+<tr>
+    <td class="en-tab">
+        <p>
+            Health care services for individuals facing housing instability encompass a range of 
+            medical, mental health, and substance abuse treatment options.
+        </p>
+        <p>
+            These services may include mobile clinics, community health centers, or partnerships with 
+            local hospitals and healthcare providers to offer specialized care tailored to individuals in need.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service2.html"><button>Healthcare Resources</button></a>
+    </td>
+    
+    <td class="es-tab" style="display: none;">
+        <p>
+            Los servicios de atención médica para personas que enfrentan inestabilidad habitacional abarcan una gama de
+            opciones de tratamiento médico, de salud mental y de abuso de sustancias.
+        </p>
+        <p>
+            Estos servicios pueden incluir clínicas móviles, centros de salud comunitarios o colaboraciones con
+            hospitales locales y proveedores de atención médica para ofrecer cuidados especializados adaptados a las necesidades individuales.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service2.html"><button>Recursos de Atención Médica</button></a>
+    </td>
+</tr>
 
-        <tr>
-            <td>
-                <p data-type="service-description">
-                    Free produce programs provide fresh fruits and vegetables to individuals and families facing food insecurity, 
-                    including those with low income.</p>
-                <p data-type="service-description">
-                    These programs may operate through community food banks, farmers' markets, or 
-                    partnerships with local farms and grocery stores to distribute surplus or donated produce.</p>
-            </td>
-            <td>
-                <a href="service4.html"><button>Free Produce</button></a>
-            </td>
-        </tr>
+<tr>
+    <!-- English Content -->
+    <td class="en-tab">
+        <p>
+            Rest villages are community-based initiatives that provide temporary housing solutions for 
+            individuals facing housing instability, often in the form of small, self-contained living units or tiny homes.
+        </p>
+        <p>
+            These villages typically offer a safe and stable environment where individuals can access shelter, basic amenities, 
+            and supportive services while working towards more permanent housing solutions.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service3.html"><button>Rest Villages</button></a>
+    </td>
 
-        <tr>
-            <td>
-                <p data-type="service-description">
-                    Free groceries typically include a variety of non-perishable items such as canned goods, 
-                    grains, pasta, and proteins, etc.</p>
-                <p data-type="service-description">
-                    These programs may operate through food banks, community pantries, 
-                    or distribution centers that receive donations from individuals, businesses, and charitable organizations.</p>
-            </td>
-            <td>
-                <a href="service5.html"><button>Free Groceries</button></a>
-            </td>
-        </tr>
+    <!-- Spanish Content -->
+    <td class="es-tab" style="display: none;">
+        <p>
+            Las aldeas de descanso son iniciativas comunitarias que proporcionan soluciones de vivienda temporal para 
+            personas que enfrentan inestabilidad en la vivienda, a menudo en forma de unidades de vivienda pequeñas e independientes o casas diminutas.
+        </p>
+        <p>
+            Estas aldeas generalmente ofrecen un ambiente seguro y estable donde las personas pueden acceder a refugio, servicios básicos, 
+            y servicios de apoyo mientras trabajan hacia soluciones de vivienda más permanentes.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service3.html"><button>Aldeas de Descanso</button></a>
+    </td>
+</tr>
 
-        <tr>
-            <td>
-                <p data-type="service-description">
-                    Free meal services may operate through community organizations, shelters, 
-                    churches, or soup kitchens, offering nutritious meals to anyone in need without discrimination.</p>
-                <p data-type="service-description">
-                    These programs offer free meals to individuals and families in need, providing essential 
-                    nourishment to those facing food insecurity or financial hardship.</p>
-            </td>
-            <td>
-                <a href="service6.html"><button>Free Meals</button></a>
-            </td>
-        </tr>
+<tr>
+    <!-- English Content -->
+    <td class="en-tab">
+        <p>
+            Free produce programs provide fresh fruits and vegetables to individuals and families facing food insecurity, 
+            including those with low income.
+        </p>
+        <p>
+            These programs may operate through community food banks, farmers' markets, or 
+            partnerships with local farms and grocery stores to distribute surplus or donated produce.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service4.html"><button>Free Produce</button></a>
+    </td>
 
-        <tr>
-            <td>
-                <p data-type="service-description">
-                    Free WiFi initiatives aim to provide internet access to individuals who may not have reliable 
-                    internet connectivity at home or cannot afford it.</p>
-                <p data-type="service-description">
-                    These services may be offered in public spaces such as parks, libraries, community centers, or cafes, 
-                    allowing individuals to access online resources, job opportunities, education, and stay connected with others.</p>
-            </td>
-            <td>
-                <a href="service7.html"><button>Free Wifi</button></a>
-            </td>
-        </tr>
+    <!-- Spanish Content -->
+    <td class="es-tab" style="display: none;">
+        <p>
+            Los programas de productos gratuitos proporcionan frutas y verduras frescas a personas y familias que enfrentan inseguridad alimentaria, 
+            incluyendo a aquellos con bajos ingresos.
+        </p>
+        <p>
+            Estos programas pueden operar a través de bancos de alimentos comunitarios, mercados de agricultores o 
+            colaboraciones con granjas locales y tiendas de comestibles para distribuir productos excedentes o donados.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service4.html"><button>Productos Gratis</button></a>
+    </td>
+</tr>
 
-        <tr>
-            <td>
-                <p data-type="service-description">
+<tr>
+    <!-- English Content -->
+    <td class="en-tab">
+        <p>
+            Free groceries typically include a variety of non-perishable items such as canned goods, 
+            grains, pasta, and proteins, etc.
+        </p>
+        <p>
+            These programs may operate through food banks, community pantries, 
+            or distribution centers that receive donations from individuals, businesses, and charitable organizations.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service5.html"><button>Free Groceries</button></a>
+    </td>
 
-                    Libraries serve as safe and welcoming spaces for individuals of all ages and backgrounds to study, learn, 
+    <!-- Spanish Content -->
+    <td class="es-tab" style="display: none;">
+        <p>
+            Los alimentos gratuitos suelen incluir una variedad de productos no perecederos como conservas, 
+            granos, pastas y proteínas, etc.
+        </p>
+        <p>
+            Estos programas pueden operar a través de bancos de alimentos, despensas comunitarias, 
+            o centros de distribución que reciben donaciones de individuos, empresas y organizaciones benéficas.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service5.html"><button>Alimentos Gratis</button></a>
+    </td>
+</tr>
 
-                    explore interests, and connect with others.</p>
-                <p data-type="service-description">
-                    In addition to providing access to books, libraries offer internet access, educational programs, 
-                    job search assistance, computer access, and various community events.</p>
-            </td>
-            <td>
-                <a href="service8.html"><button>Libraries</button></a>
-            </td>
-        </tr>
+<tr>
+    <!-- English Content -->
+    <td class="en-tab">
+        <p>
+            Free meal services may operate through community organizations, shelters, 
+            churches, or soup kitchens, offering nutritious meals to anyone in need without discrimination.
+        </p>
+        <p>
+            These programs offer free meals to individuals and families in need, providing essential 
+            nourishment to those facing food insecurity or financial hardship.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service6.html"><button>Free Meals</button></a>
+    </td>
+
+    <!-- Spanish Content -->
+    <td class="es-tab" style="display: none;">
+        <p>
+            Los servicios de comidas gratuitas pueden operar a través de organizaciones comunitarias, refugios, 
+            iglesias o comedores populares, ofreciendo comidas nutritivas a cualquiera que las necesite sin discriminación.
+        </p>
+        <p>
+            Estos programas ofrecen comidas gratuitas a individuos y familias necesitadas, proporcionando 
+            nutrición esencial a aquellos que enfrentan inseguridad alimentaria o dificultades financieras.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service6.html"><button>Comidas Gratis</button></a>
+    </td>
+</tr>
+
+<tr>
+    <!-- English Content -->
+    <td class="en-tab">
+        <p>
+            Free WiFi initiatives aim to provide internet access to individuals who may not have reliable 
+            internet connectivity at home or cannot afford it.
+        </p>
+        <p>
+            These services may be offered in public spaces such as parks, libraries, community centers, or cafes, 
+            allowing individuals to access online resources, job opportunities, education, and stay connected with others.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service7.html"><button>Free Wifi</button></a>
+    </td>
+
+    <!-- Spanish Content -->
+    <td class="es-tab" style="display: none;">
+        <p>
+            Las iniciativas de WiFi gratuito tienen como objetivo proporcionar acceso a Internet a personas que pueden no tener 
+            conectividad a Internet confiable en casa o no pueden pagarla.
+        </p>
+        <p>
+            Estos servicios pueden ofrecerse en espacios públicos como parques, bibliotecas, centros comunitarios o cafeterías, 
+            permitiendo a las personas acceder a recursos en línea, oportunidades laborales, educación y mantenerse conectados con otros.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service7.html"><button>Wifi Gratis</button></a>
+    </td>
+</tr>
+
+<tr>
+    <!-- English Content -->
+    <td class="en-tab">
+        <p>
+            Libraries serve as safe and welcoming spaces for individuals of all ages and backgrounds to study, learn, 
+            explore interests, and connect with others.
+        </p>
+        <p>
+            In addition to providing access to books, libraries offer internet access, educational programs, 
+            job search assistance, computer access, and various community events.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service8.html"><button>Libraries</button></a>
+    </td>
+
+    <!-- Spanish Content -->
+    <td class="es-tab" style="display: none;">
+        <p>
+            Las bibliotecas sirven como espacios seguros y acogedores para personas de todas las edades y orígenes para estudiar, aprender, 
+            explorar intereses y conectarse con otros.
+        </p>
+        <p>
+            Además de proporcionar acceso a libros, las bibliotecas ofrecen acceso a internet, programas educativos, 
+            asistencia en la búsqueda de empleo, acceso a computadoras y diversos eventos comunitarios.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service8.html"><button>Bibliotecas</button></a>
+    </td>
+</tr>
 
 
-        <tr>
-            <td>
-                <p data-type="service-description">
-                    Volunteering not only benefits the organizations and communities being served but also provides individuals 
-                    with a sense of fulfillment, purpose, and connection to their community.</p>
-                <p data-type="service-description">
-                    These opportunities range from serving meals at homeless shelters, tutoring students, assisting with environmental 
-                    conservation efforts, to supporting local non-profits with administrative tasks.</p>
-            </td>
-            <td>
-                <a href="service9.html"><button>Volunteer</button></a>
-            </td>
-        </tr>
+<tr>
+    <!-- English Content -->
+    <td class="en-tab">
+        <p>
+            Volunteering not only benefits the organizations and communities being served but also provides individuals 
+            with a sense of fulfillment, purpose, and connection to their community.
+        </p>
+        <p>
+            These opportunities range from serving meals at homeless shelters, tutoring students, assisting with environmental 
+            conservation efforts, to supporting local non-profits with administrative tasks.
+        </p>
+    </td>
+    <td class="en-tab">
+        <a href="service9.html"><button>Volunteer</button></a>
+    </td>
+
+    <!-- Spanish Content -->
+    <td class="es-tab" style="display: none;">
+        <p>
+            El voluntariado no solo beneficia a las organizaciones y comunidades a las que se sirve, sino que también proporciona a los individuos 
+            un sentido de realización, propósito y conexión con su comunidad.
+        </p>
+        <p>
+            Estas oportunidades van desde servir comidas en refugios para personas sin hogar, tutorizar a estudiantes, ayudar con esfuerzos de conservación ambiental, 
+            hasta apoyar a organizaciones locales sin fines de lucro con tareas administrativas.
+        </p>
+    </td>
+    <td class="es-tab" style="display: none;">
+        <a href="service9.html"><button>Voluntariado</button></a>
+    </td>
+</tr>
 
     </table>
+
+    <script src="javascripts/unhoused.js"></script>
+    <script>
+        window.onload = function() {
+          // Language toggle functionality as per your guide.html
+          var lang = new URL(window.location.href).searchParams.get('lang') || localStorage.getItem('selectedLanguage') || 'en';
+          toggleLanguage(lang);
+        };
+    </script>
 </body>
 </html>
