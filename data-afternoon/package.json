@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "async": "^3.2.5",
     "cookie-parser": "~1.4.4",
+    "coverage": "^0.4.1",
     "debug": "~2.6.9",
     "express": "^4.18.3",
     "http-errors": "~1.6.3",
