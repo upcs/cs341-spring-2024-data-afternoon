@@ -1,10 +1,5 @@
 
 /* this method points a point in the map that corresponds to the sql address*/ 
-<<<<<<< Updated upstream
-function geocodeAddress(geocoder, resultsMap, addressIn, nameIn) 
-{
-          
-=======
 
 const customIcon1 = 'images/food.png';
 const customIcon2 = 'images/groceries.png';
@@ -51,25 +46,16 @@ function findAddress() {
 function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum) 
 {
         
->>>>>>> Stashed changes
         geocoder.geocode({ address: addressIn }, (results, status) => {
                 if (status === "OK") 
                 {
 
                         //resultsMap.setCenter(results[0].geometry.location); 
 
-                        new google.maps.Marker({
-
-                        map: resultsMap,
-                        position: results[0].geometry.location, //the point in the map which represents the address
-                        label: {
-                        fontSize: "8pt",
-                        text: nameIn
-                        }
-
+                        // Define an InfoWindow with content based on the marker
+                        var infoWindow = new google.maps.InfoWindow({
+                        content: `<div><h3>${nameIn}</h3><p>Address: ${addressIn}</p></div>`
                         });
-<<<<<<< Updated upstream
-=======
 
                         // Determine the appropriate icon based on tableNum
                         if (tableNum === 0 || tableNum === 3) {
@@ -103,13 +89,15 @@ function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum)
                                 map.setZoom(14);
                                 map.setCenter(marker.getPosition());
                         });
->>>>>>> Stashed changes
                 } 
+                
                 else {
                 alert("Geocode was not successful for the following reason: " + status + " and here is address: " + addressIn);
                 }
+                
         });
 }
+
 
 
 /* send the client the map with pins that provide resources */
@@ -118,17 +106,6 @@ $.post("http://localhost:3000/", function(data, status) {
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
       
         // Create a new map object
-<<<<<<< Updated upstream
-        var map = new google.maps.Map(document.getElementById("map"), {
-
-        zoom: 10, // Set the initial zoom level
-        center: center, // Set the center of the map
-
-        });
-
-        const geocoder = new google.maps.Geocoder(); //create a new geocoder object 
-
-=======
         map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 11, // Set the initial zoom level
                 center: center, // Set the center of the map
@@ -162,7 +139,6 @@ $.post("http://localhost:3000/", function(data, status) {
 
                 legend.appendChild(div); // Add the div to the legend
         });
->>>>>>> Stashed changes
 
         for (let i = 0; i < data.length; i++) //iterate through entire database 
         {
@@ -173,7 +149,7 @@ $.post("http://localhost:3000/", function(data, status) {
                      var address = JSON.stringify(data[i][j].location); //get current location from table 
                      var name = JSON.stringify(data[i][j].name); //get current name from table
 
-                     geocodeAddress(geocoder, map, address, name); //insert the pin with location and name into the map
+                     geocodeAddress(geocoder, map, address, name, i); //insert the pin with location and name into the map
 
                 }
         } 

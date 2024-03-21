@@ -224,26 +224,20 @@
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+/* Dropdown menu for services tab (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
-<<<<<<< Updated upstream
-  background-color: #f1f1f1;
-  min-width: 220px;
-  height: 150px;
-=======
   background-color: black;
   width: 550px;
   min-height: 150px;
   border-radius: 10px;
->>>>>>> Stashed changes
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
-/* Links inside the dropdown */
+/* service links inside the dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
