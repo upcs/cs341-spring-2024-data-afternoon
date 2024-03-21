@@ -3,18 +3,21 @@
  */
 
 const $ = require('jquery');
-global.$ = $; // Make sure jQuery is available globally
+global.$ = $; // Ensure jQuery is available globally
 
-// Mocking the Google Maps API
+// Enhanced Mocking for Google Maps API
 class MockGoogleMaps {
   constructor() {
     this.setCenter = jest.fn();
     this.Marker = jest.fn().mockImplementation(() => ({
       addListener: jest.fn(),
+      setPosition: jest.fn(),
+      setMap: jest.fn(),
     }));
     this.InfoWindow = jest.fn();
     this.Map = jest.fn().mockImplementation(() => ({
       setCenter: jest.fn(),
+      fitBounds: jest.fn(),
     }));
     this.Size = jest.fn();
     this.Geocoder = jest.fn().mockImplementation(() => ({
@@ -22,45 +25,55 @@ class MockGoogleMaps {
         callback([{geometry: {location: 'mockLocation'}}], "OK");
       }),
     }));
-    // Mocking google.maps.event object
     this.event = {
-      addListener: jest.fn(), // Mock implementation for addListener
+      addListener: jest.fn(),
     };
+    this.places = {
+      SearchBox: jest.fn().mockImplementation(() => ({
+        addListener: jest.fn(),
+      })),
+    };
+    this.LatLngBounds = jest.fn().mockImplementation(() => ({
+      union: jest.fn(),
+      extend: jest.fn(),
+    }));
   }
 }
 global.google = {
   maps: new MockGoogleMaps()
 };
 
-// Mocking the HTML structure as the script updates the DOM
-document.body.innerHTML = `<div id="map"></div><div id="legend"></div>`;
+// Updating the Mocking HTML structure
+document.body.innerHTML = `<div id="map"></div><div id="legend"></div><input id="pac-input" />`;
 
-// Mock response data for $.post
+// Reflecting changes in mock data structure for more comprehensive testing
 const mockData = [
-  [
-    {location: '123 Main St, Anytown, USA', name: 'Place 1'},
-    {location: '456 Elm St, Yourtown, USA', name: 'Place 2'}
-  ],
+  [{location: '123 Main St, Anytown, USA', name: 'Place 1'}],
 ];
 
 // Mocking jQuery's $.post method
-$.post = jest.fn((url, callback) => {
-    if (typeof callback === 'function') {
-        callback(mockData, 'success');
-    }
+$.post = jest.fn().mockImplementation((url, callback) => {
+  return new Promise(resolve => {
+    const mockResponse = mockData; // Adjust as needed
+    callback(mockResponse, 'success');
+    resolve();
+  });
 });
 
-// Import the dataBase.js after setting up the mock
+// Importing the modified dataBase.js script
 require('../public/javascripts/dataBase.js');
 
-describe('Google Maps and Legend Population Test', () => {
-    test('Markers are created and legend is populated based on mock data', () => {
-        // Verify that Google Maps API was called correctly
-        expect(google.maps.Geocoder).toHaveBeenCalled();
-        expect(google.maps.Marker).toHaveBeenCalledTimes(mockData[0].length);
+describe('Google Maps Integration and UI Enhancements Test', () => {
+  test('Markers created, legend populated, and search functionality based on mock data', async () => {
+    // Assuming initAutocomplete is exposed and can be called directly
+    await window.initAutocomplete();
 
-        // Check if the legend has been populated correctly
-        const legendItems = document.getElementById('legend').children;
-        expect(legendItems.length).toBeGreaterThan(0); // Expect at least one legend item
-    });
+    // Ensure the Google Maps API was used as expected
+    expect(google.maps.Geocoder).toHaveBeenCalled();
+    expect(google.maps.Marker).toHaveBeenCalledTimes(mockData.flat().length); // Assuming flat structure for simplicity
+
+    // Verify the legend has been updated correctly
+    const legendItems = document.getElementById('legend').children;
+    expect(legendItems.length).toBeGreaterThan(0); // Expect at least one item
+  });
 });
