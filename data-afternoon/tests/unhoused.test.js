@@ -60,7 +60,7 @@ describe('handleSearch function', () => {
 
     require('../public/javascripts/unhoused.js').handleSearch();
 
-    expect(document.getElementById('iframe').src).toContain('google.com/maps');
+    expect(document.getElementById('iframe').src).toContain('http://localhost/map.html');
   });
 
   it('should alert "Page not found." for invalid search input', () => {
