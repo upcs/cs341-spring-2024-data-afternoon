@@ -125,7 +125,7 @@
   </script>
 
     <!-- Additional Information -->
-  <aside class="additional-info">
+  <aside hidden class="additional-info">
     <h2 class="en-tab">Additional Information</h2>
     <h2 class="es-tab" style="display: none;">Información Adicional</h2>
     <div id="key" hidden>
@@ -155,12 +155,15 @@
     </div>
     </aside>
   
-  
-    <aside id="frame-aside">
+    <aside id="frame-aside" style="width: 100%; height: 100vh; margin: 0; padding: 0; overflow: hidden;">
       <iframe src="home.html"
-      style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-      name="iframe" id="iframe"></iframe>
+        style="border: 0; width: 100%; height: 100%;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        name="iframe"
+        id="iframe"></iframe>
     </aside>
-    
+
 </body>
 </html>

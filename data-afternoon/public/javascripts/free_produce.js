@@ -4,7 +4,7 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
     // updating UI elements, or processing the data in other ways.
 
     // Initialize an empty string to build the HTML content
-    let htmlContent = '<h3>Free Produce</h3><ul>';
+    let htmlContent = '<h1>Free Produce</h1><ul>';
 
     // Iterate over each shelter in the safeYearRoundShelters array
     combinedResults[3].forEach(shelter => {
