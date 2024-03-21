@@ -2,8 +2,19 @@
  * @jest-environment jsdom
  */
 
-//-- Test functions for Sprint 1 --//
-const { mydataFunction } = require('../public/javascripts/unhoused.js');
+const {
+  mydataFunction,
+  addInfoMap,
+  changeAddInfoBack,
+  handleSearch,
+  toggleLanguage // Make sure to destructure this function from the module
+} = require('../public/javascripts/unhoused.js');
+
+jest.mock('../public/javascripts/unhoused.js', () => ({
+  ...jest.requireActual('../public/javascripts/unhoused.js'), // This line ensures other functions are not mocked
+  updateUserInterface: jest.fn(),
+  getZipCode: jest.fn((lat, long, callback) => callback('12345')) // Mock implementation
+}));
 
 describe('Alert message test', () => {
   it('should display correct alert message', () => {
@@ -72,3 +83,68 @@ describe('handleSearch function', () => {
     expect(global.alert).toHaveBeenCalledWith('Page not found.');
   });
 });
+
+//-- Test functions for Sprint 3 --//
+
+// Test for toggleLanguage
+describe('toggleLanguage function', () => {
+  beforeEach(() => {
+    // Reset DOM and localStorage before each test
+    document.body.innerHTML = '';
+    localStorage.clear();
+  });
+
+  it('should toggle language to Spanish and update localStorage', () => {
+    document.body.innerHTML = `
+      <div class="en-tab" style="display: block;"></div>
+      <div class="es-tab" style="display: none;"></div>
+    `;
+
+    toggleLanguage('es');
+
+    expect(document.querySelector('.en-tab').style.display).toBe('none');
+    expect(document.querySelector('.es-tab').style.display).toBe('block');
+    expect(localStorage.getItem('selectedLanguage')).toBe('es');
+  });
+
+  // Additional test for toggling back to English...
+});
+
+// Test for Geolocation functionality NOT FINISHED/WORK-IN-PROGRESS
+//describe('Geolocation functionality', () => {
+  // Mock navigator.geolocation before importing unhoused.js
+//  beforeAll(() => {
+//    global.navigator = {
+//      geolocation: {
+//        getCurrentPosition: jest.fn().mockImplementationOnce((success) => success({
+//          coords: {
+//            latitude: 35.6895,
+//            longitude: 139.6917,
+//          },
+//        })),
+//      },
+//    };
+//  });
+
+//  it('should update user interface with zip code', async () => {
+    // Clear previous innerHTML and setup the environment for the test
+//    document.body.innerHTML = '<div id="user-location"></div>';
+
+    // Dynamically import the unhoused.js module
+//    const { updateUserInterface, getZipCode } = await import('../public/javascripts/unhoused.js');
+
+    // Perform the assertion to check if the UI was updated with the zip code
+    //expect(document.getElementById('user-location').textContent).toContain('Zip Code: 12345');
+
+//    expect(updateUserInterface).toHaveBeenCalledWith(35.6895, 139.6917);
+//    expect(getZipCode).toHaveBeenCalled();
+//  });
+
+  // Reset mocks and any global changes to avoid leakage between tests
+//  afterEach(() => {
+//    jest.resetModules();
+//    jest.clearAllMocks();
+//    delete global.navigator;
+//  });
+//});
+

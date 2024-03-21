@@ -99,5 +99,4 @@ function getZipCode(lat, long, callback) {
 }
 
 
-module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch };
-
+module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch, toggleLanguage, updateUserInterface, getZipCode };
