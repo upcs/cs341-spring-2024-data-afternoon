@@ -22,6 +22,10 @@ class MockGoogleMaps {
         callback([{geometry: {location: 'mockLocation'}}], "OK");
       }),
     }));
+    // Mocking google.maps.event object
+    this.event = {
+      addListener: jest.fn(), // Mock implementation for addListener
+    };
   }
 }
 global.google = {
