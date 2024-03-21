@@ -101,6 +101,11 @@
   display: none;
 }
 
+.icon.cancel-btn{
+  position: absolute;
+  right: 35px;
+}
+
 @media (max-width: 868px) {
   body.disabled{
     overflow: hidden;
