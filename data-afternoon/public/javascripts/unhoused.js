@@ -98,5 +98,6 @@ function getZipCode(lat, long, callback) {
   });
 }
 
+
 module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch };
 

@@ -270,8 +270,9 @@
   border-radius: 10px;
   cursor: pointer;
   margin-left: -15px;
-  min-height: 45px;
+  height: 45px;
   min-width: 10px;
+  margin-top: 10px; 
   word-wrap: nowrap;
   align-self: auto;
 }
@@ -347,6 +348,7 @@ p2{
   font-weight: bold;
 }
 
+
 /* service tab table styling */
   p[data-type="service-description"]{
     font-size: 18px;
@@ -408,3 +410,20 @@ p2{
   width: 300px; /* Adjust the width as needed */
   background-color: #f9f9f9;
 }
+
+
+#language-dropdown {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#user-location {
+  position: absolute;
+  top: 0;
+  left:5%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
