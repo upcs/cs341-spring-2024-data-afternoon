@@ -235,6 +235,7 @@
   position: absolute;
   background-color: black;
   width: 570px;
+
   min-height: 150px;
   border-radius: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -416,6 +417,8 @@ p2{
   background-color: #f9f9f9;
 }
 
+
+
 #user-location {
   position: absolute;
   top: 0;
@@ -424,6 +427,7 @@ p2{
   font-size: 15px;
   font-weight: 600;
 }
+
 
 /* language styling */
 .language {
@@ -445,3 +449,4 @@ p2{
   z-index: 1;
   /* overflow: scroll;  */
 }
+
