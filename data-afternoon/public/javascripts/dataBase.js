@@ -27,6 +27,8 @@ function initAutocomplete() {
                 {name: "Free Food", iconUrl: customIcon1},
                 {name: "Free Groceries", iconUrl: customIcon2},
                 {name: "Rest Places", iconUrl: customIcon3},
+                {name: "Free Healthcare", iconUrl: customIcon4},
+                {name: "Free Wifi", iconUrl: customIcon5},
                 {name: "You", iconUrl: customIcon6}
                 // Add more legend items here
         ];
