@@ -229,7 +229,7 @@
   display: none;
   position: absolute;
   background-color: black;
-  width: 550px;
+  width: 570px;
   min-height: 150px;
   border-radius: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -411,13 +411,6 @@ p2{
   background-color: #f9f9f9;
 }
 
-
-/* #language-dropdown {
-  position: absolute;
-  top: 0;
-  right: 0;
-} */
-
 #user-location {
   position: absolute;
   top: 0;
@@ -427,3 +420,23 @@ p2{
   font-weight: 600;
 }
 
+/* language styling */
+.language {
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 30px;
+  font-size: 20px;
+  
+}
+
+
+#language-dropdown {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  width: 80px;
+  min-height: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  /* overflow: scroll;  */
+}
