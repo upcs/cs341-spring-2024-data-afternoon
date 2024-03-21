@@ -8,7 +8,6 @@ const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 //const customIcon6 = 'images/person.png';
 
-//var map;
 
 function findAddress() {
         var location = document.getElementById('locationSearch').value;
@@ -16,18 +15,19 @@ function findAddress() {
       
         geocoder.geocode({ address: location }, (results, status) => {
                 if (status === "OK") {
-                        var myMap = document.getElementById('map');
+                        //var myMap = document.getElementById('map');
                         // new google.maps.Map(document.getElementById('map'), {
                         //        center: { lat: 32, lng: -124},
                         //        zoom: 15, 
                         // });
-                        if (map =! null) {
-                                alert("There is an element");
-                                console.log(map);
-                        }
+                        // if (map =! null) {
+                        //         alert("There is an element");
+                        //         console.log(map);
+                        // }
+                        //map.setCenter(results[0].geometry.location);
                         // let newLat = 45;
                         // let newLng = -124;
-                        // myMap.setCenter({
+                        // map.setCenter({
                         //         lat : newLat,
                         //         lng : newLng
                         // });
@@ -41,9 +41,9 @@ function findAddress() {
         if (document.getElementById('iframe').src != 'http://localhost:3000/map.html') {
                 document.getElementById('iframe').src = 'map.html';
         }
-      }
+}
 
-function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum) 
+function geocodeAddress(geocoder, addressIn, nameIn, tableNum) 
 {
         
         geocoder.geocode({ address: addressIn }, (results, status) => {
@@ -62,7 +62,7 @@ function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum)
 
                         // Create a marker
                         var marker = new google.maps.Marker({
-                                map: resultsMap,
+                                map: map,
                                 position: results[0].geometry.location,
                                 icon: {
                                 url: iconUrl,
@@ -74,7 +74,7 @@ function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum)
 
                         // Add a click listener to the marker to open the InfoWindow
                         marker.addListener('click', function() {
-                                infoWindow.open(resultsMap, marker);
+                                infoWindow.open(map, marker);
                         });
 
                         google.maps.event.addListener(marker,'click',function() {
@@ -92,11 +92,12 @@ function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum)
 
 
 
+        
 /* send the client the map with pins that provide resources */
 $.post("http://localhost:3000/", function(data, status) {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
-      
+
         // Create a new map object
         map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 11, // Set the initial zoom level
@@ -133,16 +134,16 @@ $.post("http://localhost:3000/", function(data, status) {
 
         for (let i = 0; i < data.length; i++) //iterate through entire database 
         {
-       
+
                 for (let j = 0; j < data[i].length; j++) //iterate through each table
                 {
 
-                     var address = JSON.stringify(data[i][j].location); //get current location from table 
-                     var name = JSON.stringify(data[i][j].name); //get current name from table
+                var address = JSON.stringify(data[i][j].location); //get current location from table 
+                var name = JSON.stringify(data[i][j].name); //get current name from table
 
-                     geocodeAddress(geocoder, map, address, name, i); //insert the pin with location and name into the map
+                geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
 
                 }
         } 
- 
+
 })
