@@ -7,31 +7,88 @@
     <link rel="stylesheet" href="stylesheets\style.css">
     
     <script src="javascripts/unhoused.js"></script>
-    <script src="javascripts/navigation.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script> 
-    <script src="javascripts/currentLocation.js"></script>
-
+    <script src="javascripts/dataBase.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar">
     <div class="content">
       <div class="logo">
-        <a href="#">PDX Unhoused Resources</a>
+        <a href="#" class="en-tab">PDX Unhoused Resources</a>
+        <a href="#" class="es-tab" style="display: none;">Recursos para Personas sin Hogar PDX</a>
       </div>
       <ul class="menu-list">
         <div class="icon cancel-btn">
           <i class="fas fa-times"></i>
         </div>
+<<<<<<< Updated upstream
         <li><a href="home.html" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
         <li><a href="services.html" target="iframe" onclick=changeAddInfoBack()>Services</a></li>
         <li><a href="volunteer.html" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
         <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1"
         target="iframe" onclick=addInfoMap()>Map</a></li> 
         <li><a href="guide.html" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
+=======
+
+        <li><a href="home.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
+
+        <li class="dropdown">
+          <a href="service.html" target="iframe" onmouseover="showDropdown()" onmouseout="hideDropdown()" class="en-tab">Services</a>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="service1.html" target="iframe" class="en-tab">Year-Round Shelters</a>
+            <a href="service2.html" target="iframe" class="en-tab">Healthcare Resources</a>
+            <a href="service3.html" target="iframe" class="en-tab">Rest Villages</a>
+            <a href="service4.html" target="iframe" class="en-tab">Free Produce</a>
+            <a href="service5.html" target="iframe" class="en-tab">Free Groceries</a>
+            <a href="service6.html" target="iframe" class="en-tab">Free Meals</a>
+            <a href="service7.html" target="iframe" class="en-tab">Free Wifi</a>
+            <a href="service8.html" target="iframe" class="en-tab">Libraries</a>
+          </div>
+        </li>
+
+        <li><a href="volunteer.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
+        <li><a href="map.html" class="en-tab"
+          target="iframe" onclick=addInfoMap()>Map</a></li>
+        <li><a href="guide.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
+
+        <li><a href="home.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Inicio</a></li>
+
+        <li class="dropdown">
+          <a href="service.html" target="iframe" onmouseover="showDropdown()" onmouseout="hideDropdown()" class="es-tab" style="display: none;">Servicios</a>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="service1.html" target="iframe" class="es-tab" style="display: none;">Refugios durante todo el año</a>
+            <a href="service2.html" target="iframe" class="es-tab" style="display: none;">Recursos de cuidado a la salud</a>
+            <a href="service3.html" target="iframe" class="es-tab" style="display: none;">Pueblos de descanso</a>
+            <a href="service4.html" target="iframe" class="es-tab" style="display: none;">Productos gratis</a>
+            <a href="service5.html" target="iframe" class="es-tab" style="display: none;">Comestibles gratis</a>
+          </div>
+        </li>
+
+        <li><a href="volunteer.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Voluntario</a></li>
+        <li><a href="map.html" class="es-tab" style="display: none;"
+          target="iframe" onclick=addInfoMap()>Mapa</a></li>
+
+        <li><a href="guide.html" class="es-tab" style="display: none;" target="iframe" onclick=changeAddInfoBack()>Guía</a></li>
+
+
+>>>>>>> Stashed changes
         <li>
-        <input type="test" id="searchInput" placeholder="Search">
-        <button id="searchButton" onclick="handleSearch()">Search</button>
+          <li>
+            <select id="language-dropdown">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select>
+          </li>
+        <input type="test" class="en-tab" id="searchInput" placeholder="Search">
+        <button id="searchButton" class="en-tab" onclick="handleSearch()">Search</button>
+
+        <input type="test" class="es-tab" id="searchInput" placeholder="Buscar" style="display: none;">
+        <button id="searchButton" class="es-tab" onclick="handleSearch()" style="display: none;">Buscar</button>
+        
+        <div id="user-location" style="position: absolute; top: 0; right: 0;">
+          <!-- User location will be displayed here -->
+        </div>
         </li>
         
       </ul>
@@ -45,11 +102,15 @@
     <div class="container">
       <form>
         <div class="wrapper">
-          <p2>Services Location</p2>
+          <p2 class="en-tab">Services Location</p2>
+          <p2 class="es-tab" style="display: none;">Ubicación de Servicios</p2>
           <div class="search-container">
-            <input type="text" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
-            <input type="text" class="location" placeholder="Location (e.g. City or Zip Code)">
-            <button type="submit" class="bannerButton">Search</button>
+            
+            <input type="text" id="serviceSearch" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
+            <input type="text" id = "locationSearch" class="location" placeholder="Location (e.g. City or Zip Code)">
+            <button type="button" onclick=findAddress() class="bannerButton en-tab">Search</button>
+            <button type="button" onclick=findAddress() class="bannerButton es-tab" style="display: none;">Buscar</button>
+
           </div>
         </div>
       </form>
@@ -57,6 +118,11 @@
   </div>
 
   <script>
+
+    document.getElementById('language-dropdown').addEventListener('change', function() {
+    toggleLanguage(this.value);
+  });
+
     const body = document.querySelector("body");
     const navbar = document.querySelector(".navbar");
     const menuBtn = document.querySelector(".menu-btn");
@@ -77,8 +143,11 @@
   </script>
 
     <!-- Additional Information -->
-  <aside class="additional-info">
-    <h2>Additional Information</h2>
+
+  <aside hidden class="additional-info">
+
+    <h2 class="en-tab">Additional Information</h2>
+    <h2 class="es-tab" style="display: none;">Información Adicional</h2>
     <div id="key" hidden>
       <table id="keyTable">
         <tr>
@@ -106,12 +175,15 @@
     </div>
     </aside>
   
-  
-    <aside id="frame-aside">
+    <aside id="frame-aside" style="width: 100%; height: 100vh; margin: 0; padding: 0; overflow: hidden;">
       <iframe src="home.html"
-      style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-      name="iframe" id="iframe"></iframe>
+        style="border: 0; width: 100%; height: 100%;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        name="iframe"
+        id="iframe"></iframe>
     </aside>
-    
+
 </body>
 </html>

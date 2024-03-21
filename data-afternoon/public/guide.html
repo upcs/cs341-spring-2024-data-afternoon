@@ -4,18 +4,46 @@
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-        <h2>Using Google Maps</h2>
-        <p>This guide will help you understand how to use Google Maps to find locations and navigate.</p>
-        <h3>Finding a Location</h3>
-        <p>Enter the address or name of the place in the search bar. The map will zoom into the location.</p>
-        <h3>Using Street View</h3>
-        <p>Drag the pegman icon to a location on the map to see street-level imagery.</p>
-        <h3>Getting Directions</h3>
-        <p>Click on 'Directions', enter your starting point and destination. Choose your mode of travel to get step-by-step directions.</p>
-        <h3>Exploring Nearby Places</h3>
-        <p>Use the 'Nearby' feature to find restaurants, shops, and other places of interest around a specific location.</p>
+    <h2 class="en-tab">Using Google Maps</h2>
+    <h2 class="es-tab" style="display: none;">Uso de Google Maps</h2>
+
+    <p class="en-tab">This guide will help you understand how to use Google Maps to find locations and navigate.</p>
+    <p class="es-tab" style="display: none;">Esta guía le ayudará a entender cómo usar Google Maps para encontrar ubicaciones y navegar.</p>
+
+    <h3 class="en-tab">Finding a Location</h3>
+    <h3 class="es-tab" style="display: none;">Encontrar una Ubicación</h3>
+
+    <p class="en-tab">Enter the address or name of the place in the search bar. The map will zoom into the location.</p>
+    <p class="es-tab" style="display: none;">Ingrese la dirección o el nombre del lugar en la barra de búsqueda. El mapa se acercará a la ubicación.</p>
+
+    <h3 class="en-tab">Using Street View</h3>
+    <h3 class="es-tab" style="display: none;">Usando Street View</h3>
+
+    <p class="en-tab">Drag the pegman icon to a location on the map to see street-level imagery.</p>
+    <p class="es-tab" style="display: none;">Arrastre el icono del hombrecillo al mapa para ver imágenes a nivel de calle.</p>
+
+    <h3 class="en-tab">Getting Directions</h3>
+    <h3 class="es-tab" style="display: none;">Obtener Direcciones</h3>
+
+    <p class="en-tab">Click on 'Directions', enter your starting point and destination. Choose your mode of travel to get step-by-step directions.</p>
+    <p class="es-tab" style="display: none;">Haga clic en 'Direcciones', introduzca su punto de partida y destino. Elija su modo de viaje para obtener direcciones paso a paso.</p>
+
+    <h3 class="en-tab">Exploring Nearby Places</h3>
+    <h3 class="es-tab" style="display: none;">Explorando Lugares Cercanos</h3>
+
+    <p class="en-tab">Use the 'Nearby' feature to find restaurants, shops, and other places of interest around a specific location.</p>
+    <p class="es-tab" style="display: none;">Utilice la función 'Cercanos' para encontrar restaurantes, tiendas y otros lugares de interés cerca de una ubicación específica.</p>
+
     
 
 
+<script src="javascripts/unhoused.js"></script>
+<script>
+    window.onload = function() {
+      // Retrieve language setting from localStorage or URL, default to English ('en')
+      var lang = new URL(window.location.href).searchParams.get('lang') || localStorage.getItem('selectedLanguage') || 'en';
+      toggleLanguage(lang);
+    };
+  </script>
 </body>
 </html>
