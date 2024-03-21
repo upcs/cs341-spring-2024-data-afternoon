@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unhoused Resources | PDX </title>
-    <link rel="stylesheet" href="stylesheets\style.css">
+    <link rel="stylesheet"href="stylesheets\style.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     
     <script src="javascripts/unhoused.js"></script>
     <script src="javascripts/dataBase.js"></script>
@@ -36,10 +37,11 @@
             <a href="service6.html" target="iframe" class="en-tab">Free Meals</a>
             <a href="service7.html" target="iframe" class="en-tab">Free Wifi</a>
             <a href="service8.html" target="iframe" class="en-tab">Libraries</a>
+            <a href="service9.html" target="iframe" class="en-tab">Volunteer</a>
           </div>
         </li>
 
-        <li><a href="volunteer.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
+
         <li><a href="map.html" class="en-tab"
           target="iframe" onclick=addInfoMap()>Map</a></li>
         <li><a href="guide.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
@@ -57,7 +59,7 @@
           </div>
         </li>
 
-        <li><a href="volunteer.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Voluntario</a></li>
+
         <li><a href="map.html" class="es-tab" style="display: none;"
           target="iframe" onclick=addInfoMap()>Mapa</a></li>
 
@@ -65,12 +67,14 @@
 
 
         <li>
-          <li>
+          <li class="laguage">
+
             <select id="language-dropdown">
               <option value="en">English</option>
               <option value="es">Español</option>
             </select>
           </li>
+
         <input type="test" class="en-tab" id="searchInput" placeholder="Search">
         <button id="searchButton" class="en-tab" onclick="handleSearch()">Search</button>
 

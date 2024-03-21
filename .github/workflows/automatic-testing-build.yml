@@ -1,17 +1,32 @@
 name: Automatic Testing
-run-name: ${{ github.actor }} is testing 
+
+run-name: ${{ github.actor }} is testing
+
 on: [push]
+
 jobs:
+
+  # This workflow only has the unit tests
   run-defined-unit-tests:
+
+    # Type of runner that the job will run on
     runs-on: ubuntu-latest
+
     defaults:
       run:
-        working-directory: data-afternoon
+        working-directory: ./data-afternoon
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Server
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install
-      - run: npm i jest-environment-jsdom
-      - run: npm run test
+
+      - name: Install dependencies
+        run: npm install && npm i jest-environment-jsdom && npm install jquery && npm install coverage
+
+      - name: Run tests and get Coverage
+        run: npm run test -- --coverage

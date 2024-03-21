@@ -174,7 +174,16 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                         });
 
                         // Determine the appropriate icon based on tableNum
-                        var iconUrl = tableNum === 0 || tableNum === 3 ? customIcon1 : (tableNum === 1 ? customIcon2 : customIcon3);
+
+                        if (tableNum === 0 || tableNum === 3) {
+                                iconUrl = customIcon1;
+                            } else if (tableNum === 1) {
+                                iconUrl = customIcon2;
+                            } else if (tableNum === 5) {
+                                iconUrl = customIcon5;
+                            } else {
+                                iconUrl = customIcon3;
+                            }
 
                         // Create a marker
                         var marker = new google.maps.Marker({

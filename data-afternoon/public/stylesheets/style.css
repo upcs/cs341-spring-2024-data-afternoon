@@ -101,6 +101,11 @@
   display: none;
 }
 
+.icon.cancel-btn{
+  position: absolute;
+  right: 35px;
+}
+
 @media (max-width: 868px) {
   body.disabled{
     overflow: hidden;
@@ -229,7 +234,8 @@
   display: none;
   position: absolute;
   background-color: black;
-  width: 550px;
+  width: 570px;
+
   min-height: 150px;
   border-radius: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -412,11 +418,6 @@ p2{
 }
 
 
-/* #language-dropdown {
-  position: absolute;
-  top: 0;
-  right: 0;
-} */
 
 #user-location {
   position: absolute;
@@ -426,6 +427,7 @@ p2{
   font-size: 15px;
   font-weight: 600;
 }
+
 
 #description {
   font-family: Roboto;
@@ -500,3 +502,26 @@ p2{
 #target {
   width: 345px;
 }
+
+/* language styling */
+.language {
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 30px;
+  font-size: 20px;
+  
+}
+
+
+#language-dropdown {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  width: 80px;
+  min-height: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  /* overflow: scroll;  */
+}
+
+
