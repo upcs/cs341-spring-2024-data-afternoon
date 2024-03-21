@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "jest --coverage"
+    "test": "node --experimental-vm-modules --coverage node_modules/.bin/jest"
   },
   "dependencies": {
     "async": "^3.2.5",
@@ -14,6 +14,7 @@
     "express": "^4.18.3",
     "http-errors": "~1.6.3",
     "jade": "^0.29.0",
+    "jquery": "^3.7.1",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1"
   },
