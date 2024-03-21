@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unhoused Resources | PDX </title>
-    <link rel="stylesheet" href="stylesheets\style.css">
+    <link rel="stylesheet"href="stylesheets\style.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     
     <script src="javascripts/unhoused.js"></script>
-    <script src="javascripts/navigation.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script> 
-    <script src="javascripts/currentLocation.js"></script>
-
+    <script src="javascripts/dataBase.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -38,11 +37,12 @@
             <a href="service6.html" target="iframe" class="en-tab">Free Meals</a>
             <a href="service7.html" target="iframe" class="en-tab">Free Wifi</a>
             <a href="service8.html" target="iframe" class="en-tab">Libraries</a>
+            <a href="service9.html" target="iframe" class="en-tab">Volunteer</a>
           </div>
         </li>
 
-        <li><a href="volunteer.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
-        <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1" class="en-tab"
+
+        <li><a href="map.html" class="en-tab"
           target="iframe" onclick=addInfoMap()>Map</a></li>
         <li><a href="guide.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
 
@@ -59,20 +59,22 @@
           </div>
         </li>
 
-        <li><a href="volunteer.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Voluntario</a></li>
-        <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1" class="es-tab" style="display: none;"
+
+        <li><a href="map.html" class="es-tab" style="display: none;"
           target="iframe" onclick=addInfoMap()>Mapa</a></li>
 
         <li><a href="guide.html" class="es-tab" style="display: none;" target="iframe" onclick=changeAddInfoBack()>Guía</a></li>
 
 
         <li>
-          <li>
+          <li class="laguage">
+
             <select id="language-dropdown">
               <option value="en">English</option>
               <option value="es">Español</option>
             </select>
           </li>
+
         <input type="test" class="en-tab" id="searchInput" placeholder="Search">
         <button id="searchButton" class="en-tab" onclick="handleSearch()">Search</button>
 
@@ -97,10 +99,12 @@
           <p2 class="en-tab">Services Location</p2>
           <p2 class="es-tab" style="display: none;">Ubicación de Servicios</p2>
           <div class="search-container">
-            <input type="text" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
-            <input type="text" class="location" placeholder="Location (e.g. City or Zip Code)">
-            <button type="submit" class="bannerButton en-tab">Search</button>
-            <button type="submit" class="bannerButton es-tab" style="display: none;">Buscar</button>
+            
+            <input type="text" id="serviceSearch" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
+            <input type="text" id = "locationSearch" class="location" placeholder="Location (e.g. City or Zip Code)">
+            <button type="button" onclick=findAddress() class="bannerButton en-tab">Search</button>
+            <button type="button" onclick=findAddress() class="bannerButton es-tab" style="display: none;">Buscar</button>
+
           </div>
         </div>
       </form>
