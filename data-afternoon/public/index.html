@@ -26,20 +26,44 @@
         </div>
 
         <li><a href="home.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
-        <li><a href="services.html" class="en-tab" onclick=changeAddInfoBack()>Services</a></li>
+
+        <li class="dropdown">
+          <a href="service.html" target="iframe" onmouseover="showDropdown()" onmouseout="hideDropdown()" class="en-tab">Services</a>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="service1.html" target="iframe" class="en-tab">Year-Round Shelters</a>
+            <a href="service2.html" target="iframe" class="en-tab">Healthcare Resources</a>
+            <a href="service3.html" target="iframe" class="en-tab">Rest Villages</a>
+            <a href="service4.html" target="iframe" class="en-tab">Free Produce</a>
+            <a href="service5.html" target="iframe" class="en-tab">Free Groceries</a>
+            <a href="service6.html" target="iframe" class="en-tab">Free Meals</a>
+            <a href="service7.html" target="iframe" class="en-tab">Free Wifi</a>
+            <a href="service8.html" target="iframe" class="en-tab">Libraries</a>
+          </div>
+        </li>
+
         <li><a href="volunteer.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
         <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1" class="en-tab"
           target="iframe" onclick=addInfoMap()>Map</a></li>
         <li><a href="guide.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
 
         <li><a href="home.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Inicio</a></li>
-        <li><a href="services.html" class="es-tab" style="display: none;" onclick="changeAddInfoBack()">Servicios</a></li>
+
+        <li class="dropdown">
+          <a href="service.html" target="iframe" onmouseover="showDropdown()" onmouseout="hideDropdown()" class="es-tab" style="display: none;">Servicios</a>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="service1.html" target="iframe" class="es-tab" style="display: none;">Refugios durante todo el año</a>
+            <a href="service2.html" target="iframe" class="es-tab" style="display: none;">Recursos de cuidado a la salud</a>
+            <a href="service3.html" target="iframe" class="es-tab" style="display: none;">Pueblos de descanso</a>
+            <a href="service4.html" target="iframe" class="es-tab" style="display: none;">Productos gratis</a>
+            <a href="service5.html" target="iframe" class="es-tab" style="display: none;">Comestibles gratis</a>
+          </div>
+        </li>
+
         <li><a href="volunteer.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Voluntario</a></li>
         <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1" class="es-tab" style="display: none;"
           target="iframe" onclick=addInfoMap()>Mapa</a></li>
 
         <li><a href="guide.html" class="es-tab" style="display: none;" target="iframe" onclick=changeAddInfoBack()>Guía</a></li>
-
 
 
         <li>
@@ -55,6 +79,9 @@
         <input type="test" class="es-tab" id="searchInput" placeholder="Buscar" style="display: none;">
         <button id="searchButton" class="es-tab" onclick="handleSearch()" style="display: none;">Buscar</button>
         
+        <div id="user-location" style="position: absolute; top: 0; right: 0;">
+          <!-- User location will be displayed here -->
+        </div>
         </li>
       </ul>
       <div class="icon menu-btn">
@@ -106,7 +133,9 @@
   </script>
 
     <!-- Additional Information -->
-  <aside class="additional-info">
+
+  <aside hidden class="additional-info">
+
     <h2 class="en-tab">Additional Information</h2>
     <h2 class="es-tab" style="display: none;">Información Adicional</h2>
     <div id="key" hidden>
@@ -136,12 +165,15 @@
     </div>
     </aside>
   
-  
-    <aside id="frame-aside">
+    <aside id="frame-aside" style="width: 100%; height: 100vh; margin: 0; padding: 0; overflow: hidden;">
       <iframe src="home.html"
-      style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-      name="iframe" id="iframe"></iframe>
+        style="border: 0; width: 100%; height: 100%;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        name="iframe"
+        id="iframe"></iframe>
     </aside>
-    
+
 </body>
 </html>
