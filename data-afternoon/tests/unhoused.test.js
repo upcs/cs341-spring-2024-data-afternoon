@@ -7,7 +7,7 @@ const {
   addInfoMap,
   changeAddInfoBack,
   handleSearch,
-  toggleLanguage // Make sure to destructure this function from the module
+  toggleLanguage
 } = require('../public/javascripts/unhoused.js');
 
 jest.mock('../public/javascripts/unhoused.js', () => ({
