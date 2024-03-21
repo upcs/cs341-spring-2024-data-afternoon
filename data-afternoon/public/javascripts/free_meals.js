@@ -4,7 +4,7 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
     // updating UI elements, or processing the data in other ways.
 
     // Initialize an empty string to build the HTML content
-    let htmlContent = '<h1>Health Care Services</h1><div class="service-container">';
+    let htmlContent = '<h1>Free Meals</h1><div class="service-container">';
 
     // Iterate over each shelter in the safeYearRoundShelters array
     combinedResults[0].forEach(shelter => {
@@ -16,6 +16,6 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
     htmlContent += '</div>';
 
     // Set the innerHTML of the element with ID "year-round-shelters" to the built HTML content
-    document.getElementById("health-care").innerHTML = htmlContent;
+    document.getElementById("free-meals").innerHTML = htmlContent;
     
 });
