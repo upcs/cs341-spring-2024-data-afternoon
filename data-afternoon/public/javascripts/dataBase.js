@@ -6,7 +6,7 @@ const customIcon2 = 'images/groceries.png';
 const customIcon3 = 'images/shelter.png';
 const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
-//const customIcon6 = 'images/person.png';
+const customIcon6 = 'images/person.png';
 
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
@@ -26,7 +26,8 @@ function initAutocomplete() {
         const legendContent = [
                 {name: "Free Food", iconUrl: customIcon1},
                 {name: "Free Groceries", iconUrl: customIcon2},
-                {name: "Rest Places", iconUrl: customIcon3}
+                {name: "Rest Places", iconUrl: customIcon3},
+                {name: "You", iconUrl: customIcon6}
                 // Add more legend items here
         ];
 
@@ -94,7 +95,7 @@ function initAutocomplete() {
             }
       
             const icon = {
-              url: place.icon,
+              url: customIcon6,
               size: new google.maps.Size(71, 71),
               origin: new google.maps.Point(0, 0),
               anchor: new google.maps.Point(17, 34),
