@@ -8,25 +8,29 @@ const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 //const customIcon6 = 'images/person.png';
 
-let map;
-let geocoder;
-
+//var map;
 
 function findAddress() {
         var location = document.getElementById('locationSearch').value;
-
+        var geocoder = new google.maps.Geocoder(); 
+      
         geocoder.geocode({ address: location }, (results, status) => {
                 if (status === "OK") {
-                        //const gMap = new google.maps.Map(document.getElementById('map'));
-                        //map.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
-                                map: map,
-                                position: results[0].geometry.location,
-                                icon: "images/person.png",
-                                title: "You",
-                                
-                        });
-                        
+                        var myMap = document.getElementById('map');
+                        // new google.maps.Map(document.getElementById('map'), {
+                        //        center: { lat: 32, lng: -124},
+                        //        zoom: 15, 
+                        // });
+                        if (map =! null) {
+                                alert("There is an element");
+                                console.log(map);
+                        }
+                        // let newLat = 45;
+                        // let newLng = -124;
+                        // myMap.setCenter({
+                        //         lat : newLat,
+                        //         lng : newLng
+                        // });
                         alert("Geocode was successful and here is address: " + results[0].geometry.location);
                 }
                 else {
@@ -34,13 +38,10 @@ function findAddress() {
                 }
         });
         
-
         if (document.getElementById('iframe').src != 'http://localhost:3000/map.html') {
                 document.getElementById('iframe').src = 'map.html';
         }
-}
-
-
+      }
 
 function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum) 
 {
@@ -80,7 +81,6 @@ function geocodeAddress(geocoder, resultsMap, addressIn, nameIn, tableNum)
                                 map.setZoom(14);
                                 map.setCenter(marker.getPosition());
                         });
-
                 } 
                 
                 else {
@@ -103,7 +103,7 @@ $.post("http://localhost:3000/", function(data, status) {
                 center: center, // Set the center of the map
         });
 
-        geocoder = new google.maps.Geocoder(); 
+        var geocoder = new google.maps.Geocoder(); 
 
         // Content for the legend
         const legendContent = [
@@ -144,7 +144,5 @@ $.post("http://localhost:3000/", function(data, status) {
 
                 }
         } 
+ 
 })
-
-
-    
