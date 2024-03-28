@@ -37,5 +37,71 @@ function handleSearch() {
   }
 }
 
+<<<<<<< Updated upstream
 module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch };
 
+=======
+function toggleLanguage(lang) {
+  const enTabs = document.querySelectorAll('.en-tab');
+  const esTabs = document.querySelectorAll('.es-tab');
+
+  if (lang === 'es') {
+    enTabs.forEach(tab => tab.style.display = 'none');
+    esTabs.forEach(tab => tab.style.display = 'block');
+  } else {
+    enTabs.forEach(tab => tab.style.display = 'block');
+    esTabs.forEach(tab => tab.style.display = 'none');
+  }
+
+  localStorage.setItem('selectedLanguage', lang);
+
+  var ifram = document.getElementById('iframe');
+  if (ifram && ifram.src.includes('guide.html')) {
+    ifram.src = ifram.src;
+  }
+
+}
+
+if ("geolocation" in navigator) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    
+    // Now latitude and longitude are available to use
+    updateUserInterface(latitude, longitude);
+  });
+} else {
+  console.log("Geolocation is not available");
+}
+
+function updateUserInterface(lat, long) {
+  getZipCode(lat, long, function(zipCode) {
+    document.getElementById('user-location').textContent = `Zip Code: ${zipCode}`;
+  });
+}
+
+function getZipCode(lat, long, callback) {
+  const geocoder = new google.maps.Geocoder();
+  const latlng = { lat: parseFloat(lat), lng: parseFloat(long) };
+  geocoder.geocode({ location: latlng }, function(results, status) {
+    if (status === 'OK') {
+      if (results[0]) {
+        const addressComponents = results[0].address_components;
+        const zipCodeComponent = addressComponents.find(component => component.types[0] === 'postal_code');
+        if (zipCodeComponent) {
+          callback(zipCodeComponent.long_name);
+        } else {
+          console.log('No zip code found');
+        }
+      } else {
+        console.log('No results found');
+      }
+    } else {
+      console.log('Geocoder failed due to: ' + status);
+    }
+  });
+}
+
+
+module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch, toggleLanguage, updateUserInterface, getZipCode };
+>>>>>>> Stashed changes
