@@ -29,7 +29,7 @@
 /* Sticky Navbar Style */
 .navbar.sticky{
   background: #1b1b1b;
-  padding: 10px 0;
+  padding: 15px 0;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
 }
 .navbar .content{
@@ -229,27 +229,21 @@
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+/* Dropdown menu for services tab (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
-<<<<<<< Updated upstream
-  background-color: #f1f1f1;
-  min-width: 220px;
-  height: 150px;
-=======
   background-color: black;
   width: 570px;
 
   min-height: 150px;
   border-radius: 10px;
->>>>>>> Stashed changes
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
-/* Links inside the dropdown */
+/* service links inside the dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -282,8 +276,9 @@
   border-radius: 10px;
   cursor: pointer;
   margin-left: -15px;
-  min-height: 45px;
+  height: 45px;
   min-width: 10px;
+  margin-top: 10px; 
   word-wrap: nowrap;
   align-self: auto;
 }
@@ -357,9 +352,6 @@ p2{
   padding-left: 18%;
   word-spacing: 230px;
   font-weight: bold;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 
@@ -533,4 +525,3 @@ p2{
 }
 
 
->>>>>>> Stashed changes

@@ -15,12 +15,9 @@ const promise2 = exports.dbquery("SELECT * FROM FREEGROCERIES");
 const promise3 = exports.dbquery("SELECT * FROM SAFERESTVILLAGES");
 const promise4 = exports.dbquery("SELECT * FROM FREE_PRODUCE");
 const promise5 = exports.dbquery("SELECT * FROM SAFE_YEAR_ROUND_SHELTERS");
-<<<<<<< Updated upstream
-=======
 const promise6 = exports.dbquery("SELECT * FROM FREE_WIFI");
 const promise7 = exports.dbquery("SELECT * FROM HEALTHCARE");
 const promise8 = exports.dbquery("SELECT * FROM VOLUNTEER");
->>>>>>> Stashed changes
 // "'p:YK<>1p\B{t8;X   (database passcode)
 
 var app = express();
@@ -37,13 +34,9 @@ app.post('/', (req, res) => {
     promise3.then(result3 =>  {
       promise4.then(result4 =>  {
         promise5.then(result5 =>  {
-<<<<<<< Updated upstream
-
-=======
           promise6.then(result6 => {
             promise7.then(result7 => {
               promise8.then(result8 => {
->>>>>>> Stashed changes
           //get free meals data
           let freeMeals = result.map(freeMealsTable => ({
             location: freeMealsTable.LOCATION,
@@ -76,12 +69,6 @@ app.post('/', (req, res) => {
             name: safeYearTable.NAME,
             open_hours: safeYearTable.OPEN_HOURS
           }));
-<<<<<<< Updated upstream
-          
-          // Combining all tables into a single object
-          
-          let combinedResults = [ freeMeals, freeGroceries, safeRestVillages, freeProduce, safeYearRoundShelters] 
-=======
 
           //get wifi  data
           let freeWifi = result6.map(freeWifiTable => ({
@@ -108,18 +95,14 @@ app.post('/', (req, res) => {
           // Combining all tables into a single object
           
           let combinedResults = [ freeMeals, freeGroceries, safeRestVillages, freeProduce, safeYearRoundShelters, freeWifi, healthCare, volunteer] 
->>>>>>> Stashed changes
           
           
           // Sending the combined results as a pretty-printed JSON string
           res.send(combinedResults);
 
-<<<<<<< Updated upstream
-=======
             });
           });
          });
->>>>>>> Stashed changes
         });
       });
 

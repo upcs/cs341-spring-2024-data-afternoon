@@ -1,39 +1,5 @@
 
 /* this method points a point in the map that corresponds to the sql address*/ 
-<<<<<<< Updated upstream
-function geocodeAddress(geocoder, resultsMap, addressIn, nameIn) 
-{
-          
-        geocoder.geocode({ address: addressIn }, (results, status) => {
-                if (status === "OK") 
-                {
-
-                        resultsMap.setCenter(results[0].geometry.location); 
-
-                        new google.maps.Marker({
-
-                        map: resultsMap,
-                        position: results[0].geometry.location, //the point in the map which represents the address
-                        label: {
-                        fontSize: "8pt",
-                        text: nameIn
-                        }
-
-                        });
-                } 
-                else {
-                alert("Geocode was not successful for the following reason: " + status + " and here is address: " + addressIn);
-                }
-        });
-}
-
-
-/* send the client the map with pins that provide resources */
-$.post("http://localhost:3000/", function(data, status) {
-
-        var center = { lat: 45.5727, lng: 122.7215 }; //center the map around UP area
-      
-=======
 
 const customIcon1 = 'images/food.png';
 const customIcon2 = 'images/groceries.png';
@@ -49,19 +15,14 @@ function initAutocomplete() {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
 
->>>>>>> Stashed changes
         // Create a new map object
-        var map = new google.maps.Map(document.getElementById("map"), {
-
-        zoom: 10, // Set the initial zoom level
-        center: center, // Set the center of the map
-
+        map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11, // Set the initial zoom level
+                center: center, // Set the center of the map
         });
 
-        const geocoder = new google.maps.Geocoder(); //create a new geocoder object 
+        var geocoder = new google.maps.Geocoder(); 
 
-<<<<<<< Updated upstream
-=======
         // Content for the legend
         const legendContent = [
                 {name: "Free Food", iconUrl: customIcon1},
@@ -88,7 +49,6 @@ function initAutocomplete() {
 
                 legend.appendChild(div); // Add the div to the legend
         });
->>>>>>> Stashed changes
 
         for (let i = 0; i < data.length; i++) //iterate through entire database 
         {
@@ -99,22 +59,11 @@ function initAutocomplete() {
                 var address = JSON.stringify(data[i][j].location); //get current location from table 
                 var name = JSON.stringify(data[i][j].name); //get current name from table
 
-<<<<<<< Updated upstream
-                     geocodeAddress(geocoder, map, address, name); //insert the pin with location and name into the map
-=======
                 geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
->>>>>>> Stashed changes
 
                 }
         } 
 
-<<<<<<< Updated upstream
-
-})
-
-
-    
-=======
         })
         // Create the search box and link it to the UI element.
         const input = document.getElementById("pac-input");
@@ -270,4 +219,3 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                 
         });
 }
->>>>>>> Stashed changes
