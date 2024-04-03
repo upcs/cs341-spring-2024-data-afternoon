@@ -18,9 +18,11 @@
     }
     form {
         background-color: white;
-        padding: 40px;
-        border-radius: 10px;
+        padding: 60px; 
+        border-radius: 15px; 
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 500px; 
+        margin: 0 auto; 
     }
     h2 {
         text-align: center;
@@ -57,6 +59,32 @@
     button:hover {
         background-color: #0056b3;
     }
+
+    #clientDataContainer {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-box {
+            border-bottom: 1px solid #eee;
+            padding: 8px 16px;
+        }
+
+        .service-box:last-child {
+            border-bottom: none;
+        }
+
+        .service-box strong {
+            display: block; 
+            color: #333;
+            margin-bottom: 4px; 
+        }
 </style>
 </head>
 <body>
@@ -76,6 +104,10 @@
 
 
 <script src="javascripts/submissionForm.js"></script>
+
+<div id="clientDataContainer">
+<p id ="submissionForm"></p>
+</div>
 
 </body>
 </html>

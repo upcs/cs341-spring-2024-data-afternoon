@@ -18,6 +18,7 @@ const promise5 = exports.dbquery("SELECT * FROM SAFE_YEAR_ROUND_SHELTERS");
 const promise6 = exports.dbquery("SELECT * FROM FREE_WIFI");
 const promise7 = exports.dbquery("SELECT * FROM HEALTHCARE");
 const promise8 = exports.dbquery("SELECT * FROM VOLUNTEER");
+const promise9 = exports.dbquery("SELECT * FROM CLIENT_DATA");
 // "'p:YK<>1p\B{t8;X   (database passcode)
 
 var app = express();
@@ -37,6 +38,7 @@ app.post('/', (req, res) => {
           promise6.then(result6 => {
             promise7.then(result7 => {
               promise8.then(result8 => {
+                promise9.then(result9 => {
           //get free meals data
           let freeMeals = result.map(freeMealsTable => ({
             location: freeMealsTable.LOCATION,
@@ -91,15 +93,23 @@ app.post('/', (req, res) => {
             cause_area: volunteerTable.CAUSE_AREA,
             website_address: volunteerTable.WEBSITE_ADDRESS
           }));
+
+          let client_data = result9.map(clientTable => ({
+            location: clientTable.LOCATION,
+            name: clientTable.NAME,
+          }));
+
+
+          
           
           // Combining all tables into a single object
           
-          let combinedResults = [ freeMeals, freeGroceries, safeRestVillages, freeProduce, safeYearRoundShelters, freeWifi, healthCare, volunteer] 
+          let combinedResults = [ freeMeals, freeGroceries, safeRestVillages, freeProduce, safeYearRoundShelters, freeWifi, healthCare, volunteer, client_data] 
           
           
           // Sending the combined results as a pretty-printed JSON string
           res.send(combinedResults);
-
+              });
             });
           });
          });

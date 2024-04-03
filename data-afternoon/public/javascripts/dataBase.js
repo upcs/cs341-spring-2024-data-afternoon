@@ -59,7 +59,10 @@ function initAutocomplete() {
                 var address = JSON.stringify(data[i][j].location); //get current location from table 
                 var name = JSON.stringify(data[i][j].name); //get current name from table
 
-                geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
+                if (i != 8)
+                {
+                        geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
+                }
 
                 }
         } 
