@@ -8,6 +8,20 @@ const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
 
+// var myMarkers = [];
+
+// function distance_miles(marker1, marker2) {
+//         var R = 3958.5; //the radius of the earth
+//         var rlat1 = marker1.position.lat() * (Math.PI/180); //make the degrees radians
+//         var rlat2 = marker2.position.lat() * (Math.PI/180); //do the same thing marker 2
+//         var difference_lat = rlat2-rlat1;
+//         var difference_lng = (marker2.position.lng() - marker1.position.lng()) * (Math.PI/180);
+         
+//         var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difference_lat/2)*Math.sin(difference_lat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difference_lng/2)*Math.sin(difference_lng/2)));
+//         return distance
+// }
+
+
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
         $.post("http://localhost:3000/", function(data, status) {
@@ -113,6 +127,13 @@ function initAutocomplete() {
                 position: place.geometry.location,
               }),
             );
+
+            //set the zoom and the center to the searched posistion
+            map.setZoom(14);
+            map.setCenter(place.geometry.location);
+
+            
+
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -120,46 +141,46 @@ function initAutocomplete() {
               bounds.extend(place.geometry.location);
             }
           });
-          map.fitBounds(bounds);
         });
       }
       
       window.initAutocomplete = initAutocomplete;
+
       
 
-function findAddress() {
-        var location = document.getElementById('locationSearch').value;
-        var geocoder = new google.maps.Geocoder(); 
+// function findAddress() {
+//         var location = document.getElementById('locationSearch').value;
+//         var geocoder = new google.maps.Geocoder(); 
       
-        geocoder.geocode({ address: location }, (results, status) => {
-                if (status === "OK") {
-                        //var myMap = document.getElementById('map');
-                        // new google.maps.Map(document.getElementById('map'), {
-                        //        center: { lat: 32, lng: -124},
-                        //        zoom: 15, 
-                        // });
-                        // if (map =! null) {
-                        //         alert("There is an element");
-                        //         console.log(map);
-                        // }
-                        //map.setCenter(results[0].geometry.location);
-                        // let newLat = 45;
-                        // let newLng = -124;
-                        // map.setCenter({
-                        //         lat : newLat,
-                        //         lng : newLng
-                        // });
-                        alert("Geocode was successful and here is address: " + results[0].geometry.location);
-                }
-                else {
-                        alert("Geocode was not successful for the following reason: " + status + " and here is address: " + location);
-                }
-        });
+//         geocoder.geocode({ address: location }, (results, status) => {
+//                 if (status === "OK") {
+//                         //var myMap = document.getElementById('map');
+//                         // new google.maps.Map(document.getElementById('map'), {
+//                         //        center: { lat: 32, lng: -124},
+//                         //        zoom: 15, 
+//                         // });
+//                         // if (map =! null) {
+//                         //         alert("There is an element");
+//                         //         console.log(map);
+//                         // }
+//                         //map.setCenter(results[0].geometry.location);
+//                         // let newLat = 45;
+//                         // let newLng = -124;
+//                         // map.setCenter({
+//                         //         lat : newLat,
+//                         //         lng : newLng
+//                         // });
+//                         alert("Geocode was successful and here is address: " + results[0].geometry.location);
+//                 }
+//                 else {
+//                         alert("Geocode was not successful for the following reason: " + status + " and here is address: " + location);
+//                 }
+//         });
         
-        if (document.getElementById('iframe').src != 'http://localhost:3000/map.html') {
-                document.getElementById('iframe').src = 'map.html';
-        }
-}
+//         if (document.getElementById('iframe').src != 'http://localhost:3000/map.html') {
+//                 document.getElementById('iframe').src = 'map.html';
+//         }
+// }
 
 function geocodeAddress(geocoder, addressIn, nameIn, tableNum) 
 {
@@ -198,6 +219,9 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                                 title: nameIn, // Tooltip text when hovering over the marker
                                 
                         });
+
+                        //array of all markers??
+                        //myMarkers.push(marker);
 
                         // Add a click listener to the marker to open the InfoWindow
                         marker.addListener('click', function() {
