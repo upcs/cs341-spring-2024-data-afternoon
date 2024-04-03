@@ -13,9 +13,13 @@ router.post('/newClientData', async function(req, res) {
   //construct sql statement 
   let sqlQuery = "INSERT INTO CLIENT_DATA (NAME, LOCATION) VALUES ('" + postName + "','" + postAddress + "')";
   
-    await exports.dbquery(sqlQuery); //await used for promise
-
-
+  try {
+    await exports.dbquery(sqlQuery, [postName, postAddress]);
+    res.json({ success: true }); // Indicate success
+} catch (error) {
+    console.error('Database error:', error);
+    res.status(500).json({ success: false, error: 'Database error' });
+}
 
 });
 

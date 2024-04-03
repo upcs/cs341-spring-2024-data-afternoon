@@ -1,4 +1,6 @@
-
+$(document).ready(function() {
+    updatePendingRequests();
+});
 /* this function gets data from the client */
 function submitFunction() 
 {
@@ -7,6 +9,12 @@ function submitFunction()
 
         /* send this data to the server (database) */
         $.post("http://localhost:3000/newClientData", { Name: name, Address: address}, function(response) { 
+            if (response && response.success) {
+                updatePendingRequests();
+            } else {
+                // Handle the error
+                console.error("Error submitting data");
+            }
         })
 }         
  
@@ -32,3 +40,15 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
     document.getElementById("submissionForm").innerHTML = htmlContent;
     
 });
+
+function updatePendingRequests() {
+    $.post("http://localhost:3000/", function(combinedResults, status) {
+        let htmlContent = '<h1> Pending Requests </h1><div class="service-container">';
+        combinedResults[8].forEach(shelter => {
+            htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}</div>`;
+        });
+        htmlContent += '</div>';
+        document.getElementById("submissionForm").innerHTML = htmlContent;
+    });
+}
+
