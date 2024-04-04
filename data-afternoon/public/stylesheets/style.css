@@ -287,11 +287,6 @@
   background-color: #45a049;
 }
 
-#map {
-  height: 500px; /* Example height */
-  width: 100%; /* Example width */
-}
-
 /* banner search bar */
 .container {
   width: 550px;
@@ -526,6 +521,20 @@ p2{
   /* overflow: scroll;  */
 }
 
+#map{
+  height: 500px; /* Set map height */
+  width: 70%; /* Set map width to full container width */
+  margin-top: 25px;
+  font-family: 'Poppins', sans-serif;
+}
+
+#legend div {
+  display: inline-block; /* Display legend items side by side */
+  margin-right: 100px; /* Space between items */
+  font-family: 'Poppins', sans-serif;
+/*  border: 1px solid #000; /* Add a border */
+/*  background-color: #fff; /* Set background to white */
+}
 
 #pac-input {
   font-family: 'Poppins', sans-serif;
@@ -535,3 +544,27 @@ p2{
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+=======
+.legend-icon {
+  vertical-align: middle; /* Align icon with text vertically */
+  height: 40px; /* Icon height */
+  width: 40px; /* Icon width */
+  margin-right: 5px; /* Space between icon and text */
+}
+
+#nearby {
+  width: 28%;
+  height: 100%;
+  padding: 10px;
+  float: right;
+  border: 1px solid #000;
+}
+
+#ad {
+  padding: 10px;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+

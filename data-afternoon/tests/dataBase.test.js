@@ -14,15 +14,22 @@ class MockGoogleMaps {
       setPosition: jest.fn(),
       setMap: jest.fn(),
     }));
-    this.InfoWindow = jest.fn();
+    this.InfoWindow = jest.fn().mockImplementation(() => ({
+      open: jest.fn(),
+    }));
     this.Map = jest.fn().mockImplementation(() => ({
       setCenter: jest.fn(),
       fitBounds: jest.fn(),
     }));
     this.Size = jest.fn();
+    this.Point = jest.fn();
     this.Geocoder = jest.fn().mockImplementation(() => ({
       geocode: jest.fn((opts, callback) => {
-        callback([{geometry: {location: 'mockLocation'}}], "OK");
+        if (opts.address === 'Nonexistent Address') {
+          callback([], 'ZERO_RESULTS');
+        } else {
+          callback([{geometry: {location: 'mockLocation'}}], "OK");
+        }
       }),
     }));
     this.event = {
@@ -30,7 +37,8 @@ class MockGoogleMaps {
     };
     this.places = {
       SearchBox: jest.fn().mockImplementation(() => ({
-        addListener: jest.fn(),
+        getPlaces: jest.fn(),
+        addListener: jest.fn((event, handler) => handler()),
       })),
     };
     this.LatLngBounds = jest.fn().mockImplementation(() => ({
@@ -43,37 +51,117 @@ global.google = {
   maps: new MockGoogleMaps()
 };
 
-// Updating the Mocking HTML structure
-document.body.innerHTML = `<div id="map"></div><div id="legend"></div><input id="pac-input" />`;
+// Mock global alert function
+global.alert = jest.fn();
 
-// Reflecting changes in mock data structure for more comprehensive testing
+// Mocking HTML structure required by dataBase.js
+document.body.innerHTML = `
+  <div id="map"></div>
+  <div id="legend"></div>
+  <input id="pac-input" />
+  <input id="locationSearch" />
+  <iframe id="iframe"></iframe>
+`;
+
 const mockData = [
-  [{location: '123 Main St, Anytown, USA', name: 'Place 1'}],
+  [{ location: '123 Main St, Anytown, USA', name: 'Place 1' }],
 ];
 
-// Mocking jQuery's $.post method
+// Mock $.post to simulate AJAX call to server
 $.post = jest.fn().mockImplementation((url, callback) => {
-  return new Promise(resolve => {
-    const mockResponse = mockData; // Adjust as needed
-    callback(mockResponse, 'success');
-    resolve();
-  });
+  callback(mockData, 'success');
 });
 
-// Importing the modified dataBase.js script
+// Assume dataBase.js exports its functions for testing or they are global
 require('../public/javascripts/dataBase.js');
 
-describe('Google Maps Integration and UI Enhancements Test', () => {
-  test('Markers created, legend populated, and search functionality based on mock data', async () => {
-    // Assuming initAutocomplete is exposed and can be called directly
-    await window.initAutocomplete();
-
-    // Ensure the Google Maps API was used as expected
-    expect(google.maps.Geocoder).toHaveBeenCalled();
-    expect(google.maps.Marker).toHaveBeenCalledTimes(mockData.flat().length); // Assuming flat structure for simplicity
-
-    // Verify the legend has been updated correctly
-    const legendItems = document.getElementById('legend').children;
-    expect(legendItems.length).toBeGreaterThan(0); // Expect at least one item
+describe('Google Maps Integration and UI Enhancements Test Suite', () => {
+  beforeEach(() => {
+    // Reset mocks before each test
+    jest.clearAllMocks();
+    
+    // Setup default behavior for `getPlaces`
+    google.maps.places.SearchBox.mockImplementation(() => ({
+      getPlaces: jest.fn().mockReturnValue([]), // Default to empty array
+      addListener: jest.fn(),
+    }));
   });
+
+  test('initAutocomplete: Successful Initialization and Markers Placement', async () => {
+    // Mock getPlaces to return specific data for this test case
+    google.maps.places.SearchBox.mockImplementation(() => ({
+      getPlaces: jest.fn().mockReturnValue([
+	{ geometry: {
+            location: { lat: 45.521, lng: -122.677 },
+            viewport: null,
+          },
+           name: 'Mock Coffee Shop',
+        }]),
+      addListener: jest.fn((event, handler) => {
+        if (event === "places_changed") handler();
+      }),
+    }));    
+
+    await window.initAutocomplete();
+    expect(google.maps.Map).toHaveBeenCalled();
+    expect(google.maps.Marker).toHaveBeenCalledTimes(2);
+  });
+
+  test('initAutocomplete: Handles Empty Data Gracefully', async () => {
+    $.post.mockImplementationOnce((url, callback) => {
+      callback([], 'success');
+    });
+    await window.initAutocomplete();
+    expect(google.maps.Marker).not.toHaveBeenCalled();
+  });
+
+  test('Dynamic Legend Creation: Correctly Populates Legend Items', async () => {
+    await window.initAutocomplete();
+    const legendItems = document.getElementById('legend').children;
+    expect(legendItems.length).toBeGreaterThan(0);
+  });
+
+  test('Search Box: Places Markers Based on Search Results', () => {
+    // Set up the value to be returned by getPlaces
+    const mockPlaces = [
+      {
+        geometry: {
+          location: { lat: 45.521, lng: -122.677 },
+          viewport: null,
+        },
+        name: 'Mock Coffee Shop',
+      }
+    ];
+
+    // Explicitly mock getPlaces before calling initAutocomplete
+    google.maps.places.SearchBox.mockImplementation(() => ({
+      addListener: jest.fn((event, handler) => handler()),
+      getPlaces: jest.fn().mockReturnValue(mockPlaces),
+    }));
+
+    document.getElementById('pac-input').value = 'Coffee Shop';
+    window.initAutocomplete();
+
+    // Assertion to ensure markers were created based on mockPlaces
+    expect(google.maps.Marker).toHaveBeenCalledTimes(2);
+  });
+
+  test('Search Box: Handles No Search Results Gracefully', () => {
+    document.getElementById('pac-input').value = 'Unknown Location';
+    const searchBoxMock = new google.maps.places.SearchBox();
+    searchBoxMock.getPlaces.mockReturnValue([]); // Already a mock function, just adjusting return value
+    window.initAutocomplete();
+    expect(google.maps.Marker).toHaveBeenCalledTimes(1);
+  });
+
+  test('Initialization with Invalid Data: Skips Marker Creation', async () => {
+    $.post.mockImplementationOnce((url, callback) => {
+      callback([null], 'success');
+    });
+    await window.initAutocomplete();
+    expect(google.maps.Marker).not.toHaveBeenCalled();
+  });
+
+  // Additional test cases are needed to achieve 100% coverage
+  // But, they will be added later for convenience
 });

@@ -1,12 +1,40 @@
 
-/* this method points a point in the map that corresponds to the sql address*/ 
-
 const customIcon1 = 'images/food.png';
 const customIcon2 = 'images/groceries.png';
 const customIcon3 = 'images/shelter.png';
 const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
+
+
+
+const customIcon7 = 'images/volunteer.png'; //change this icon its hard to see on the map 
+
+var myMarkers = [];
+var you;
+var nearby = [];
+function distance_miles(item) {
+        var R = 3958.5; //the radius of the earth
+        var rlat1 = item.position.lat() * (Math.PI/180); //make the degrees radians
+        var rlat2 = you.position.lat() * (Math.PI/180); //do the same thing marker 2
+        var difference_lat = rlat2-rlat1;
+        var difference_lng = (you.position.lng() - item.position.lng()) * (Math.PI/180);
+         
+        var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difference_lat/2)*Math.sin(difference_lat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difference_lng/2)*Math.sin(difference_lng/2)));
+        if (distance < 1) {
+                nearby.push(item);
+        }
+}
+
+function addToNear(item) {
+        const near = document.getElementById('near');
+        const div = document.createElement('div');
+        const para = document.createTextNode(item.title );
+        div.appendChild(para);
+        near.appendChild(div); 
+
+}
+
 
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
@@ -27,6 +55,9 @@ function initAutocomplete() {
                 {name: "Free Food", iconUrl: customIcon1},
                 {name: "Free Groceries", iconUrl: customIcon2},
                 {name: "Rest Places", iconUrl: customIcon3},
+                {name: "Free Healthcare", iconUrl: customIcon4},
+                {name: "Free Wifi", iconUrl: customIcon5},
+                {name: "Volunteer", iconUrl: customIcon7},
                 {name: "You", iconUrl: customIcon6}
                 // Add more legend items here
         ];
@@ -51,16 +82,21 @@ function initAutocomplete() {
 
         for (let i = 0; i < data.length; i++) //iterate through entire database 
         {
-
+            if (data[i] != null) { //error handling for unit tests
                 for (let j = 0; j < data[i].length; j++) //iterate through each table
                 {
 
                 var address = JSON.stringify(data[i][j].location); //get current location from table 
                 var name = JSON.stringify(data[i][j].name); //get current name from table
 
-                geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
+                if (i != 8)
+                {
+                        geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
+                }
+
 
                 }
+	    }
         } 
 
         })
@@ -101,16 +137,27 @@ function initAutocomplete() {
               anchor: new google.maps.Point(17, 34),
               scaledSize: new google.maps.Size(25, 25),
             };
-      
+
             // Create a marker for each place.
             markers.push(
-              new google.maps.Marker({
+              you = new google.maps.Marker({
                 map,
                 icon,
                 title: place.name,
                 position: place.geometry.location,
               }),
             );
+
+            //set the zoom and the center to the searched posistion
+            map.setZoom(14);
+            map.setCenter(place.geometry.location);
+
+            nearby = [];
+            myMarkers.forEach(distance_miles);
+
+            nearby.forEach(addToNear);
+            
+
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -118,46 +165,46 @@ function initAutocomplete() {
               bounds.extend(place.geometry.location);
             }
           });
-          map.fitBounds(bounds);
         });
       }
       
       window.initAutocomplete = initAutocomplete;
+
       
 
-function findAddress() {
-        var location = document.getElementById('locationSearch').value;
-        var geocoder = new google.maps.Geocoder(); 
+// function findAddress() {
+//         var location = document.getElementById('locationSearch').value;
+//         var geocoder = new google.maps.Geocoder(); 
       
-        geocoder.geocode({ address: location }, (results, status) => {
-                if (status === "OK") {
-                        //var myMap = document.getElementById('map');
-                        // new google.maps.Map(document.getElementById('map'), {
-                        //        center: { lat: 32, lng: -124},
-                        //        zoom: 15, 
-                        // });
-                        // if (map =! null) {
-                        //         alert("There is an element");
-                        //         console.log(map);
-                        // }
-                        //map.setCenter(results[0].geometry.location);
-                        // let newLat = 45;
-                        // let newLng = -124;
-                        // map.setCenter({
-                        //         lat : newLat,
-                        //         lng : newLng
-                        // });
-                        alert("Geocode was successful and here is address: " + results[0].geometry.location);
-                }
-                else {
-                        alert("Geocode was not successful for the following reason: " + status + " and here is address: " + location);
-                }
-        });
+//         geocoder.geocode({ address: location }, (results, status) => {
+//                 if (status === "OK") {
+//                         //var myMap = document.getElementById('map');
+//                         // new google.maps.Map(document.getElementById('map'), {
+//                         //        center: { lat: 32, lng: -124},
+//                         //        zoom: 15, 
+//                         // });
+//                         // if (map =! null) {
+//                         //         alert("There is an element");
+//                         //         console.log(map);
+//                         // }
+//                         //map.setCenter(results[0].geometry.location);
+//                         // let newLat = 45;
+//                         // let newLng = -124;
+//                         // map.setCenter({
+//                         //         lat : newLat,
+//                         //         lng : newLng
+//                         // });
+//                         alert("Geocode was successful and here is address: " + results[0].geometry.location);
+//                 }
+//                 else {
+//                         alert("Geocode was not successful for the following reason: " + status + " and here is address: " + location);
+//                 }
+//         });
         
-        if (document.getElementById('iframe').src != 'http://localhost:3000/map.html') {
-                document.getElementById('iframe').src = 'map.html';
-        }
-}
+//         if (document.getElementById('iframe').src != 'http://localhost:3000/map.html') {
+//                 document.getElementById('iframe').src = 'map.html';
+//         }
+// }
 
 function geocodeAddress(geocoder, addressIn, nameIn, tableNum) 
 {
@@ -181,6 +228,12 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                                 iconUrl = customIcon2;
                             } else if (tableNum === 5) {
                                 iconUrl = customIcon5;
+
+                            } else if (tableNum == 6) {
+                                iconUrl = customIcon4;
+                            } else if (tableNum == 7) {
+                                iconUrl = customIcon7;
+
                             } else {
                                 iconUrl = customIcon3;
                             }
@@ -196,6 +249,9 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                                 title: nameIn, // Tooltip text when hovering over the marker
                                 
                         });
+
+                        //array of all markers??
+                        myMarkers.push(marker);
 
                         // Add a click listener to the marker to open the InfoWindow
                         marker.addListener('click', function() {
@@ -214,3 +270,4 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                 
         });
 }
+

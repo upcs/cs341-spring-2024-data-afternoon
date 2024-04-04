@@ -12,7 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" />
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initAutocomplete&libraries=places&v=weekly" defer async></script>
+   
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk7Hek3Se9CeoR0loLm8dIoFf9l0EZW0Y&callback=initAutocomplete&libraries=places&v=weekly" defer async></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -47,7 +48,7 @@
 
         <li><a href="map.html" class="en-tab"
           target="iframe" onclick=addInfoMap()>Map</a></li>
-       
+      
         <li><a href="home.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Inicio</a></li>
 
         <li class="dropdown">
@@ -186,8 +187,11 @@
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         name="iframe"
+        scrolling="no"
         id="iframe"></iframe>
-    </aside>
+    </aside> 
+
+    <img src="images/temp_ad.png" alt="ad" id="ad">
 
 </body>
 </html>
