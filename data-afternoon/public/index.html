@@ -9,6 +9,10 @@
     
     <script src="javascripts/unhoused.js"></script>
     <script src="javascripts/dataBase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" />
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+   
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk7Hek3Se9CeoR0loLm8dIoFf9l0EZW0Y&callback=initAutocomplete&libraries=places&v=weekly" defer async></script>
 </head>
 <body>
@@ -44,12 +48,7 @@
 
         <li><a href="map.html" class="en-tab"
           target="iframe" onclick=addInfoMap()>Map</a></li>
-        <li><a href="guide.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
-
-        <li><a href="form.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Form</a></li>
-
-
-
+      
         <li><a href="home.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Inicio</a></li>
 
         <li class="dropdown">
@@ -98,23 +97,26 @@
  
   <div class="banner">
     <div class="container">
+      
       <form>
-        <!--
+       
+        
         <div class="wrapper">
-          
-          <p2 class="en-tab">Services Location</p2>
-          <p2 class="es-tab" style="display: none;">Ubicación de Servicios</p2>
+          <input id="pac-input" class="controls" type="text" placeholder="Input the Address Here"/>
+          <button type="button" onclick=findAddress() class="bannerButton en-tab">Search</button>
+         
+          <!-- <p2 class="es-tab" style="display: none;">Ubicación de Servicios</p2>
           <div class="search-container">
             
             <input type="text" id="serviceSearch" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
             <input type="text" id = "locationSearch" class="location" placeholder="Location (e.g. City or Zip Code)">
             <button type="button" onclick=findAddress() class="bannerButton en-tab">Search</button>
-            <button type="button" onclick=findAddress() class="bannerButton es-tab" style="display: none;">Buscar</button>
+            <button type="button" onclick=findAddress() class="bannerButton es-tab" style="display: none;">Buscar</button> -->
             
 
           </div>
         </div>
-      -->
+     
       </form>
       </div>
   </div>
