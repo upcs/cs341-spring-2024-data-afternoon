@@ -87,7 +87,7 @@ describe('handleSearch function', () => {
 //-- Test functions for Sprint 3 --//
 
 // Test for toggleLanguage
-describe('toggleLanguage function', () => {
+describe('toggleLanguage function: English to Spanish', () => {
   beforeEach(() => {
     // Reset DOM and localStorage before each test
     document.body.innerHTML = '';
@@ -106,45 +106,25 @@ describe('toggleLanguage function', () => {
     expect(document.querySelector('.es-tab').style.display).toBe('block');
     expect(localStorage.getItem('selectedLanguage')).toBe('es');
   });
-
-  // Additional test for toggling back to English...
 });
 
-// Test for Geolocation functionality NOT FINISHED/WORK-IN-PROGRESS
-//describe('Geolocation functionality', () => {
-  // Mock navigator.geolocation before importing unhoused.js
-//  beforeAll(() => {
-//    global.navigator = {
-//      geolocation: {
-//        getCurrentPosition: jest.fn().mockImplementationOnce((success) => success({
-//          coords: {
-//            latitude: 35.6895,
-//            longitude: 139.6917,
-//          },
-//        })),
-//      },
-//    };
-//  });
+describe('toggleLanguage function: Spanish to English', () => {
+  beforeEach(() => {
+    // Reset DOM and localStorage before each test
+    document.body.innerHTML = '';
+    localStorage.clear();
+  });
 
-//  it('should update user interface with zip code', async () => {
-    // Clear previous innerHTML and setup the environment for the test
-//    document.body.innerHTML = '<div id="user-location"></div>';
+  it('should toggle language to English and update localStorage', () => {
+    document.body.innerHTML = `
+      <div class="es-tab" style="display: block;"></div>
+      <div class="en-tab" style="display: none;"></div>
+    `;
 
-    // Dynamically import the unhoused.js module
-//    const { updateUserInterface, getZipCode } = await import('../public/javascripts/unhoused.js');
-
-    // Perform the assertion to check if the UI was updated with the zip code
-    //expect(document.getElementById('user-location').textContent).toContain('Zip Code: 12345');
-
-//    expect(updateUserInterface).toHaveBeenCalledWith(35.6895, 139.6917);
-//    expect(getZipCode).toHaveBeenCalled();
-//  });
-
-  // Reset mocks and any global changes to avoid leakage between tests
-//  afterEach(() => {
-//    jest.resetModules();
-//    jest.clearAllMocks();
-//    delete global.navigator;
-//  });
-//});
-
+    toggleLanguage('en');
+    
+    expect(document.querySelector('.es-tab').style.display).toBe('none');
+    expect(document.querySelector('.en-tab').style.display).toBe('block');
+    expect(localStorage.getItem('selectedLanguage')).toBe('en');
+  });
+});

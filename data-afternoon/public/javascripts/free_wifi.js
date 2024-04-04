@@ -10,8 +10,10 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
     combinedResults[5].forEach(shelter => {
     // Append a list item with the shelter's name and location to the HTML content
 
+
     htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}
     <br><strong>Contact Info:</strong> ${shelter.contact_info}</div>`;
+
 
 });
 

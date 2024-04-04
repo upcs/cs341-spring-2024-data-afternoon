@@ -52,3 +52,4 @@ function updatePendingRequests() {
     });
 }
 
+module.exports = { submitFunction, updatePendingRequests };

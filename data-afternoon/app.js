@@ -41,6 +41,8 @@ app.post('/', (req, res) => {
             promise7.then(result7 => {
               promise8.then(result8 => {
                 promise9.then(result9 => {
+
+
           //get free meals data
           let freeMeals = result.map(freeMealsTable => ({
             location: freeMealsTable.LOCATION,
@@ -107,6 +109,7 @@ app.post('/', (req, res) => {
           
           // Combining all tables into a single object
           
+
           let combinedResults = [ freeMeals, freeGroceries, safeRestVillages, freeProduce, safeYearRoundShelters, freeWifi, healthCare, volunteer, client_data] 
 
           
@@ -117,6 +120,7 @@ app.post('/', (req, res) => {
               });
             });
           });
+
 
          });
         });

@@ -1,6 +1,4 @@
 
-/* this method points a point in the map that corresponds to the sql address*/ 
-
 const customIcon1 = 'images/food.png';
 const customIcon2 = 'images/groceries.png';
 const customIcon3 = 'images/shelter.png';
@@ -8,7 +6,9 @@ const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
 
+
 const customIcon7 = 'images/volunteer.png'; //change this icon its hard to see on the map 
+
 
 
 function initAutocomplete() {
@@ -54,13 +54,12 @@ function initAutocomplete() {
 
         for (let i = 0; i < data.length; i++) //iterate through entire database 
         {
-
+            if (data[i] != null) { //error handling for unit tests
                 for (let j = 0; j < data[i].length; j++) //iterate through each table
                 {
 
                 var address = JSON.stringify(data[i][j].location); //get current location from table 
                 var name = JSON.stringify(data[i][j].name); //get current name from table
-
 
                 if (i != 8)
                 {
@@ -69,6 +68,7 @@ function initAutocomplete() {
 
 
                 }
+	    }
         } 
 
         })
@@ -228,3 +228,4 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                 
         });
 }
+
