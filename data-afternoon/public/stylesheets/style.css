@@ -521,7 +521,7 @@ p2{
 
 #map{
   height: 500px; /* Set map height */
-  width: 75%; /* Set map width to full container width */
+  width: 70%; /* Set map width to full container width */
   margin-top: 25px;
   font-family: 'Poppins', sans-serif;
 }
@@ -542,7 +542,9 @@ p2{
 }
 
 #nearby {
-  width: 20%;
+  width: 28%;
+  height: 100%;
   padding: 10px;
   float: right;
+  border: 1px solid #000;
 }

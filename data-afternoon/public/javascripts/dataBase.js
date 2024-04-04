@@ -28,9 +28,11 @@ function distance_miles(item) {
 
 function addToNear(item) {
         const near = document.getElementById('near');
-        const para = document.createTextNode(item.title + "\n");
+        const div = document.createElement('div');
+        const para = document.createTextNode(item.title );
+        div.appendChild(para);
+        near.appendChild(div); 
 
-        near.appendChild(para);
 }
 
 
