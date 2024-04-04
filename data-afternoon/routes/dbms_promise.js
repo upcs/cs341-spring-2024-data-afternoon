@@ -13,16 +13,16 @@ exports.version = '0.0.1';
 var mysql = require('mysql'),
     async = require('async');
 
-// var host = "35.247.8.163";    //from GCloud instance 
-// var database = "UNHOUSED";  //database name
-// var user = "root";         //username 
-// var password = "'p:YK<>1p\\B{t8;X";  //password 
-
-
-var host = "localhost";    //from GCloud instance 
+var host = "35.247.8.163";    //from GCloud instance 
 var database = "UNHOUSED";  //database name
 var user = "root";         //username 
-var password = "Hell0W0rld!";  //password 
+var password = "'p:YK<>1p\\B{t8;X";  //password 
+
+
+// var host = "localhost";    //from GCloud instance 
+// var database = "UNHOUSED";  //database name
+// var user = "root";         //username 
+// var password = "Hell0W0rld!";  //password 
 
 
 //'p:YK<>1p\B{t8;X
