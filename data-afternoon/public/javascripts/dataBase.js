@@ -28,9 +28,11 @@ function distance_miles(item) {
 
 function addToNear(item) {
         const near = document.getElementById('near');
-        const para = document.createTextNode(item.title + "\n");
+        const div = document.createElement('div');
+        const para = document.createTextNode(item.title );
+        div.appendChild(para);
+        near.appendChild(div); 
 
-        near.appendChild(para);
 }
 
 
@@ -55,6 +57,7 @@ function initAutocomplete() {
                 {name: "Rest Places", iconUrl: customIcon3},
                 {name: "Free Healthcare", iconUrl: customIcon4},
                 {name: "Free Wifi", iconUrl: customIcon5},
+                {name: "Volunteer", iconUrl: customIcon7},
                 {name: "You", iconUrl: customIcon6}
                 // Add more legend items here
         ];
