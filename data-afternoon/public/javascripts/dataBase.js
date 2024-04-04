@@ -8,19 +8,28 @@ const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
 
-// var myMarkers = [];
-
-// function distance_miles(marker1, marker2) {
-//         var R = 3958.5; //the radius of the earth
-//         var rlat1 = marker1.position.lat() * (Math.PI/180); //make the degrees radians
-//         var rlat2 = marker2.position.lat() * (Math.PI/180); //do the same thing marker 2
-//         var difference_lat = rlat2-rlat1;
-//         var difference_lng = (marker2.position.lng() - marker1.position.lng()) * (Math.PI/180);
+var myMarkers = [];
+var you;
+var nearby = [];
+function distance_miles(item) {
+        var R = 3958.5; //the radius of the earth
+        var rlat1 = item.position.lat() * (Math.PI/180); //make the degrees radians
+        var rlat2 = you.position.lat() * (Math.PI/180); //do the same thing marker 2
+        var difference_lat = rlat2-rlat1;
+        var difference_lng = (you.position.lng() - item.position.lng()) * (Math.PI/180);
          
-//         var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difference_lat/2)*Math.sin(difference_lat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difference_lng/2)*Math.sin(difference_lng/2)));
-//         return distance
-// }
+        var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difference_lat/2)*Math.sin(difference_lat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difference_lng/2)*Math.sin(difference_lng/2)));
+        if (distance < 1) {
+                nearby.push(item);
+        }
+}
 
+function addToNear(item) {
+        const near = document.getElementById('near');
+        const para = document.createTextNode(item.title + "\n");
+
+        near.appendChild(para);
+}
 
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
@@ -117,10 +126,10 @@ function initAutocomplete() {
               anchor: new google.maps.Point(17, 34),
               scaledSize: new google.maps.Size(25, 25),
             };
-      
+
             // Create a marker for each place.
             markers.push(
-              new google.maps.Marker({
+              you = new google.maps.Marker({
                 map,
                 icon,
                 title: place.name,
@@ -132,6 +141,10 @@ function initAutocomplete() {
             map.setZoom(14);
             map.setCenter(place.geometry.location);
 
+            nearby = [];
+            myMarkers.forEach(distance_miles);
+
+            nearby.forEach(addToNear);
             
 
             if (place.geometry.viewport) {
@@ -221,7 +234,7 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                         });
 
                         //array of all markers??
-                        //myMarkers.push(marker);
+                        myMarkers.push(marker);
 
                         // Add a click listener to the marker to open the InfoWindow
                         marker.addListener('click', function() {
