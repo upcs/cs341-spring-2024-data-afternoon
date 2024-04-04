@@ -8,6 +8,9 @@ const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
 
+const customIcon7 = 'images/volunteer.png'; //change this icon its hard to see on the map 
+
+
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
         $.post("http://localhost:3000/", function(data, status) {
@@ -58,7 +61,12 @@ function initAutocomplete() {
                 var address = JSON.stringify(data[i][j].location); //get current location from table 
                 var name = JSON.stringify(data[i][j].name); //get current name from table
 
-                geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
+
+                if (i != 8)
+                {
+                        geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
+                }
+
 
                 }
         } 
@@ -181,6 +189,12 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                                 iconUrl = customIcon2;
                             } else if (tableNum === 5) {
                                 iconUrl = customIcon5;
+
+                            } else if (tableNum == 6) {
+                                iconUrl = customIcon4;
+                            } else if (tableNum == 7) {
+                                iconUrl = customIcon7;
+
                             } else {
                                 iconUrl = customIcon3;
                             }
