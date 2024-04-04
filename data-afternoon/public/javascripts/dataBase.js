@@ -51,16 +51,18 @@ function initAutocomplete() {
 
         for (let i = 0; i < data.length; i++) //iterate through entire database 
         {
+		if (data[i] != null) { //error handling for unit tests
 
-                for (let j = 0; j < data[i].length; j++) //iterate through each table
-                {
+                	for (let j = 0; j < data[i].length; j++) //iterate through each table
+                	{
 
-                var address = JSON.stringify(data[i][j].location); //get current location from table 
-                var name = JSON.stringify(data[i][j].name); //get current name from table
+                	var address = JSON.stringify(data[i][j].location); //get current location from table 
+               		var name = JSON.stringify(data[i][j].name); //get current name from table
 
-                geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
+                	geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
 
-                }
+                	}
+		} 
         } 
 
         })
@@ -214,3 +216,5 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                 
         });
 }
+
+module.exports = { initAutocomplete, findAddress, geocodeAddress };
