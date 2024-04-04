@@ -88,6 +88,9 @@ describe('handleSearch function', () => {
 
 // Test for toggleLanguage
 describe('toggleLanguage function: English to Spanish', () => {
+
+describe('toggleLanguage function', () => {
+>>>>>>> origin/Form_and_LocalDatabase
   beforeEach(() => {
     // Reset DOM and localStorage before each test
     document.body.innerHTML = '';

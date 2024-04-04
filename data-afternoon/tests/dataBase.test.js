@@ -5,8 +5,8 @@
 const $ = require('jquery');
 global.$ = $; // Ensure jQuery is available globally
 
+// Enhanced Mocking for Google Maps API
 class MockGoogleMaps {
-  // Expanded to fully mock Google Maps functionalities
   constructor() {
     this.setCenter = jest.fn();
     this.Marker = jest.fn().mockImplementation(() => ({

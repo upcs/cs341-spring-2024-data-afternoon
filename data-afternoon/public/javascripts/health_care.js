@@ -7,9 +7,10 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
     let htmlContent = '<h1>Health Care Services</h1><div class="service-container">';
 
     // Iterate over each shelter in the safeYearRoundShelters array
-    combinedResults[0].forEach(shelter => {
+    combinedResults[6].forEach(shelter => {
     // Append a list item with the shelter's name and location to the HTML content
-    htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}</div>`;
+    htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}
+    <br><strong>Contact Info:</strong> ${shelter.contact_info}<br><strong>Service:</strong> ${shelter.service}</div>`;
 });
 
     // Close the unordered list tag

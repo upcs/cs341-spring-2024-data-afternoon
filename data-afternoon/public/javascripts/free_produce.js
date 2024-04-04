@@ -9,7 +9,9 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
     // Iterate over each shelter in the safeYearRoundShelters array
     combinedResults[3].forEach(shelter => {
     // Append a list item with the shelter's name and location to the HTML content
-    htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}</div>`;
+
+    htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}
+    <br><strong>Open Hours:</strong> ${shelter.open_hours}</div>`;
 });
 
     // Close the unordered list tag
