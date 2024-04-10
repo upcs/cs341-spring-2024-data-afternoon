@@ -289,11 +289,11 @@
 
 /* banner search bar */
 .container {
-  width: 550px;
-  background: #090f21b8;
+  width: 850px;
+  background: #090f216d;
   padding: 0%;
   margin: 0 auto;
-  margin-top: 280px;
+  margin-top: 250px;
   border-radius: 10px;
 }
 
@@ -304,11 +304,9 @@
   justify-content: flex-start;
   align-content: stretch;
   align-items: flex-start;
-  
 }
 
 input {
-  
   min-width: 20px;
   padding: 8px;
   margin: 0 4px 0 0;
@@ -346,8 +344,8 @@ p2{
   color: white;
   font-size: 25px;
   font-family: 'Poppins', sans-serif;
-  
-  /* word-spacing: 230px; */
+  padding-left: 18%;
+  word-spacing: 230px;
   font-weight: bold;
 }
 
@@ -536,15 +534,6 @@ p2{
 /*  background-color: #fff; /* Set background to white */
 }
 
-#pac-input {
-  font-family: 'Poppins', sans-serif;
-  min-width: 200px; 
-  padding: 8px;
-  margin-right: 10px; 
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-=======
 .legend-icon {
   vertical-align: middle; /* Align icon with text vertically */
   height: 40px; /* Icon height */
@@ -567,4 +556,3 @@ p2{
   margin-left: auto;
   margin-right: auto;
 }
-
