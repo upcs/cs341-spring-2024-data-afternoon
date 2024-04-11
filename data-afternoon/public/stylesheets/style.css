@@ -556,3 +556,8 @@ p2{
   margin-left: auto;
   margin-right: auto;
 }
+
+#miles {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+}
