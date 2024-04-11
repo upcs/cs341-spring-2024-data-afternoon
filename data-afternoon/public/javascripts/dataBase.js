@@ -5,6 +5,8 @@ const customIcon3 = 'images/shelter.png';
 const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
+const localurl = "http://localhost:3000/"
+const deployrul = "https://unhoused-414004.uw.r.appspot.com/"
 
 
 
@@ -39,7 +41,7 @@ function addToNear(item) {
 
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
-        $.post("http://localhost:3000/", function(data, status) {
+        $.post(deployrul, function(data, status) {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
 
