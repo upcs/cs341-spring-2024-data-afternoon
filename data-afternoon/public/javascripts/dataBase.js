@@ -19,9 +19,11 @@ function distance_miles(item) {
         var rlat2 = you.position.lat() * (Math.PI/180); //do the same thing marker 2
         var difference_lat = rlat2-rlat1;
         var difference_lng = (you.position.lng() - item.position.lng()) * (Math.PI/180);
-         
+        
+        var selected_dis = document.getElementById("miles").value;
+
         var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difference_lat/2)*Math.sin(difference_lat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difference_lng/2)*Math.sin(difference_lng/2)));
-        if (distance < 1) {
+        if (distance < selected_dis) {
                 nearby.push(item);
         }
 }
