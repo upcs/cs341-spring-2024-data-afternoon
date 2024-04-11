@@ -34,7 +34,6 @@ function addToNear(item) {
         const para = document.createTextNode(item.title );
         div.appendChild(para);
         near.appendChild(div); 
-
 }
 
 
@@ -157,6 +156,8 @@ function initAutocomplete() {
             nearby = [];
             myMarkers.forEach(distance_miles);
 
+            const near = document.getElementById('near');
+            near.innerHTML = "";
             nearby.forEach(addToNear);
             
 
