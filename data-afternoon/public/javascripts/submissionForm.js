@@ -1,3 +1,6 @@
+const localurl = "http://localhost:3000/"
+const deployrul = "https://unhoused-414004.uw.r.appspot.com/"
+
 $(document).ready(function() {
     updatePendingRequests();
 });
@@ -8,7 +11,7 @@ function submitFunction()
     var address = document.getElementById("address").value; //get the address from the text box 
 
         /* send this data to the server (database) */
-        $.post("http://localhost:3000/newClientData", { Name: name, Address: address}, function(response) { 
+        $.post(deployrul, { Name: name, Address: address}, function(response) { 
             if (response && response.success) {
                 updatePendingRequests();
             } else {
@@ -19,7 +22,7 @@ function submitFunction()
 }         
  
 
-$.post("http://localhost:3000/", function(combinedResults, status) {
+$.post(deployrul, function(combinedResults, status) {
     // Code to handle the new data...
     // This might involve adding more markers to the map,
     // updating UI elements, or processing the data in other ways.
@@ -42,7 +45,7 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
 });
 
 function updatePendingRequests() {
-    $.post("http://localhost:3000/", function(combinedResults, status) {
+    $.post(deployrul, function(combinedResults, status) {
         let htmlContent = '<h1> Pending Requests </h1><div class="service-container">';
         combinedResults[8].forEach(shelter => {
             htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}</div>`;
