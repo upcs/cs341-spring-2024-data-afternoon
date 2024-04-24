@@ -15,7 +15,12 @@
   <input id="pac-input" class="controls" type="text" placeholder="Search Box"/>
 
   <aside id="nearby">
-    <h2 class="en-tab">Within 5 Miles:</h2>
+    <h2 class="en-tab">Within <select name="miles" id="miles">
+      <option value="1">1</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      </select> Miles:</h2>
     <h2 class="es-tab" style="display: none;">Cerca:</h2>
     
     <div id="near"></div>

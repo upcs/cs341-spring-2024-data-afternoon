@@ -5,6 +5,8 @@ const customIcon3 = 'images/shelter.png';
 const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
+const localurl = "http://localhost:3000/"
+const deployrul = "https://unhoused-414004.uw.r.appspot.com/"
 
 
 
@@ -19,9 +21,11 @@ function distance_miles(item) {
         var rlat2 = you.position.lat() * (Math.PI/180); //do the same thing marker 2
         var difference_lat = rlat2-rlat1;
         var difference_lng = (you.position.lng() - item.position.lng()) * (Math.PI/180);
-         
+        
+        var selected_dis = document.getElementById("miles").value;
+
         var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difference_lat/2)*Math.sin(difference_lat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difference_lng/2)*Math.sin(difference_lng/2)));
-        if (distance < 1) {
+        if (distance < selected_dis) {
                 nearby.push(item);
         }
 }
@@ -32,13 +36,13 @@ function addToNear(item) {
         const para = document.createTextNode(item.title );
         div.appendChild(para);
         near.appendChild(div); 
-
 }
 
 
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
-        $.post("http://localhost:3000/", function(data, status) {
+      //  $.post(deployrul, function(data, status) {
+        $.post(localurl, function(data, status) {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
 
@@ -155,6 +159,8 @@ function initAutocomplete() {
             nearby = [];
             myMarkers.forEach(distance_miles);
 
+            const near = document.getElementById('near');
+            near.innerHTML = "";
             nearby.forEach(addToNear);
             
 

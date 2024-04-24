@@ -1,25 +1,67 @@
+const localurl = "http://localhost:3000/"
+const deployrul = "https://unhoused-414004.uw.r.appspot.com/"
+
+
 $(document).ready(function() {
     updatePendingRequests();
 });
-/* this function gets data from the client */
-function submitFunction() 
-{
-    var name = document.getElementById("name").value; //get the name from the text box 
-    var address = document.getElementById("address").value; //get the address from the text box 
 
-        /* send this data to the server (database) */
-        $.post("http://localhost:3000/newClientData", { Name: name, Address: address}, function(response) { 
-            if (response && response.success) {
-                updatePendingRequests();
-            } else {
-                // Handle the error
-                console.error("Error submitting data");
-            }
-        })
-}         
+
+function submitFunction() {
+    var name = document.getElementById("name").value; // Get the name from the text box 
+    var address = document.getElementById("address").value; // Get the address from the text box 
+
+    //var sumbitButton = document.getElementById('submitButton');
+   // restoreCooldown(sumbitButton);
+   // addCooldown(sumbitButton, 86400000); //user may only submit one response per day (86400000 milisec = 24 hours)
+    
+    $.post('http://localhost:3000/check-inappropriate', { name: name, address: address}, function(response) {
+        //go to check-inappropraite endpoint in check-inappropriate.js to validate name and address
+        alert(response);
+    });
+
+}
+
+// Function to disable and enable the button based on cooldown
+function addCooldown(button, cooldownTime) {
+    const cooldownKey = 'buttonCooldown';
+
+    // Disable the button
+    button.disabled = true;
+
+    // Record the end time of the cooldown in localStorage
+    const cooldownEnd = new Date().getTime() + cooldownTime;
+    localStorage.setItem(cooldownKey, cooldownEnd);
+
+    // After cooldownTime milliseconds, enable the button again
+    setTimeout(() => {
+        button.disabled = false;
+        localStorage.removeItem(cooldownKey); // Clear cooldown from localStorage
+    }, cooldownTime);
+}
+
+// Function to restore cooldown state when page loads
+function restoreCooldown(button) {
+    const cooldownKey = 'buttonCooldown';
+    const now = new Date().getTime();
+    const storedCooldownEnd = parseInt(localStorage.getItem(cooldownKey), 10);
+
+    if (storedCooldownEnd && storedCooldownEnd > now) {
+        // Calculate the remaining cooldown time
+        const remainingTime = storedCooldownEnd - now;
+
+        // Disable button and set timeout to re-enable it after remaining time
+        button.disabled = true;
+        setTimeout(() => {
+            button.disabled = false;
+            localStorage.removeItem(cooldownKey); // Clear cooldown from localStorage
+        }, remainingTime);
+    }
+}
  
 
-$.post("http://localhost:3000/", function(combinedResults, status) {
+//$.post(deployrul, function(combinedResults, status) {
+    $.post(localurl, function(combinedResults, status) {
     // Code to handle the new data...
     // This might involve adding more markers to the map,
     // updating UI elements, or processing the data in other ways.
@@ -42,7 +84,8 @@ $.post("http://localhost:3000/", function(combinedResults, status) {
 });
 
 function updatePendingRequests() {
-    $.post("http://localhost:3000/", function(combinedResults, status) {
+  //  $.post(deployrul, function(combinedResults, status) {
+    $.post(localurl, function(combinedResults, status) {  
         let htmlContent = '<h1> Pending Requests </h1><div class="service-container">';
         combinedResults[8].forEach(shelter => {
             htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}</div>`;
