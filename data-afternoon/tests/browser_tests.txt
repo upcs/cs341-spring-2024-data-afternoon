@@ -1,0 +1,31 @@
+On Google Chrome:
+ - Home page looks normal, Welcome and Enjoy Free Resources and About Us shows up
+ - All services tab show up 
+ - Map shows up with all pins and search bar works 
+ - Guide page looks normal 
+ - Form page looks nomal with pending request and submit resources showing up
+ - Language translation works (but still has known bugs with refreshing)
+ - Overall, everything looks like it works as expected on chrome
+
+On Mircosoft Edge:
+ - Home page looks normal, Welcome and Enjoy Free Resources and About Us shows up
+ - All services tab show up 
+ - Map shows up with all pins and search bar works 
+ - Guide page looks normal 
+ - Form page looks nomal with pending request and submit resources showing up
+ - Language translation kinda buggy than usual? needs multiple refresh
+ - Overall, everything looks like it works as expected on chrome
+
+On Safari:
+ - Home page looks normal, Welcome and Enjoy Free Resources and About Us shows up
+ - All services tab show up 
+ - Map shows up with all pins and search bar works 
+ - Guide page looks normal 
+ - Form page looks nomal with pending request and submit resources showing up
+ - Language translation works (but still has known bugs with refreshing)
+ - Overall, everything looks like it works as expected on safari
+
+On Moblie Broswer (chrome):
+ - Cannot change language
+ - Services tabs get cut off when they are displayed on hover
+ - Have to close banner tab instead of auto close on click

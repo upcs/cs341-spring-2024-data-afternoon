@@ -72,3 +72,51 @@ describe('handleSearch function', () => {
     expect(global.alert).toHaveBeenCalledWith('Page not found.');
   });
 });
+<<<<<<< Updated upstream
+=======
+
+//-- Test functions for Sprint 3 --//
+
+// Test for toggleLanguage
+describe('toggleLanguage function: English to Spanish', () => {
+  beforeEach(() => {
+    // Reset DOM and localStorage before each test
+    document.body.innerHTML = '';
+    localStorage.clear();
+  });
+
+  it('should toggle language to Spanish and update localStorage', () => {
+    document.body.innerHTML = `
+      <div class="en-tab" style="display: block;"></div>
+      <div class="es-tab" style="display: none;"></div>
+    `;
+
+    toggleLanguage('es');
+
+    expect(document.querySelector('.en-tab').style.display).toBe('none');
+    expect(document.querySelector('.es-tab').style.display).toBe('block');
+    expect(localStorage.getItem('selectedLanguage')).toBe('es');
+  });
+});
+
+describe('toggleLanguage function: Spanish to English', () => {
+  beforeEach(() => {
+    // Reset DOM and localStorage before each test
+    document.body.innerHTML = '';
+    localStorage.clear();
+  });
+
+  it('should toggle language to English and update localStorage', () => {
+    document.body.innerHTML = `
+      <div class="es-tab" style="display: block;"></div>
+      <div class="en-tab" style="display: none;"></div>
+    `;
+
+    toggleLanguage('en');
+    
+    expect(document.querySelector('.es-tab').style.display).toBe('none');
+    expect(document.querySelector('.en-tab').style.display).toBe('block');
+    expect(localStorage.getItem('selectedLanguage')).toBe('en');
+  });
+});
+>>>>>>> Stashed changes

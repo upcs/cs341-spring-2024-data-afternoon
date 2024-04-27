@@ -1,0 +1,54 @@
+Website UI Test:
+Test Scenario: Validate the appearance and functionality of the different pages.
+Test Steps:
+ - Load the homepage of the application.
+ - Verify the presence of navigation links/menu items.
+ - Check the layout of content sections (e.g., map, search bar, texts, buttons).
+What happened:
+ - all tabs on the navigation bar shows and takes you to the right page.
+ - each service in the service tab displays the appropriate data (name, address, website) from the sql.
+ - Language change to Spanish translates most texts on the website. 
+Issues:
+ - Spanish language change is slightly buggy, sometimes need to refresh multiple times to get the correct language selected display properly.
+ - When changing to the Spanish language change, some of the UI layout looks different from the original English version.
+ - When on a different tab other than the home page, as soon as you refresh the page, it automatically takes you back to the home page.
+
+Search Functionality UI Test:
+Test Scenario: Ensure the search feature functions correctly and displays results appropriately.
+Test Steps:
+ - Enter a search query into the search bar.
+ - Verify that relevant results are displayed.
+ - Check if filtering and sorting options work as expected.
+What happened:
+ - Search bar on the top navigation bar redirects you to the searched item. (e.g. you search "map", it redirects you to the map page.
+Issues:
+ - The search bar on the navigation only accepts the inputs for the navigation bar. It doesn't work with addresses.
+ - The search bar on 
+
+Map Functionality Test:
+Test Scenario: Load the page containing the map.
+ - Check if the map is properly displayed and centered on the expected location.
+ - Verify the functionality of zoom in/out buttons or pinch-to-zoom gestures.
+ - Search for a specific location using the search bar or search functionality.
+ - Confirm that the map updates to display the searched location accurately.
+ - Confirm maps displays accurate icons for each data points
+What happened:
+ - Map displays once clicked on the map tab on the navigation bar.
+ - Displays all icons appropriate to the different service type.
+ - When clicking on the service icon, it zooms in the location and gives you the name and address of the icon.
+ - The map can zoom in and out, able to pan and move around.
+ - When you search a specific address, it takes you to it on the map.
+Issues:
+ - The map doesn't translate to Spanish once selected on the language change.
+ - No way to filter specific services on the map.
+ - The map displays unrelated icons because we are using Google maps API (it shows schools, parks etc.)
+
+Submission Box Functionality Test:
+Test Steps:
+ - Submit a name and location for a resoruce
+ - shows the request is pending in the form tab
+What happened:
+ - When you submit a name and adress, it sends the info one of the tables in the database.
+ - Rerun npm to have the new added resource into the "pending requests" box.
+Issue:
+ - You submit an resoruce and refresh, it doesn't show up in the pending request box unless you redo "npm start".

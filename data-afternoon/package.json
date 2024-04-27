@@ -8,7 +8,13 @@
   },
   "dependencies": {
     "async": "^3.2.5",
+    "axios": "^1.6.8",
     "cookie-parser": "~1.4.4",
+<<<<<<< Updated upstream
+=======
+    "cors": "^2.8.5",
+    "coverage": "^0.4.1",
+>>>>>>> Stashed changes
     "debug": "~2.6.9",
     "express": "^4.18.3",
     "http-errors": "~1.6.3",

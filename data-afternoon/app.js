@@ -3,9 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
+const axios = require('axios');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+<<<<<<< Updated upstream
+=======
+var newClientData = require('./routes/newClientData');
+var checkAppropriate = require('./routes/check-inappropriate');
+
+>>>>>>> Stashed changes
 
 exports.dbquery = require("./routes/dbms_promise.js");
 const promise = exports.dbquery("SELECT * FROM FREEMEALS");
@@ -13,6 +21,14 @@ const promise2 = exports.dbquery("SELECT * FROM FREEGROCERIES");
 const promise3 = exports.dbquery("SELECT * FROM SAFERESTVILLAGES");
 const promise4 = exports.dbquery("SELECT * FROM FREE_PRODUCE");
 const promise5 = exports.dbquery("SELECT * FROM SAFE_YEAR_ROUND_SHELTERS");
+<<<<<<< Updated upstream
+=======
+const promise6 = exports.dbquery("SELECT * FROM FREE_WIFI");
+
+const promise7 = exports.dbquery("SELECT * FROM HEALTHCARE");
+const promise8 = exports.dbquery("SELECT * FROM VOLUNTEER");
+const promise9 = exports.dbquery("SELECT * FROM CLIENT_DATA");
+>>>>>>> Stashed changes
 // "'p:YK<>1p\B{t8;X   (database passcode)
 
 var app = express();
@@ -29,6 +45,15 @@ app.post('/', (req, res) => {
     promise3.then(result3 =>  {
       promise4.then(result4 =>  {
         promise5.then(result5 =>  {
+<<<<<<< Updated upstream
+=======
+          promise6.then(result6 => {
+
+            promise7.then(result7 => {
+              promise8.then(result8 => {
+                promise9.then(result9 => {
+
+>>>>>>> Stashed changes
 
           //get free meals data
           let freeMeals = result.map(freeMealsTable => ({
@@ -57,17 +82,68 @@ app.post('/', (req, res) => {
           //get safe year round shelters data
           let safeYearRoundShelters = result5.map(safeYearTable => ({
             location: safeYearTable.LOCATION,
+<<<<<<< Updated upstream
             name: safeYearTable.NAME
+=======
+            name: safeYearTable.NAME,
+            open_hours: safeYearTable.OPEN_HOURS
           }));
+
+          //get wifi  data
+          let freeWifi = result6.map(freeWifiTable => ({
+            location: freeWifiTable.LOCATION,
+
+            name: freeWifiTable.NAME,
+            contact_info: freeWifiTable.CONTACT_INFO
+          }));
+
+          //get healthcare  data
+          let healthCare = result7.map(healthCareTable => ({
+            location: healthCareTable.LOCATION,
+            name: healthCareTable.NAME,
+            contact_info: healthCareTable.CONTACT_INFO,
+            service: healthCareTable.SERVICE
+          }));
+
+          let volunteer = result8.map(volunteerTable => ({
+            location: volunteerTable.LOCATION,
+            name: volunteerTable.NAME,
+            cause_area: volunteerTable.CAUSE_AREA,
+            website_address: volunteerTable.WEBSITE_ADDRESS
+>>>>>>> Stashed changes
+          }));
+
+          let client_data = result9.map(clientTable => ({
+            location: clientTable.LOCATION,
+            name: clientTable.NAME,
+          }));
+
+
+          
           
           // Combining all tables into a single object
           
+<<<<<<< Updated upstream
           let combinedResults = [ freeMeals, freeGroceries, safeRestVillages, freeProduce, safeYearRoundShelters] 
+=======
+
+          let combinedResults = [ freeMeals, freeGroceries, safeRestVillages, freeProduce, safeYearRoundShelters, freeWifi, healthCare, volunteer, client_data] 
+
+>>>>>>> Stashed changes
           
           
           // Sending the combined results as a pretty-printed JSON string
           res.send(combinedResults);
 
+<<<<<<< Updated upstream
+=======
+              });
+            });
+          });
+
+
+         });
+>>>>>>> Stashed changes
         });
       });
 
@@ -85,8 +161,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cors());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+<<<<<<< Updated upstream
+=======
+app.use('/', newClientData); //client data to database 
+//app.use('/api', checkAppropriate);
+app.use('/', checkAppropriate);
+>>>>>>> Stashed changes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -94,6 +178,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -103,5 +188,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

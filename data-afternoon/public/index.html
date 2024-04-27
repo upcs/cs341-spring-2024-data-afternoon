@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="stylesheets\style.css">
     
     <script src="javascripts/unhoused.js"></script>
+<<<<<<< Updated upstream
     <script src="javascripts/navigation.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initMap" async defer></script> 
     <script src="javascripts/currentLocation.js"></script>
 
+=======
+    <script src="javascripts/dataBase.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk7Hek3Se9CeoR0loLm8dIoFf9l0EZW0Y&callback=initAutocomplete&libraries=places&v=weekly" defer async></script>
+>>>>>>> Stashed changes
 </head>
 <body>
   <!-- Navigation -->
@@ -23,12 +28,58 @@
         <div class="icon cancel-btn">
           <i class="fas fa-times"></i>
         </div>
+<<<<<<< Updated upstream
         <li><a href="home.html" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
         <li><a href="services.html" target="iframe" onclick=changeAddInfoBack()>Services</a></li>
         <li><a href="volunteer.html" target="iframe" onclick=changeAddInfoBack()>Volunteer</a></li>
         <li><a href="https://www.google.com/maps/d/u/0/embed?mid=1BLVgiQyHdq8C0BkwPmqlToYT_t_ox6c&ehbc=2E312F&noprof=1"
         target="iframe" onclick=addInfoMap()>Map</a></li> 
         <li><a href="guide.html" target="iframe" onclick=changeAddInfoBack()>Guide</a></li>
+=======
+
+        <li><a href="home.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
+
+        <li class="dropdown">
+          <a href="service.html" target="iframe" onmouseover="showDropdown()" onmouseout="hideDropdown()" class="en-tab">Services</a>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="service1.html" target="iframe" class="en-tab">Year-Round Shelters</a>
+            <a href="service2.html" target="iframe" class="en-tab">Healthcare Resources</a>
+            <a href="service3.html" target="iframe" class="en-tab">Rest Villages</a>
+            <a href="service4.html" target="iframe" class="en-tab">Free Produce</a>
+            <a href="service5.html" target="iframe" class="en-tab">Free Groceries</a>
+            <a href="service6.html" target="iframe" class="en-tab">Free Meals</a>
+            <a href="service7.html" target="iframe" class="en-tab">Free Wifi</a>
+            <a href="service8.html" target="iframe" class="en-tab">Libraries</a>
+            <a href="service9.html" target="iframe" class="en-tab">Volunteer</a>
+          </div>
+        </li>
+
+
+        <li><a href="map.html" class="en-tab"
+          target="iframe" onclick=addInfoMap()>Map</a></li>
+  
+        <li><a href="form.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Form</a></li>
+
+
+
+        <li><a href="home.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Inicio</a></li>
+
+        <li class="dropdown">
+          <a href="service.html" target="iframe" onmouseover="showDropdown()" onmouseout="hideDropdown()" class="es-tab" style="display: none;">Servicios</a>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="service1.html" target="iframe" class="es-tab" style="display: none;">Refugios durante todo el año</a>
+            <a href="service2.html" target="iframe" class="es-tab" style="display: none;">Recursos de cuidado a la salud</a>
+            <a href="service3.html" target="iframe" class="es-tab" style="display: none;">Pueblos de descanso</a>
+            <a href="service4.html" target="iframe" class="es-tab" style="display: none;">Productos gratis</a>
+            <a href="service5.html" target="iframe" class="es-tab" style="display: none;">Comestibles gratis</a>
+          </div>
+        </li>
+
+
+        <li><a href="map.html" class="es-tab" style="display: none;"
+          target="iframe" onclick=addInfoMap()>Mapa</a></li>
+
+>>>>>>> Stashed changes
         <li>
         <input type="test" id="searchInput" placeholder="Search">
         <button id="searchButton" onclick="handleSearch()">Search</button>
@@ -112,6 +163,11 @@
       style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
       name="iframe" id="iframe"></iframe>
     </aside>
+<<<<<<< Updated upstream
     
+=======
+    <img src="images/temp_ad.png" alt="ad" id="ad"> 
+
+>>>>>>> Stashed changes
 </body>
 </html>

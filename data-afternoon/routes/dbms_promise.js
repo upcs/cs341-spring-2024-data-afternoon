@@ -17,6 +17,22 @@ var host = "35.247.8.163";    //from GCloud instance
 var database = "UNHOUSED";  //database name
 var user = "root";         //username 
 var password = "'p:YK<>1p\\B{t8;X";  //password 
+<<<<<<< Updated upstream
+=======
+*/
+
+/*
+var host = "35.247.8.163";    //from GCloud instance 
+var database = "UNHOUSED";  //database name
+var user = "root";         //username 
+var password = "'p:YK<>1p\\B{t8;X";  //password 
+*/
+
+var host = "localhost";    //from GCloud instance 
+var database = "UNHOUSED";  //database name
+var user = "root";         //username 
+var password = "99u~HJ<Plh<+kM_";  //password 
+>>>>>>> Stashed changes
 
 
 
