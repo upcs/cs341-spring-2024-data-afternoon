@@ -561,3 +561,25 @@ p2{
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
 }
+
+/* CSS styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+     }
+ .en-tab {
+    display: block;
+            }
+   .es-tab {
+   display: none;
+            }
+           h2 {
+                margin-top: 20px;
+            }
+            h3 {
+                margin-top: 15px;
+            }
+            p {
+                margin-top: 5px;
+            }
