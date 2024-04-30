@@ -89,39 +89,27 @@
 </head>
 <body>
 
-
-    <form id="form_id">
-        <h2 class="en-tab">Submit Resources</h2>
-        <h2 class="es-tab" style="display: none;">Enviar Recursos</h2>
-        <div class="input-group">
-            <label for="name" class="en-tab">Name</label>
-            <label for="name" class="es-tab" style="display: none;">Nombre</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="input-group">
-            <label for="address" class="en-tab">Address</label>
-            <label for="address" class="es-tab" style="display: none;">Dirección</label>
-            <input type="text" id="address" name="address" required>
-        </div>
-        <button type="submit" id="submitButton" class="en-tab" onclick="submitFunction()">Submit</button>
-        <button type="submit" id="submitButton" class="es-tab" style="display: none;" onclick="submitFunction()">Enviar</button>
-    </form>
-    
-    <script src="javascripts/submissionForm.js"></script>
-    
-    <div id="clientDataContainer">
-        <p id="submissionForm" class="en-tab"></p>
-        <p id="submissionForm-es" class="es-tab" style="display: none;"></p>
+<form id = "form_id">
+    <h2>Submit Resources</h2>
+    <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
     </div>
-    
-    <script src="javascripts/unhoused.js"></script>
-    <script>
-        window.onload = function() {
-          // Retrieve language setting from localStorage or URL, default to English ('en')
-          var lang = new URL(window.location.href).searchParams.get('lang') || localStorage.getItem('selectedLanguage') || 'en';
-          toggleLanguage(lang);
-        };
-    </script>
+    <div class="input-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required>
+    </div>
+    <button type="submit"id="submitButton"onclick="submitFunction()">Submit</button> <!-- when the user clicks we get their data in submissionForm.js-->
+</form>
+
+
+<script src="javascripts/submissionForm.js"></script>
+
+<!--
+<div id="clientDataContainer">
+<p id ="submissionForm"></p>
+</div>
+-->
 
 </body>
 </html>

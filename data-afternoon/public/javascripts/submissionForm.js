@@ -11,13 +11,14 @@ function submitFunction() {
     var name = document.getElementById("name").value; // Get the name from the text box 
     var address = document.getElementById("address").value; // Get the address from the text box 
 
-    //var sumbitButton = document.getElementById('submitButton');
-   // restoreCooldown(sumbitButton);
-   // addCooldown(sumbitButton, 86400000); //user may only submit one response per day (86400000 milisec = 24 hours)
+    var sumbitButton = document.getElementById('submitButton');
+    
+    restoreCooldown(sumbitButton);
+    addCooldown(sumbitButton, 86400000); //user may only submit one response per day (86400000 milisec = 24 hours)
     
     $.post('http://localhost:3000/check-inappropriate', { name: name, address: address}, function(response) {
         //go to check-inappropraite endpoint in check-inappropriate.js to validate name and address
-        alert(response);
+
     });
 
 }
@@ -58,8 +59,10 @@ function restoreCooldown(button) {
         }, remainingTime);
     }
 }
- 
 
+
+ 
+/*
 //$.post(deployrul, function(combinedResults, status) {
     $.post(localurl, function(combinedResults, status) {
     // Code to handle the new data...
@@ -94,5 +97,5 @@ function updatePendingRequests() {
         document.getElementById("submissionForm").innerHTML = htmlContent;
     });
 }
-
-module.exports = { submitFunction, updatePendingRequests };
+*/
+//module.exports = { submitFunction, updatePendingRequests };
