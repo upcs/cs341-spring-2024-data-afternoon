@@ -18,7 +18,13 @@ function submitFunction() {
     
     $.post('http://localhost:3000/check-inappropriate', { name: name, address: address}, function(response) {
         //go to check-inappropraite endpoint in check-inappropriate.js to validate name and address
-
+        if (response.success) {
+            displaySuccess('Submission was successful!');
+        } else {
+            displayError('Failed to submit: ' + response.error);
+        }
+    }).fail(function() {
+        displayError('Failed to connect to the server.');
     });
 
 }
@@ -58,6 +64,22 @@ function restoreCooldown(button) {
             localStorage.removeItem(cooldownKey); // Clear cooldown from localStorage
         }, remainingTime);
     }
+}
+
+// Function to display a success message
+function displaySuccess(message) {
+    var messageElement = document.getElementById('messageDisplay');
+    messageElement.innerText = message;
+    messageElement.style.color = 'green';
+    messageElement.style.display = 'block'; 
+}
+
+// Function to display an error message
+function displayError(message) {
+    var messageElement = document.getElementById('messageDisplay');
+    messageElement.innerText = message;
+    messageElement.style.color = 'red'; 
+    messageElement.style.display = 'block'; 
 }
 
 
