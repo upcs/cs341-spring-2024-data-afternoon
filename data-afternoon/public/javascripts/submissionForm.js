@@ -22,6 +22,10 @@ function submitFunction() {
 
     restoreCooldown(sumbitButton);
     addCooldown(sumbitButton, 86400000); //user may only submit one response per day (86400000 milisec = 24 hours)
+    if (submitButton.disabled) {
+        displayError('You can only submit once per day. Please wait until the cooldown period expires.');
+        return; // Stop execution
+    }
     
     $.post('http://localhost:3000/check-inappropriate', { name: name, address: address}, function(response) {
 
@@ -87,7 +91,7 @@ function displaySuccess(message) {
     messageElement.innerText = message;
     messageElement.style.color = 'green';
     messageElement.style.display = 'block'; 
-    setTimeout(resetMessageDisplay, 5000);
+    setTimeout(resetMessageDisplay, 5000); //refresh message display
 }
 
 // Function to display an error message
@@ -96,7 +100,7 @@ function displayError(message) {
     messageElement.innerText = message;
     messageElement.style.color = 'red'; 
     messageElement.style.display = 'block'; 
-    setTimeout(resetMessageDisplay, 5000);
+    setTimeout(resetMessageDisplay, 5000); //refresh message display
 }
 
 
