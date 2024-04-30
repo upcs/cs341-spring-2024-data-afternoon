@@ -12,11 +12,20 @@ function submitFunction() {
     var address = document.getElementById("address").value; // Get the address from the text box 
 
     var sumbitButton = document.getElementById('submitButton');
+
     
+    if (submitButton.disabled) {
+        // If the button is disabled, show a cooldown message and return early
+        displayError('You can only submit once per day. Please wait until the cooldown period expires.');
+        return; // Stop execution here if the button is disabled
+    }
+
     restoreCooldown(sumbitButton);
     addCooldown(sumbitButton, 86400000); //user may only submit one response per day (86400000 milisec = 24 hours)
     
     $.post('http://localhost:3000/check-inappropriate', { name: name, address: address}, function(response) {
+
+   
         //go to check-inappropraite endpoint in check-inappropriate.js to validate name and address
         if (response.success) {
             displaySuccess('Submission was successful!');
@@ -66,12 +75,19 @@ function restoreCooldown(button) {
     }
 }
 
+function resetMessageDisplay() {
+    var messageElement = document.getElementById('messageDisplay');
+    messageElement.innerText = ''; // Clear prev message
+    messageElement.style.display = 'none'; // Hide the element
+}
+
 // Function to display a success message
 function displaySuccess(message) {
     var messageElement = document.getElementById('messageDisplay');
     messageElement.innerText = message;
     messageElement.style.color = 'green';
     messageElement.style.display = 'block'; 
+    setTimeout(resetMessageDisplay, 5000);
 }
 
 // Function to display an error message
@@ -80,6 +96,7 @@ function displayError(message) {
     messageElement.innerText = message;
     messageElement.style.color = 'red'; 
     messageElement.style.display = 'block'; 
+    setTimeout(resetMessageDisplay, 5000);
 }
 
 
