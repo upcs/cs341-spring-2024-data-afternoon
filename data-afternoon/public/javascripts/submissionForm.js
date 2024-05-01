@@ -1,5 +1,5 @@
 const localurl = "http://localhost:3000/"
-const deployrul = "https://unhoused-414004.uw.r.appspot.com/"
+const deployurl = "https://unhoused-414004.uw.r.appspot.com/"
 
 $(document).ready(function() {
     updatePendingRequests();
@@ -11,7 +11,7 @@ function submitFunction()
     var address = document.getElementById("address").value; //get the address from the text box 
 
         /* send this data to the server (database) */
-        $.post(localurl, { Name: name, Address: address}, function(response) { 
+        $.post(deployurl, { Name: name, Address: address}, function(response) { 
             if (response && response.success) {
                 updatePendingRequests();
             } else {
@@ -22,7 +22,7 @@ function submitFunction()
 }         
  
 
-$.post(localurl, function(combinedResults, status) {
+$.post(deployurl, function(combinedResults, status) {
     // Code to handle the new data...
     // This might involve adding more markers to the map,
     // updating UI elements, or processing the data in other ways.
