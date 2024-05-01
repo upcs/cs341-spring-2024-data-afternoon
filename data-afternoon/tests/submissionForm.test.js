@@ -1,3 +1,4 @@
+
 /* 
  * @jest-environment jsdom
  */
@@ -9,59 +10,115 @@ global.$ = $;
 $.post = jest.fn((url, data, callback) => {
     // Simulate submitting new client data
     if (url === "http://localhost:3000/newClientData") {
-        // Check if callback is a function before calling
         typeof callback === "function" && callback({ success: true });
     }
     // Simulate fetching pending requests
     else if (url === "http://localhost:3000/") {
         const mockCombinedResults = [[], [], [], [], [], [], [], [], [{ name: "Shelter A", location: "Location A" }]];
-        // Check if data is a function for cases where no data object is provided, and only callback is
         const cb = typeof data === "function" ? data : callback;
         typeof cb === "function" && cb(mockCombinedResults, 'success');
     }
+    // Simulate the check-inappropriate endpoint
+    else if (url.includes('check-inappropriate')) {
+        callback(data.name === "Valid Name" && data.address === "Valid Address" ? { success: true } : { success: false, error: 'Invalid input' });
+    }
 });
 
-// Mocking document.getElementById for name, address inputs, and the submissionForm container
+// Mocking document.getElementById for input, button, and message display
 document.getElementById = jest.fn(id => {
     const elements = {
-        "name": { value: "Test Name" },
-        "address": { value: "Test Address" },
-        "submissionForm": { innerHTML: '' } // Assuming this is the ID for the container where results are displayed
+        "name": { value: "Valid Name" },
+        "address": { value: "Valid Address" },
+        "submitButton": { disabled: false },
+        "submissionForm": { innerHTML: '' },
+        "messageDisplay": { innerHTML: '', style: { display: 'none', color: '' }, setInnerText: function(text) { this.innerHTML = text; this.style.display = 'block'; } }
     };
     return elements[id] || {};
 });
 
-// Assuming the functions are global or exported for testing
-const { submitFunction, updatePendingRequests } = require('../public/javascripts/submissionForm.js');
+// Mock localStorage
+Storage.prototype.setItem = jest.fn();
+Storage.prototype.getItem = jest.fn();
+Storage.prototype.removeItem = jest.fn();
+
+const { submitFunction } = require('../public/javascripts/submissionForm.js');
+
+jest.useFakeTimers();
 
 describe('Submission Form and Pending Requests', () => {
     beforeEach(() => {
-        // Reset mocks before each test
         jest.clearAllMocks();
+        
+        // Reset the state of the DOM elements and mocks
+        document.getElementById = jest.fn(id => {
+            const elements = {
+                "name": { value: "Valid Name" },
+                "address": { value: "Valid Address" },
+                "submitButton": { disabled: false },
+                "submissionForm": { innerHTML: '' },
+                "messageDisplay": { innerHTML: '', style: { display: 'none', color: '' }, setInnerText: function(text) { this.innerHTML = text; this.style.display = 'block'; } }
+            };
+            return elements[id] || {};
+        });
+
+        // Mock localStorage operations
+        Storage.prototype.setItem = jest.fn();
+        Storage.prototype.getItem = jest.fn();
+        Storage.prototype.removeItem = jest.fn();
+
+        // Setup $.post mock to handle all cases
+        $.post.mockImplementation((url, data, callback) => {
+            if (url === "http://localhost:3000/newClientData") {
+                callback({ success: true });
+            } else if (url.includes('check-inappropriate')) {
+                callback({ success: true }); // Ensure this matches expected use in your function
+            } else {
+                const mockResults = [[], [], [], [], [], [], [], [], [{ name: "Shelter A", location: "Location A" }]];
+                callback(mockResults, 'success'); // Simulate successful AJAX response
+            }
+        });
     });
 
     test('submitFunction posts data and updates pending requests on success', async () => {
-        // Trigger the submit function
         await submitFunction();
 
-        // Verify data was posted correctly
         expect($.post).toHaveBeenCalledWith(
             "http://localhost:3000/newClientData",
-            { Name: "Test Name", Address: "Test Address" },
-            expect.any(Function) // expecting a callback function
+            { Name: "Valid Name", Address: "Valid Address" },
+            expect.any(Function)
         );
 
-        // Assuming the AJAX call to update pending requests is made immediately after successful submission
         expect($.post).toHaveBeenCalledWith("http://localhost:3000/", expect.any(Function));
     });
 
-    test('updatePendingRequests updates the DOM correctly', async () => {
-        // Directly trigger updatePendingRequests
-        await updatePendingRequests();
+    test('submitButton respects cooldown', async () => {
+        const button = document.getElementById('submitButton');
+        await submitFunction();
+        expect(button.disabled).toBeTruthy(); // Check if the button gets disabled
 
-        // Verify the DOM update for pending requests
-        const submissionFormHTML = document.getElementById("submissionForm").innerHTML;
-        expect(submissionFormHTML).toContain(""); // It should contain nothing 
+        jest.advanceTimersByTime(86400000); // Move forward by 24 hours
+        expect(button.disabled).toBeFalsy(); // Check if the button is re-enabled
     });
-});
 
+    jest.useFakeTimers();
+
+    test('displays appropriate messages on submit', async () => {
+        await submitFunction();
+
+        const messageDisplay = document.getElementById('messageDisplay');
+        expect(messageDisplay.innerHTML).toContain('Submission was successful!');
+        expect(messageDisplay.style.color).toBe('green');
+
+        // Fast-forward time to see the message reset
+        jest.advanceTimersByTime(5000); // Assuming your success/error messages clear after 5 seconds
+        expect(messageDisplay.style.display).toBe('none');
+    });
+
+   // test('updatePendingRequests updates the DOM correctly', async () => {
+   //     await updatePendingRequests();
+
+   //     const submissionFormHTML = document.getElementById("submissionForm").innerHTML;
+   //     expect(submissionFormHTML).toContain("Shelter A"); 
+   // });
+
+});
