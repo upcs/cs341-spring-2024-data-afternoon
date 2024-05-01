@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
+const axios = require('axios');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var newClientData = require('./routes/newClientData');
+var checkAppropriate = require('./routes/check-inappropriate');
 
 
 exports.dbquery = require("./routes/dbms_promise.js");
@@ -140,9 +143,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cors());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/', newClientData); //client data to database 
+//app.use('/api', checkAppropriate);
+app.use('/', checkAppropriate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -150,6 +157,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -159,5 +167,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

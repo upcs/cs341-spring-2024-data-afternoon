@@ -51,6 +51,8 @@ function addToNear(item) {
 
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
+
+      //  $.post(deployrul, function(data, status) {
         $.post(localurl, function(data, status) {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
