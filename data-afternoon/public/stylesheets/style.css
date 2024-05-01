@@ -148,7 +148,7 @@
   /* Styling for the navigation tabs */
   nav {
     background-color: #1c2951;
-    padding: 10px;
+    padding: 15px;
   }
   
   nav a {
@@ -186,7 +186,7 @@
 }
 .square-box {
     border: 2px solid #333;
-    padding: 20px;
+    padding: 30px;
     background-color: #f9f9f9;
   }
   
