@@ -1,6 +1,6 @@
 const localurl = "http://localhost:3000/"
 const deployurl = "https://unhoused-414004.uw.r.appspot.com/"
-$.post(deployurl, function(combinedResults, status) {
+$.post(localurl, function(combinedResults, status) {
     // Code to handle the new data...
     // This might involve adding more markers to the map,
     // updating UI elements, or processing the data in other ways.
