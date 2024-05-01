@@ -23,10 +23,20 @@ function distance_miles(item) {
         var difference_lng = (you.position.lng() - item.position.lng()) * (Math.PI/180);
         
         var selected_dis = document.getElementById("miles").value;
+        var selected_type = document.getElementById("type").value;
 
         var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difference_lat/2)*Math.sin(difference_lat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difference_lng/2)*Math.sin(difference_lng/2)));
         if (distance < selected_dis) {
-                nearby.push(item);
+                if (selected_type == "Any") {
+                        nearby.push(item);
+                }
+                else {
+                        var title = item.title;
+                        var trim_title = title.split(' ').slice(0,2).join(' ');
+                        if (trim_title == selected_type) {
+                                nearby.push(item);
+                        }
+                }
         }
 }
 
@@ -41,7 +51,7 @@ function addToNear(item) {
 
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
-        $.post(deployrul, function(data, status) {
+        $.post(localurl, function(data, status) {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
 
@@ -220,28 +230,35 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
 
                         //resultsMap.setCenter(results[0].geometry.location); 
 
-                        // Define an InfoWindow with content based on the marker
-                        var infoWindow = new google.maps.InfoWindow({
-                        content: `<div><h3>${nameIn}</h3><p>Address: ${addressIn}</p></div>`
-                        });
+                        
 
                         // Determine the appropriate icon based on tableNum
 
                         if (tableNum === 0 || tableNum === 3) {
                                 iconUrl = customIcon1;
+                                title = "Free Food";
                             } else if (tableNum === 1) {
                                 iconUrl = customIcon2;
+                                title = "Free Groceries"
                             } else if (tableNum === 5) {
                                 iconUrl = customIcon5;
-
+                                title = "Free Wifi"
                             } else if (tableNum == 6) {
                                 iconUrl = customIcon4;
+                                title = "Free Healthcare"
                             } else if (tableNum == 7) {
                                 iconUrl = customIcon7;
+                                title = "Volunteer"
 
                             } else {
                                 iconUrl = customIcon3;
+                                title = "Rest Places"
                             }
+
+                            // Define an InfoWindow with content based on the marker
+                        var infoWindow = new google.maps.InfoWindow({
+                                content: `<div><h2>${title}<h2><h3>${nameIn}</h3><p>Address: ${addressIn}</p></div>`
+                        });
 
                         // Create a marker
                         var marker = new google.maps.Marker({
@@ -251,7 +268,7 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                                 url: iconUrl,
                                 scaledSize: new google.maps.Size(25, 25)
                                 },
-                                title: nameIn, // Tooltip text when hovering over the marker
+                                title: title + " " + nameIn, // Tooltip text when hovering over the marker
                                 
                         });
 
