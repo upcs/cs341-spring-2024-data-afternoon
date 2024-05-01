@@ -29,7 +29,7 @@
 /* Sticky Navbar Style */
 .navbar.sticky{
   background: #1b1b1b;
-  padding: 15px 0;
+  padding: 16px 0;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
 }
 .navbar .content{
@@ -40,7 +40,7 @@
 /* Logo Styling */
 .navbar .logo a{
   color: #fff;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -133,10 +133,10 @@
     left: 0%;
   }
   .navbar .menu-list li{
-    margin-top: 45px;
+    margin-top: 25px;
   }
   .navbar .menu-list li a{
-    font-size: 23px;
+    font-size: 17px;
     margin-left: -100%;
     transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
@@ -148,14 +148,14 @@
   /* Styling for the navigation tabs */
   nav {
     background-color: #1c2951;
-    padding: 10px;
+    padding: 15px;
   }
   
   nav a {
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
-    padding: 30px;
+    padding: 10px;
     font-size: 20px;
   }
 
@@ -186,7 +186,7 @@
 }
 .square-box {
     border: 2px solid #333;
-    padding: 20px;
+    padding: 30px;
     background-color: #f9f9f9;
   }
   
@@ -218,7 +218,7 @@
  .dropbtn {
   background-color: #3c539a;
   color: white;
-  padding: 16px;
+  padding: 10px;
   font-size: 16px;
   border: none;
 }
@@ -229,18 +229,20 @@
   display: inline-block;
 }
 
-/* Dropdown menu for services tab (Hidden by Default) */
+/* Dropdown menu for services tab when the window in shurken (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: black;
-  width: 570px;
-
-  min-height: 150px;
+  min-width: 200px;
+  min-height: 250px;
   border-radius: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  /* overflow: scroll; */
+  left: 50%; /* Centering horizontally */
+  transform: translateX(-40%); /* Adjust for centering */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  overflow-y: auto; /* Allow vertical overflow with scrollbar */
 }
 
 /* service links inside the dropdown */
@@ -249,6 +251,7 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-size: 5px;
 }
 
 /* Change color of dropdown links on hover */
@@ -263,9 +266,9 @@
 
 #searchInput {
   padding: 10px;
-  margin: 10px;
   width: 165px;
   border-radius: 10px;
+  margin: 10px auto;
 }
 
 #searchButton {
@@ -275,7 +278,7 @@
   border: 1px solid #fff;
   border-radius: 10px;
   cursor: pointer;
-  margin-left: -15px;
+  margin: 10px auto;
   height: 45px;
   min-width: 10px;
   margin-top: 10px; 
@@ -501,8 +504,8 @@ p2{
 /* language styling */
 .language {
   text-decoration: none;
-  margin-right: 10px;
-  padding: 30px;
+  margin-right: 10px auto;
+  padding: 15px;
   font-size: 20px;
   
 }
@@ -561,3 +564,25 @@ p2{
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
 }
+
+/* CSS styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+     }
+ .en-tab {
+    display: block;
+            }
+   .es-tab {
+   display: none;
+            }
+           h2 {
+                margin-top: 20px;
+            }
+            h3 {
+                margin-top: 15px;
+            }
+            p {
+                margin-top: 5px;
+            }
