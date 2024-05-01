@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"/>
-</script>
+<!-- Include jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Meta tags -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Title -->
 <title>Add Name and Address</title>
+
+<!-- Internal CSS styles -->
 <style>
+    /* General styles for the body */
     body {
         font-family: Arial, sans-serif;
         display: flex;
@@ -16,6 +22,8 @@
         height: 100vh;
         background-color: #f0f0f0;
     }
+    
+    /* Form styles */
     form {
         background-color: white;
         padding: 60px; 
@@ -24,18 +32,24 @@
         width: 500px; 
         margin: 0 auto; 
     }
+    
+    /* Heading styles */
     h2 {
         text-align: center;
         color: #333;
     }
+    
+    /* Styles for input groups */
     .input-group {
         margin-bottom: 20px;
     }
+    
     .input-group label {
         display: block;
         color: #666;
         margin-bottom: 5px;
     }
+    
     .input-group input {
         width: 100%;
         padding: 10px;
@@ -43,10 +57,13 @@
         border-radius: 5px;
         box-sizing: border-box; /* Makes sure padding does not affect the total width */
     }
+    
     .input-group input:focus {
         outline: none;
         border-color: #007bff;
     }
+    
+    /* Button styles */
     button {
         width: 100%;
         padding: 10px;
@@ -56,71 +73,79 @@
         border-radius: 5px;
         cursor: pointer;
     }
+    
     button:hover {
         background-color: #0056b3;
     }
-
+    
+    /* Container styles for client data */
     #clientDataContainer {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-box {
-            border-bottom: 1px solid #eee;
-            padding: 8px 16px;
-        }
-
-        .service-box:last-child {
-            border-bottom: none;
-        }
-
-        .service-box strong {
-            display: block; 
-            color: #333;
-            margin-bottom: 4px; 
-        }
+        margin-top: 20px;
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Styles for service boxes */
+    .service-box {
+        border-bottom: 1px solid #eee;
+        padding: 8px 16px;
+    }
+    
+    .service-box:last-child {
+        border-bottom: none;
+    }
+    
+    .service-box strong {
+        display: block; 
+        color: #333;
+        margin-bottom: 4px; 
+    }
 </style>
 </head>
 <body>
 
-    <form id="form_id">
-        <h2 class="en-tab">Submit Resources</h2>
-        <h2 class="es-tab" style="display: none;">Enviar Recursos</h2>
-        <div class="input-group">
-            <label for="name" class="en-tab">Name</label>
-            <label for="name" class="es-tab" style="display: none;">Nombre</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="input-group">
-            <label for="address" class="en-tab">Address</label>
-            <label for="address" class="es-tab" style="display: none;">Direccion</label>
-            <input type="text" id="address" name="address" required>
-        </div>
-        <button type="button" id="submitButton" class="en-tab" onclick="submitFunction(event)">Submit</button>
-        <button type="button" id="submitButton" class="es-tab" style="display: none;" onclick="submitFunction(event)">Enviar</button>
+<!-- Form for submitting name and address -->
+<form id="form_id">
+    <!-- Heading for form -->
+    <h2 class="en-tab">Submit Resources</h2>
+    <h2 class="es-tab" style="display: none;">Enviar Recursos</h2>
+    
+    <!-- Input fields for name and address -->
+    <div class="input-group">
+        <label for="name" class="en-tab">Name</label>
+        <label for="name" class="es-tab" style="display: none;">Nombre</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="input-group">
+        <label for="address" class="en-tab">Address</label>
+        <label for="address" class="es-tab" style="display: none;">Direccion</label>
+        <input type="text" id="address" name="address" required>
+    </div>
+    
+    <!-- Submit buttons for English and Spanish -->
+    <button type="button" id="submitButton" class="en-tab" onclick="submitFunction(event)">Submit</button>
+    <button type="button" id="submitButton" class="es-tab" style="display: none;" onclick="submitFunction(event)">Enviar</button>
+    
+    <!-- Message display section -->
     <div id="messageDisplay" style="display: none;"></div>
 </form>
 
-
+<!-- Include JavaScript files -->
 <script src="javascripts/submissionForm.js"></script>
 <script src="javascripts/unhoused.js"></script>
+
+<!-- Script to toggle language based on URL parameter or local storage -->
 <script>
 window.addEventListener('load', function() {
   var lang = new URL(window.location.href).searchParams.get('lang') || localStorage.getItem('selectedLanguage') || 'en';
   toggleLanguage(lang);  
 });
 </script>
-<!--
-<div id="clientDataContainer">
-<p id ="submissionForm"></p>
-</div>
--->
 
 </body>
 </html>

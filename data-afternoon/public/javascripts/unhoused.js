@@ -1,24 +1,25 @@
 /* java scripts for unhoused project */
 
-
+// Function to display alert message for available location
 function mydataFunction() {
-  alert("This location is available now! ")
+  alert("This location is available now! ");
 }
 
+// Function to toggle display of dropdown and key elements
 function addInfoMap() {
-  //get rid of dropdown and add in key
+  // Hide dropdown and display key
   document.getElementById("DropDown").style.display = 'none';
   document.getElementById("key").style.display = 'block';
 }
 
-
+// Function to revert display to dropdown
 function changeAddInfoBack() {
-  //temporary since we do not have things to put 
-  //in additional info for other tabs
+  // Revert to displaying dropdown and hide key
   document.getElementById("DropDown").style.display = 'block';
   document.getElementById("key").style.display = 'none';
 }
 
+// Function to handle search input and navigate to corresponding page
 function handleSearch() {
   var searchInput = document.getElementById('searchInput').value.toLowerCase();
 
@@ -31,13 +32,12 @@ function handleSearch() {
 
   if (pageMappings[searchInput]) {
     document.getElementById('iframe').src = pageMappings[searchInput];
-  }
-  
-  else{
+  } else {
     alert('Page not found.');
   }
 }
 
+// Function to toggle language display
 function toggleLanguage(lang) {
   const enTabs = document.querySelectorAll('.en-tab');
   const esTabs = document.querySelectorAll('.es-tab');
@@ -56,27 +56,32 @@ function toggleLanguage(lang) {
   if (ifram && ifram.src.includes('guide.html')) {
     ifram.src = ifram.src;
   }
-
 }
 
+// Check if geolocation is available
 if ("geolocation" in navigator) {
+  // Get current position
   navigator.geolocation.getCurrentPosition(function(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     
-    // Now latitude and longitude are available to use
+    // Update user interface with location information
     updateUserInterface(latitude, longitude);
   });
 } else {
   console.log("Geolocation is not available");
 }
 
+// Function to update user interface with location information
 function updateUserInterface(lat, long) {
+  // Get zip code using latitude and longitude
   getZipCode(lat, long, function(zipCode) {
+    // Display zip code on user interface
     document.getElementById('user-location').textContent = `Zip Code: ${zipCode}`;
   });
 }
 
+// Function to retrieve zip code from latitude and longitude
 function getZipCode(lat, long, callback) {
   const geocoder = new google.maps.Geocoder();
   const latlng = { lat: parseFloat(lat), lng: parseFloat(long) };
@@ -99,5 +104,5 @@ function getZipCode(lat, long, callback) {
   });
 }
 
-
+// Export functions for external use
 module.exports = { mydataFunction, addInfoMap, changeAddInfoBack, handleSearch, toggleLanguage, updateUserInterface, getZipCode };

@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
     <title>Unhoused Resources | PDX </title>
+
+    <!-- External CSS stylesheets -->
     <link rel="stylesheet"href="stylesheets\style.css">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     
+    <!-- External JavaScript files -->
     <script src="javascripts/unhoused.js"></script>
     <script src="javascripts/dataBase.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initAutocomplete&libraries=places&v=weekly" defer async></script>
@@ -15,20 +21,27 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="content">
+      <!-- Logo and site name -->
       <div class="logo">
         <a href="#" class="en-tab">PDX Unhoused Resources</a>
         <a href="#" class="es-tab" style="display: none;">Recursos para Personas sin Hogar PDX</a>
       </div>
+
+       <!-- Menu items -->
       <ul class="menu-list">
+         <!-- Close button for mobile view -->
         <div class="icon cancel-btn">
           <i class="fas fa-times"></i>
         </div>
 
+        <!-- Home link -->
         <li><a href="home.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Home</a></li>
 
+        <!-- Dropdown menu for services -->
         <li class="dropdown">
           <a href="service.html" target="iframe" onmouseover="showDropdown()" onmouseout="hideDropdown()" class="en-tab">Services</a>
           <div class="dropdown-content" id="dropdownContent">
+            <!-- Service links -->
             <a href="service1.html" target="iframe" class="en-tab">Year-Round Shelters</a>
             <a href="service2.html" target="iframe" class="en-tab">Healthcare Resources</a>
             <a href="service3.html" target="iframe" class="en-tab">Rest Villages</a>
@@ -40,14 +53,14 @@
           </div>
         </li>
 
-
+        <!-- Map link -->
         <li><a href="map.html" class="en-tab"
           target="iframe" onclick=addInfoMap()>Map</a></li>
-  
+          
+        <!-- Form link -->
         <li><a href="form.html" class="en-tab" target="iframe" onclick=changeAddInfoBack()>Form</a></li>
 
-
-
+        <!-- Spanish version -->
         <li><a href="home.html" class="es-tab" style="display: none;" target="iframe" onclick="changeAddInfoBack()">Inicio</a></li>
 
         <li class="dropdown">
@@ -63,7 +76,6 @@
             <a href="service9.html" target="iframe" class="es-tab" style="display: none;">Voluntariado</a>
           </div>
         </li>
-
 
         <li><a href="map.html" class="es-tab" style="display: none;"
           target="iframe" onclick=addInfoMap()>Mapa</a></li>
@@ -98,96 +110,97 @@
  
   <div class="banner">
     <div class="container">
-      <form>
-        <!--
-        <div class="wrapper">
-          
-          <p2 class="en-tab">Services Location</p2>
-          <p2 class="es-tab" style="display: none;">Ubicación de Servicios</p2>
-          <div class="search-container">
-            
-            <input type="text" id="serviceSearch" class="services" placeholder="Services (e.g. Food Pantry, Shelters, etc.)">
-            <input type="text" id = "locationSearch" class="location" placeholder="Location (e.g. City or Zip Code)">
-            <button type="button" onclick=findAddress() class="bannerButton en-tab">Search</button>
-            <button type="button" onclick=findAddress() class="bannerButton es-tab" style="display: none;">Buscar</button>
-            
-
-          </div>
-        </div>
-      -->
-      </form>
       </div>
   </div>
 
-
   <script>
-
+    // Event listener for language dropdown change
     document.getElementById('language-dropdown').addEventListener('change', function() {
-    toggleLanguage(this.value);
-  });
+        // Call toggleLanguage function with selected language value
+        toggleLanguage(this.value);
+    });
 
+    // DOM elements
     const body = document.querySelector("body");
     const navbar = document.querySelector(".navbar");
     const menuBtn = document.querySelector(".menu-btn");
     const cancelBtn = document.querySelector(".cancel-btn");
-    menuBtn.onclick = ()=>{
-      navbar.classList.add("show");
-      menuBtn.classList.add("hide");
-      body.classList.add("disabled");
-    }
-    cancelBtn.onclick = ()=>{
-      body.classList.remove("disabled");
-      navbar.classList.remove("show");
-      menuBtn.classList.remove("hide");
-    }
-    window.onscroll = ()=>{
-      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
-    }
-  </script>
 
-    <!-- Additional Information -->
+    // Toggle menu function
+    menuBtn.onclick = () => {
+        // Show navbar and hide menu button
+        navbar.classList.add("show");
+        menuBtn.classList.add("hide");
+        // Disable scrolling
+        body.classList.add("disabled");
+    }
 
-  <aside hidden class="additional-info">
+    // Cancel menu function
+    cancelBtn.onclick = () => {
+        // Enable scrolling and hide navbar
+        body.classList.remove("disabled");
+        navbar.classList.remove("show");
+        // Show menu button
+        menuBtn.classList.remove("hide");
+    }
 
-    <h2 class="en-tab">Additional Information</h2>
-    <h2 class="es-tab" style="display: none;">Información Adicional</h2>
-    <div id="key" hidden>
+    // Sticky navbar on scroll
+    window.onscroll = () => {
+        // Add sticky class to navbar when scrollY > 20, otherwise remove sticky class
+        this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+    }
+</script>
+
+
+    <!-- Additional Information aside element -->
+<aside hidden class="additional-info">
+  <!-- Heading for additional information in English and Spanish -->
+  <h2 class="en-tab">Additional Information</h2>
+  <h2 class="es-tab" style="display: none;">Información Adicional</h2>
+
+  <!-- Key section for icons and descriptions -->
+  <div id="key" hidden>
       <table id="keyTable">
-        <tr>
-          <td><img id="keyImage" src="images/groceries.png" width="50px" height="50px"></td>
-          <td>Free Groceries</td>
-        </tr>
-          <td><img id="keyImage" src="images/food.png" width="50px" height="50px"></td>
-          <td>Free Meals</td>
-        <tr>
-          <td><img id="keyImage" src="images/shelter.png" width="50px" height="50px"></td>
-          <td>Rest Places</td>
-        </tr>
+          <tr>
+              <td><img id="keyImage" src="images/groceries.png" width="50px" height="50px"></td>
+              <td>Free Groceries</td>
+          </tr>
+          <tr>
+              <td><img id="keyImage" src="images/food.png" width="50px" height="50px"></td>
+              <td>Free Meals</td>
+          </tr>
+          <tr>
+              <td><img id="keyImage" src="images/shelter.png" width="50px" height="50px"></td>
+              <td>Rest Places</td>
+          </tr>
       </table>
-    </div>
-    <div class="dropdown" id =DropDown>
+  </div>
+
+  <!-- Dropdown section for safe rest villages -->
+  <div class="dropdown" id="DropDown">
       <dataButton class="dropbtn">Safe Rest Villages</dataButton>
       <div class="dropdown-content">
-          <!--drop down data -->
-        <a href="#" onclick="mydataFunction()" >Name: BIPOC Village, Total Sleep Units: 38, Location: 84 NE Weidler</a> 
-        <a href="#" onclick="mydataFunction()" >Name: Menlo Park Safe Rest Village, Total Sleep Units: 50, Location: 12305 SE Ash St</a> 
-        <a href="#" onclick="mydataFunction()" >Name: Multnomah Safe Rest Village, Total Sleep Units: 28, Location: 2731 SW Multnomah Blvd</a> 
-        <a href="#" onclick="mydataFunction()" >Name: Peninsula Crossing Safe Rest Village, Total Sleep Units: 60, Location: 6767 N Syracuse St</a> 
-        
+          <!-- Links for safe rest villages with onclick event -->
+          <!-- Modify href and onclick event as needed -->
+          <a href="#" onclick="mydataFunction()">Name: BIPOC Village, Total Sleep Units: 38, Location: 84 NE Weidler</a>
+          <a href="#" onclick="mydataFunction()">Name: Menlo Park Safe Rest Village, Total Sleep Units: 50, Location: 12305 SE Ash St</a>
+          <a href="#" onclick="mydataFunction()">Name: Multnomah Safe Rest Village, Total Sleep Units: 28, Location: 2731 SW Multnomah Blvd</a>
+          <a href="#" onclick="mydataFunction()">Name: Peninsula Crossing Safe Rest Village, Total Sleep Units: 60, Location: 6767 N Syracuse St</a>
       </div>
-    </div>
-    </aside>
-  
-    <aside id="frame-aside" style="width: 100%; height: 100vh; margin: 0; padding: 0; overflow: hidden;">
-      <iframe src="home.html"
-        style="border: 0; width: 100%; height: 100%;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        name="iframe"
-        id="iframe"></iframe>
-    </aside>
-    <!-- <img src="images/temp_ad.png" alt="ad" id="ad">  -->
+  </div>
+</aside>
+
+<!-- Iframe container aside element -->
+<aside id="frame-aside" style="width: 100%; height: 100vh; margin: 0; padding: 0; overflow: hidden;">
+  <!-- Iframe for displaying content -->
+  <iframe src="home.html"
+      style="border: 0; width: 100%; height: 100%;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      name="iframe"
+      id="iframe"></iframe>
+</aside>
 
 </body>
 </html>

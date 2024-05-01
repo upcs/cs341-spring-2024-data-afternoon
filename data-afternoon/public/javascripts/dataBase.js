@@ -1,4 +1,3 @@
-
 const customIcon1 = 'images/food.png';
 const customIcon2 = 'images/groceries.png';
 const customIcon3 = 'images/shelter.png';
@@ -7,9 +6,6 @@ const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
 const localurl = "http://localhost:3000/"
 const deployurl = "https://unhoused-414004.uw.r.appspot.com/"
-
-
-
 const customIcon7 = 'images/volunteer.png'; //change this icon its hard to see on the map 
 
 var myMarkers = [];
@@ -48,12 +44,8 @@ function addToNear(item) {
         near.appendChild(div); 
 }
 
-
 function initAutocomplete() {
         /* send the client the map with pins that provide resources */
-
-      //  $.post(deployrul, function(data, status) {
-
         $.post(localurl, function(data, status) {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
@@ -75,7 +67,7 @@ function initAutocomplete() {
                 {name: "Free Wifi", iconUrl: customIcon5},
                 {name: "Volunteer", iconUrl: customIcon7},
                 {name: "You", iconUrl: customIcon6}
-                // Add more legend items here
+        
         ];
 
         // Get the legend div
@@ -109,8 +101,6 @@ function initAutocomplete() {
                 {
                         geocodeAddress(geocoder, address, name, i); //insert the pin with location and name into the map
                 }
-
-
                 }
 	    }
         } 
@@ -175,7 +165,6 @@ function initAutocomplete() {
             near.innerHTML = "";
             nearby.forEach(addToNear);
             
-
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -185,56 +174,13 @@ function initAutocomplete() {
           });
         });
       }
-      
       window.initAutocomplete = initAutocomplete;
-
-      
-
-// function findAddress() {
-//         var location = document.getElementById('locationSearch').value;
-//         var geocoder = new google.maps.Geocoder(); 
-      
-//         geocoder.geocode({ address: location }, (results, status) => {
-//                 if (status === "OK") {
-//                         //var myMap = document.getElementById('map');
-//                         // new google.maps.Map(document.getElementById('map'), {
-//                         //        center: { lat: 32, lng: -124},
-//                         //        zoom: 15, 
-//                         // });
-//                         // if (map =! null) {
-//                         //         alert("There is an element");
-//                         //         console.log(map);
-//                         // }
-//                         //map.setCenter(results[0].geometry.location);
-//                         // let newLat = 45;
-//                         // let newLng = -124;
-//                         // map.setCenter({
-//                         //         lat : newLat,
-//                         //         lng : newLng
-//                         // });
-//                         alert("Geocode was successful and here is address: " + results[0].geometry.location);
-//                 }
-//                 else {
-//                         alert("Geocode was not successful for the following reason: " + status + " and here is address: " + location);
-//                 }
-//         });
-        
-//         if (document.getElementById('iframe').src != 'http://localhost:3000/map.html') {
-//                 document.getElementById('iframe').src = 'map.html';
-//         }
-// }
 
 function geocodeAddress(geocoder, addressIn, nameIn, tableNum) 
 {
-        
         geocoder.geocode({ address: addressIn }, (results, status) => {
                 if (status === "OK") 
-                {
-
-                        //resultsMap.setCenter(results[0].geometry.location); 
-
-                        
-
+                {   
                         // Determine the appropriate icon based on tableNum
 
                         if (tableNum === 0 || tableNum === 3) {
@@ -271,8 +217,7 @@ function geocodeAddress(geocoder, addressIn, nameIn, tableNum)
                                 url: iconUrl,
                                 scaledSize: new google.maps.Size(25, 25)
                                 },
-                                title: title + " " + nameIn, // Tooltip text when hovering over the marker
-                                
+                                title: title + " " + nameIn, // Tooltip text when hovering over the marker       
                         });
 
                         //array of all markers??

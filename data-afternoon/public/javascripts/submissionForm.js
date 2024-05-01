@@ -1,11 +1,9 @@
 const localurl = "http://localhost:3000/"
 const deployurl = "https://unhoused-414004.uw.r.appspot.com/"
 
-
 $(document).ready(function() {
     updatePendingRequests();
 });
-
 
 function submitFunction() {
     var name = document.getElementById("name").value; // Get the name from the text box 
@@ -13,7 +11,6 @@ function submitFunction() {
 
     var sumbitButton = document.getElementById('submitButton');
 
-    
     if (submitButton.disabled) {
         // If the button is disabled, show a cooldown message and return early
         displayError('You can only submit once per day. Please wait until the cooldown period expires.');
@@ -28,7 +25,6 @@ function submitFunction() {
     }
     
     $.post('http://localhost:3000/check-inappropriate', { name: name, address: address}, function(response) {
-
    
         //go to check-inappropraite endpoint in check-inappropriate.js to validate name and address
         if (response.success) {
@@ -39,7 +35,6 @@ function submitFunction() {
     }).fail(function() {
         displayError('Failed to connect to the server.');
     });
-
 }
 
 // Function to disable and enable the button based on cooldown
@@ -104,41 +99,3 @@ function displayError(message) {
 }
 
 
- 
-/*
-//$.post(deployrul, function(combinedResults, status) {
-    $.post(localurl, function(combinedResults, status) {
-    // Code to handle the new data...
-    // This might involve adding more markers to the map,
-    // updating UI elements, or processing the data in other ways.
-
-    // Initialize an empty string to build the HTML content
-    let htmlContent = '<h1> Pending Requests </h1><div class="service-container">';
-
-    // Iterate over each shelter in the safeYearRoundShelters array
-    combinedResults[8].forEach(shelter => {
-    // Append a list item with the shelter's name and location to the HTML content
-    htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}</div>`;
-});
-
-    // Close the unordered list tag
-    htmlContent += '</div>';
-
-    // Set the innerHTML of the element with ID "year-round-shelters" to the built HTML content
-    document.getElementById("submissionForm").innerHTML = htmlContent;
-    
-});
-
-function updatePendingRequests() {
-  //  $.post(deployrul, function(combinedResults, status) {
-    $.post(localurl, function(combinedResults, status) {  
-        let htmlContent = '<h1> Pending Requests </h1><div class="service-container">';
-        combinedResults[8].forEach(shelter => {
-            htmlContent += `<div class="service-box"><strong>Name:</strong> ${shelter.name}<br><strong>Location:</strong> ${shelter.location}</div>`;
-        });
-        htmlContent += '</div>';
-        document.getElementById("submissionForm").innerHTML = htmlContent;
-    });
-}
-*/
-//module.exports = { submitFunction, updatePendingRequests };

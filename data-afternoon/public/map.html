@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- External stylesheet -->
     <link rel="stylesheet" href="stylesheets/style.css"> 
+    <!-- External jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" />
     </script>
+    <!-- Polyfill for older browsers -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- Google Map React library -->
     <script src="https://npmcdn.com/google-map-react@1.0.6/dist/GoogleMapReact.js"></script>
 
 </head>
 <body>
+  <!-- Placeholder for displaying data -->
   <p id ="getDataBase"></p>
 
   <div id="legend"></div> <!-- Legend container, placed below the map -->
   
+  <!-- Search box for places -->
   <input id="pac-input" class="controls" type="text" placeholder="Search Box"/>
 
+  <!-- Instructions for users -->
   <div>
     <h4>How To:</h4>
     <p>The search bar will display the names of what category you decide to search.
@@ -24,13 +31,16 @@
     </p>
   </div>
 
+   <!-- Container for nearby places -->
   <aside id="nearby">
+    <!-- Options for mile radius -->
     <h2 class="en-tab">Within <select name="miles" id="miles">
       <option value="1">1</option>
       <option value="5">5</option>
       <option value="10">10</option>
       <option value="15">15</option>
       </select> Miles: <select name="type" id="type">
+        <!-- Options for place categories -->
         <option value="Any">Any</option>
         <option value="Free Food">Free Food</option>
         <option value="Free Groceries">Free Groceries</option>
@@ -41,16 +51,16 @@
       </select></h2>
     <h2 class="es-tab" style="display: none;">Cerca:</h2>
     
+    <!-- Container for displaying nearby places -->
     <div id="near"></div>
   </aside>
 
-
-
+  <!-- Container for Google Map -->
   <div id="map"></div>
   
-  
-
   <script src="javascripts/dataBase.js"></script>
+  
+  <!-- Google Maps JavaScript API with callback for initializing autocomplete -->
   <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmTyXedXrrglVFr2k31-OwQgybrJHbP60&callback=initAutocomplete&libraries=places&v=weekly"
   defer async
