@@ -1,5 +1,5 @@
 const localurl = "http://localhost:3000/"
-const deployrul = "https://unhoused-414004.uw.r.appspot.com/"
+const deployurl = "https://unhoused-414004.uw.r.appspot.com/"
 
 
 $(document).ready(function() {

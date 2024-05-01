@@ -6,7 +6,7 @@ const customIcon4 = 'images/health.png';
 const customIcon5 = 'images/wifi.png';
 const customIcon6 = 'images/person.png';
 const localurl = "http://localhost:3000/"
-const deployrul = "https://unhoused-414004.uw.r.appspot.com/"
+const deployurl = "https://unhoused-414004.uw.r.appspot.com/"
 
 
 
