@@ -11,7 +11,7 @@ function submitFunction() {
     var name = document.getElementById("name").value; // Get the name from the text box 
     var address = document.getElementById("address").value; // Get the address from the text box 
 
-    var sumbitButton = document.getElementById('submitButton');
+    var submitButton = document.getElementById('submitButton');
 
     
     if (submitButton.disabled) {
@@ -20,8 +20,8 @@ function submitFunction() {
         return; // Stop execution here if the button is disabled
     }
 
-    restoreCooldown(sumbitButton);
-    addCooldown(sumbitButton, 86400000); //user may only submit one response per day (86400000 milisec = 24 hours)
+    restoreCooldown(submitButton);
+    addCooldown(submitButton, 86400000); //user may only submit one response per day (86400000 milisec = 24 hours)
     if (submitButton.disabled) {
         displayError('You can only submit once per day. Please wait until the cooldown period expires.');
         return; // Stop execution
@@ -141,4 +141,4 @@ function updatePendingRequests() {
     });
 }
 */
-//module.exports = { submitFunction, updatePendingRequests };
+module.exports = { submitFunction };
