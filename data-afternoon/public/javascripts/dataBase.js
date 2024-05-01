@@ -54,7 +54,7 @@ function initAutocomplete() {
 
       //  $.post(deployrul, function(data, status) {
 
-        $.post(localurl, function(data, status) {
+        $.post(deployurl, function(data, status) {
 
         var center = { lat: 45.5327, lng: -122.7215 }; //center the map around UP area
 
