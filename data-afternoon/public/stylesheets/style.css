@@ -29,7 +29,7 @@
 /* Sticky Navbar Style */
 .navbar.sticky{
   background: #1b1b1b;
-  padding: 15px 0;
+  padding: 16px 0;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
 }
 .navbar .content{
@@ -40,7 +40,7 @@
 /* Logo Styling */
 .navbar .logo a{
   color: #fff;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -155,7 +155,7 @@
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
-    padding: 30px;
+    padding: 10px;
     font-size: 20px;
   }
 
@@ -218,7 +218,7 @@
  .dropbtn {
   background-color: #3c539a;
   color: white;
-  padding: 16px;
+  padding: 10px;
   font-size: 16px;
   border: none;
 }
@@ -263,9 +263,9 @@
 
 #searchInput {
   padding: 10px;
-  margin: 10px;
   width: 165px;
   border-radius: 10px;
+  margin: 10px auto;
 }
 
 #searchButton {
@@ -275,7 +275,7 @@
   border: 1px solid #fff;
   border-radius: 10px;
   cursor: pointer;
-  margin-left: -15px;
+  margin: 10px auto;
   height: 45px;
   min-width: 10px;
   margin-top: 10px; 
@@ -501,8 +501,8 @@ p2{
 /* language styling */
 .language {
   text-decoration: none;
-  margin-right: 10px;
-  padding: 30px;
+  margin-right: 10px auto;
+  padding: 15px;
   font-size: 20px;
   
 }

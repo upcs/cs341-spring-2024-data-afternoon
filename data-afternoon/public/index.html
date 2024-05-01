@@ -126,6 +126,8 @@
     const navbar = document.querySelector(".navbar");
     const menuBtn = document.querySelector(".menu-btn");
     const cancelBtn = document.querySelector(".cancel-btn");
+    const navLinks = document.querySelectorAll(".menu-list a");
+
     menuBtn.onclick = ()=>{
       navbar.classList.add("show");
       menuBtn.classList.add("hide");
@@ -136,9 +138,17 @@
       navbar.classList.remove("show");
       menuBtn.classList.remove("hide");
     }
+  
     window.onscroll = ()=>{
       this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
     }
+    navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navbar.classList.remove('show');
+      menuBtn.classList.remove('hide');
+      body.classList.remove('disabled');
+    });
+  });
   </script>
 
     <!-- Additional Information -->
