@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" />
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://npmcdn.com/google-map-react@1.0.6/dist/GoogleMapReact.js"></script>
 
 </head>
 <body>
@@ -13,6 +14,15 @@
   <div id="legend"></div> <!-- Legend container, placed below the map -->
   
   <input id="pac-input" class="controls" type="text" placeholder="Search Box"/>
+
+  <div>
+    <h4>How To:</h4>
+    <p>The search bar will display the names of what category you decide to search.
+      You can also switch the miile radius of your search. A research is needed to get 
+      a refresh of the points. The map will also display all of the data no matter the search.
+      All you need to do is insert an address or name of a place you want to search!
+    </p>
+  </div>
 
   <aside id="nearby">
     <h2 class="en-tab">Within <select name="miles" id="miles">
