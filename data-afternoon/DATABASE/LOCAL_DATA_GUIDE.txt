@@ -1,0 +1,10 @@
+1. make sure you are connected to your local host on mysql.
+2. create a database called UNHOUSED with "CREATE DATABASE UNHOUSED;"
+3. enter "USE UNHOUSED;" to use this database
+4. Make sure you have navigated to the directory this txt file is in, or at least know where this folder is on your device.
+5. use "source /path/to/your/file.sql;" or "source file.sql;" depending on if you are in the same directory as this file or not.
+Replace file with the name of whatever table you want to import.
+7. repeat process until you have the database successfully imported.
+8. Go to the main project, and go to data-afternoon/routes/dbms_promise
+9. change password to your mysql password for local host
+10. Access free resources by running npm start!
